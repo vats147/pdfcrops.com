@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <main className='w-full h-screen bg-white flex flex-col items-center justify-start'>
-        <HeroSection />
+        {/* <HeroSection /> */}
       </main>
     </>
   )
