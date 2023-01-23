@@ -19,7 +19,7 @@ const ServiceCardContainer = () => {
         0: {
             items: 2,
         },
-        500: {
+        450: {
             items: 3
         },
         640: {
@@ -29,7 +29,7 @@ const ServiceCardContainer = () => {
 
 
     return (
-        <div className='w-full flex justify-center items-center py-5 bg-gray-100'>
+        <div className='w-full flex justify-center items-center py-5 lg:py-10 bg-gray-100'>
             <div className='w-full lg:w-[70%] xl:w-[60%] flex justify-center items-center space-x-2'>
                 <AliceCarousel
                     disableButtonsControls
