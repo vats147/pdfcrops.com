@@ -7,7 +7,7 @@ export const PDFcropSiteOptions = [
         name: "Amazon",
         value: 1,
         icon: "amazonSmallLogo",
-        bgColor: "#FF9900",
+        bgColor: "bg-[#FF9900]",
     },
     {
         id: 2,
