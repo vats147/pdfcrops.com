@@ -15,7 +15,7 @@ const ServiceCard = ({ service }) => {
     return (
         <div
             key={service.id}
-            className={`w-36 h-36 md:w-44 md:h-44 
+            className={`w-36 h-36 sm:w-48 sm:h-48 md:w-52 md:h-52  
              ${service.name === "Amazon" && "bg-[#FF9900]"} 
              ${service.name === "Flipkart" && "bg-[#FFE11B]"} 
              ${service.name === "Meesho" && "bg-[#EA4E85]"} 
