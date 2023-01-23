@@ -1,1 +1,1 @@
-export const BrandName = 'PDF Cropper'
+export const BrandName = 'PDF Crops'

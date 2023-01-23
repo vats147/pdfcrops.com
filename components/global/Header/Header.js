@@ -22,14 +22,7 @@ const Header = () => {
 
 
 
-      <div className='flex-1 px-5 flex justify-end items-center'>
-        <button
-          type='signIn'
-          className='px-5 py-2 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]'
-        >
-          Sign in
-        </button>
-      </div>
+     
 
       {!isSidebarVisible ? (
         <RxHamburgerMenu className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
