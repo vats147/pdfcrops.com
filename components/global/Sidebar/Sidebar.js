@@ -11,7 +11,7 @@ const Sidebar = ({ isSidebarVisible }) => {
 
 
   return (
-    <div className={`fixed top-[8vh] left-0 h-full w-[100%] bg-black flex flex-col items-start justify-start py-10 ${isSidebarVisible ? "translate-x-0" : "translate-x-full"} ease-in-out duration-500`}>
+    <div className={`fixed top-[8vh] left-0 z-50 h-full w-[100%] bg-black flex flex-col items-start justify-start py-10 ${isSidebarVisible ? "translate-x-0" : "translate-x-full"} ease-in-out duration-500`}>
 
 
       {/* ---- PDF Section ---- */}

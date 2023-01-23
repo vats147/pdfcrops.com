@@ -3,10 +3,10 @@ import React from 'react'
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"
 
 // Images
-import amazonSmallLogo from "../../../../public/images/logos/amazonSmallLogo.png"
-import meeshoSmallLogo from "../../../../public/images/logos/meeshoSmallLogo.png"
-import flipkartSmallLogo from "../../../../public/images/logos/flipkartSmallLogo.png"
-import glowroadSmallLogo from "../../../../public/images/logos/glowroadSmallLogo.png"
+import amazonSmallLogo from "../../../../../public/images/logos/amazonSmallLogo.png"
+import meeshoSmallLogo from "../../../../../public/images/logos/meeshoSmallLogo.png"
+import flipkartSmallLogo from "../../../../../public/images/logos/flipkartSmallLogo.png"
+import glowroadSmallLogo from "../../../../../public/images/logos/glowroadSmallLogo.png"
 
 
 

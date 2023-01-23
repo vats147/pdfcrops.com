@@ -3,7 +3,7 @@ import { SiteStatsArray } from "../../../../../constants/SiteStats/SiteStats"
 
 const StatsSection = () => {
     return (
-        <section className='w-[90%] lg:w-[70%] xl:w-[60%] bg-brandMidColor px-2 sm:px-4 py-5 rounded-md shadow-md shadow-slate-200 flex justify-center sm:justify-between items-center space-x-5 my-6'>
+        <section className='w-[90%] lg:w-[70%] xl:w-[60%] bg-gray-100 px-2 sm:px-4 py-5 rounded-md shadow-md shadow-slate-200 flex justify-center sm:justify-between items-center space-x-5 my-6'>
 
             {SiteStatsArray && (
                 SiteStatsArray?.map((stat) => {
