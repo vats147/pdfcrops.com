@@ -13,6 +13,7 @@ import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri"
 import { CgFileDocument } from "react-icons/cg"
 import { RxCross1, RxHamburgerMenu } from 'react-icons/rx'
 import { BrandName } from '@/constants/BrandDetails/BrandDetails'
+import Link from 'next/link'
 
 
 
@@ -111,11 +112,19 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
             </div>
           </div>
 
-          
+
 
 
         </div>
+
+        {/* Other Tabs */}
+        <div className='flex flex-col justify-start items-start space-y-3 my-5'>
+          <Link href={`/pricing`} className="text-brandPrimaryColor font-semibold text-lg"> Pricing </Link>
+          <Link href={`/`} className="text-brandPrimaryColor font-semibold text-lg"> About </Link>
+          <Link href={`/`} className="text-brandPrimaryColor font-semibold text-lg"> Contact </Link>
+        </div>
       </div>
+
 
 
 
