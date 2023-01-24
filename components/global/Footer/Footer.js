@@ -4,10 +4,10 @@ import logoOne from "../../../public/images/logos/logoOne.svg"
 
 const Footer = () => {
   return (
-    <footer className='w-full flex flex-col justify-start items-center mt-20'>
+    <footer className='w-full flex flex-col justify-start items-center pt-20 bg-gray-100'>
 
       {/* First footer */}
-      <div className='w-full md:w-[90%] lg:w-[60%] flex flex-col md:flex-row justify-start items-center p-5 bg-white '>
+      <div className='w-full md:w-[90%] lg:w-[60%] flex flex-col md:flex-row justify-start items-center p-5 bg-gray-100 '>
 
         {/* Brand details */}
         <div className='w-full flex flex-col justify-start items-start space-y-2 md:p-5 '>
