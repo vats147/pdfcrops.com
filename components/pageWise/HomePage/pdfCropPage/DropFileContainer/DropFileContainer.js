@@ -78,7 +78,7 @@ function DropFileContainer() {
     const [allPDFdata, setAllPDFdata] = useState([])
 
     const postPDF = async () => {
- 
+
         let data = new FormData();
         data.append('file', allPDFdata[0]?.data);
         data.append('Ecommerce', 1);
@@ -93,9 +93,24 @@ function DropFileContainer() {
 
         })
             .then((response) => {
-                console.log(response);
-                
-            }).catch(function (error) {
+                // console.log(response);
+                return response.blob()
+
+            }).then((blob) => {
+                let binaryData = [];
+                binaryData.push(blob);
+                const fileURL = window.URL.createObjectURL(new Blob(binaryData, { type: "application/pdf" }))
+
+                // const fileURL = window?.URL?.createObjectURL(blob);
+                let alink = document.createElement('a');
+                alink.href = fileURL;
+                alink.download = "givemereport_" + Date.now();
+                alink.click();
+                alink.remove()
+
+                // console.log(blob);
+            })
+            .catch(function (error) {
                 console.error(error);
             });
 
@@ -118,14 +133,14 @@ function DropFileContainer() {
                 uppy={uppy}
                 width="90vw"
                 height="500px"
-                showProgressDetails='true'
+                showProgressDetails={true}
             />
 
-            {/* <div className='w-72 h-20 flex flex-col justify-around items-center bg-blue-300'>
+            <div className='w-72 h-20 flex flex-col justify-around items-center bg-blue-300'>
                 <h1 className='my-2 text-base' onClick={() => console.log(allPDFdata[0])}> LOG allPDFdata </h1>
-                <h1 className='my-2 text-base  bg-red-300' onClick={() => postPDF()}> POST </h1>
-            </div> */}
+            </div>
 
+            <h1 className='my-2 text-base  bg-red-300' onClick={() => postPDF()}> POST </h1>
 
         </>
     )
