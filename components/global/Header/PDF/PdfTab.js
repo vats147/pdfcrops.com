@@ -1,5 +1,12 @@
 import { Popover, Transition } from '@headlessui/react'
+import Image from 'next/image'
 import { Fragment } from 'react'
+// Images
+import amazonSmallLogo from "../../../../public/images/logos/amazonSmallLogo.png"
+import meeshoSmallLogo from "../../../../public/images/logos/meeshoSmallLogo.png"
+import flipkartSmallLogo from "../../../../public/images/logos/flipkartSmallLogo.png"
+import glowroadSmallLogo from "../../../../public/images/logos/glowroadSmallLogo.png"
+
 
 const solutions = [
   {
@@ -58,9 +65,21 @@ export default function PdfTab() {
                         href={item.href}
                         className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       >
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
-                          <item.icon aria-hidden="true" />
+
+                        <div className={`w-14 h-14 flex justify-center items-center mr-2 border rounded-lg
+                        ${item.name === "Amazon Crop" && "bg-[#FF9900] rounded-md"}
+                        ${item.name === "Flipkart Crop" && "bg-[#FFE11B] rounded-md"}
+                        ${item.name === "Meesho Crop" && "bg-[#EA4E85] rounded-md"}
+                        ${item.name === "Glowroad Crop" && "bg-[#1A6977] rounded-md"}
+                        `}>
+                          <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
+                            {item.name === "Amazon Crop" && <Image unoptimized src={amazonSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                            {item.name === "Meesho Crop" && <Image unoptimized src={meeshoSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                            {item.name === "Flipkart Crop" && <Image unoptimized src={flipkartSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                            {item.name === "Glowroad Crop" && <Image unoptimized src={glowroadSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                          </div>
                         </div>
+
                         <div className="ml-4">
                           <p className="text-sm font-medium text-gray-900">
                             {item.name}
@@ -73,7 +92,7 @@ export default function PdfTab() {
                     ))}
                   </div>
 
-                
+
 
                 </div>
               </Popover.Panel>
