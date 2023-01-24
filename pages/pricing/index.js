@@ -2,7 +2,7 @@ import React from 'react'
 
 const Index = () => {
     return (
-        <main className='w-full py-20 flex flex-col justify-center items-center'>
+        <main className='w-full mt-[8vh] py-20 flex flex-col justify-center items-center'>
 
             <div class="bg-white h-full py-6 sm:py-8 lg:py-12">
                 <div class="max-w-screen-xl px-4 md:px-8 mx-auto">

@@ -28,7 +28,7 @@ const Footer = () => {
           <div className='flex flex-col items-start justify-start space-y-2'>
             <p className='text-black text-xl font-semibold'> Navigate </p>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> Home </p>
-            <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> Privacy Policy </p>
+            <Link href={`/privacyPolicy`} className='text-gray-800 text-base font-normal hover:cursor-pointer'> Privacy Policy </Link>
             <Link href={`/tos`} className='text-gray-800 text-base font-normal hover:cursor-pointer'> TOS </Link>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> About us </p>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> Contact us </p>

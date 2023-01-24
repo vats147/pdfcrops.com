@@ -3,7 +3,7 @@ import { tosDetails } from '../../constants/TOS/tosDetails'
 
 const Index = () => {
     return (
-        <main className='w-full py-20 flex flex-col justify-center items-center'>
+        <main className='w-full  mt-[8vh] py-20 flex flex-col justify-center items-center'>
 
             <div className='w-full flex flex-col justify-start items-center space-y-4 px-5 md:px-10 lg:px-20 pb-20'>
                 <div className='flex flex-col justify-start items-center space-y-2 mb-5'>

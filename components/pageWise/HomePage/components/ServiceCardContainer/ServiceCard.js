@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useContext } from 'react'
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"
 
 // Images
@@ -7,13 +7,20 @@ import amazonSmallLogo from "../../../../../public/images/logos/amazonSmallLogo.
 import meeshoSmallLogo from "../../../../../public/images/logos/meeshoSmallLogo.png"
 import flipkartSmallLogo from "../../../../../public/images/logos/flipkartSmallLogo.png"
 import glowroadSmallLogo from "../../../../../public/images/logos/glowroadSmallLogo.png"
+import Link from 'next/link'
+import pdfCropContext from '@/context/pdfCrop/PdfCropContext'
 
 
 
 
 const ServiceCard = ({ service }) => {
+
+    const { pdfCropSiteDetails, setPdfCropSiteDetails } = useContext(pdfCropContext)
+
     return (
-        <div
+        <Link
+            href={`/tools/pdf/crop`}
+            onClick={() => setPdfCropSiteDetails(service)}
             key={service.id}
             className={`w-36 h-36 sm:w-48 sm:h-48 md:w-52 md:h-52  
              ${service.name === "Amazon" && "bg-[#FF9900]"} 
@@ -21,7 +28,6 @@ const ServiceCard = ({ service }) => {
              ${service.name === "Meesho" && "bg-[#EA4E85]"} 
              ${service.name === "GlowRoad" && "bg-[#1A6977]"} 
              flex flex-col items-center justify-between rounded-xl hover:cursor-pointer`}
-            onClick={() => console.log(service)}
         >
             {/* Icons */}
             <div className='w-full flex justify-between items-center p-2'>
@@ -43,7 +49,7 @@ const ServiceCard = ({ service }) => {
 
                 <HiOutlineArrowNarrowRight />
             </div>
-        </div>
+        </Link>
     )
 }
 

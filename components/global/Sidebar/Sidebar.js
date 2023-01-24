@@ -22,7 +22,7 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
 
 
   return (
-    <div className={`fixed top-0 left-0 z-50 h-full w-[100%] bg-white flex flex-col items-start justify-between  ${isSidebarVisible ? "translate-x-0" : "translate-x-full"} ease-in-out duration-500`}>
+    <div className={` fixed top-0 left-0 h-full w-[100%] bg-white flex flex-col items-start justify-between  ${isSidebarVisible ? "translate-x-0" : "translate-x-full"} ease-in-out duration-500`}>
 
       {/* Header */}
       <div className='fixed top-0 w-full h-[8vh] bg-brandMidColor flex justify-between items-center px-3 '>
