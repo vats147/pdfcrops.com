@@ -17,10 +17,10 @@ const Header = () => {
     <header className='w-full h-[8vh] bg-brandMidColor flex justify-between items-center px-3 '>
 
       {/* Brand Name and Logo */}
-      <div className='flex justify-center items-center space-x-3'>
+      <Link href={`/`} className='flex justify-center items-center space-x-3'>
         <Image src={logoOne} alt="logoOne" width={8} height={8} className="w-8 h-8 rounded-full" />
         <h1 className='text-base font-semibold text-brandDarkColor'> {BrandName} </h1>
-      </div>
+      </Link>
 
       <div className='hidden md:inline-flex flex-center items-center space-x-10'>
         <PdfTab />

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import logoOne from "../../../public/images/logos/logoOne.svg"
 
@@ -28,6 +29,7 @@ const Footer = () => {
             <p className='text-black text-xl font-semibold'> Navigate </p>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> Home </p>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> Privacy Policy </p>
+            <Link href={`/tos`} className='text-gray-800 text-base font-normal hover:cursor-pointer'> TOS </Link>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> About us </p>
             <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> Contact us </p>
           </div>
