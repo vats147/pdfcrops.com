@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import Uppy from '@uppy/core'
 import StatusBar from '@uppy/status-bar'
@@ -57,6 +57,14 @@ function DropFileContainer() {
             data.append('UserDetails', {
                 uid: "xxxxxxxxxxxxxxxxxxxx"
             });
+            data.append("settingDetails", {
+                settingOne: false ? 0 : 1,
+                settingTwo: false ? 0 : 1,
+                settingThree: false ? 0 : 1,
+                settingFour: false ? 0 : 1,
+                settingFive: false ? 0 : 1,
+                settingSix: false ? 0 : 1,
+            })
 
 
             fetch("https://nodeapivercelhostingyoutube-production.up.railway.app/", {
@@ -106,6 +114,8 @@ function DropFileContainer() {
 
 
                 })
+
+                // resettig states
                 .catch(function (error) {
                     console.error(error);
                     setIsLoading(false)
@@ -118,6 +128,15 @@ function DropFileContainer() {
 
     const downloadFilesButtonRef = useRef()
 
+    useEffect(() => {
+        setSettingOne(JSON.parse(window.localStorage.getItem("settingOne")) || false)
+        setSettingTwo(JSON.parse(window.localStorage.getItem("settingTwo")) || false)
+        setSettingThree(JSON.parse(window.localStorage.getItem("settingThree")) || false)
+        setSettingFour(JSON.parse(window.localStorage.getItem("settingFour")) || false)
+        setSettingFive(JSON.parse(window.localStorage.getItem("settingFive")) || false)
+        setSettingSix(JSON.parse(window.localStorage.getItem("settingSix")) || false)
+    }, [])
+
 
 
     return (
@@ -127,22 +146,36 @@ function DropFileContainer() {
 
                     {/* Check boxes */}
                     <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
-                        {/* <Checkbox label="Sort Plastic and NPP" ripple={true} color="blue" onChange={(e) => setSettingOne(e.target.checked)} />
-                        <input type="checkbox" name="" id="" className='bg-red-100 border-red-300 text-red-500 focus:ring-red-200'/>
-                        <Checkbox label="Sort Courier wise" ripple={true} color="blue" />
-                        <Checkbox label="Keep Invoice" ripple={true} color="blue" />
-                        <Checkbox label="Merge Files" ripple={true} color="blue" />
-                        <Checkbox label="Print Date time on label" ripple={true} color="blue" />
-                        <Checkbox label="Multi order at bottom" ripple={true} color="blue" /> */}
+                        <FormControlLabel className="m-1" control={
+                            <Checkbox checked={settingOne} onChange={(e) => {
+                                window.localStorage.setItem("settingOne", JSON.stringify(e.target.checked))
+                                setSettingOne(e.target.checked)
+                            }} />} label="Sort Plastic and NPP" />
 
-                        <FormGroup className='flex justify-center items-center space-x-2'>
-                            <FormControlLabel className="bg-red-300 m-1" control={<Checkbox  onChange={(e) => setSettingOne(e.target.checked)}/>} label="Sort Plastic and NPP" />
-                            <FormControlLabel className="bg-red-300 m-1" control={<Checkbox  onChange={(e) => setSettingTwo(e.target.checked)}/>} label="Sort Courier wise" />
-                            <FormControlLabel className="bg-red-300 m-1" control={<Checkbox  onChange={(e) => setSettingThree(e.target.checked)}/>} label="Keep Invoice" />
-                            <FormControlLabel className="bg-red-300 m-1" control={<Checkbox  onChange={(e) => setSettingFour(e.target.checked)}/>} label="Merge Files" />
-                            <FormControlLabel className="bg-red-300 m-1" control={<Checkbox  onChange={(e) => setSettingFive(e.target.checked)}/>} label="Print Date time on label" />
-                            <FormControlLabel className="bg-red-300 m-1" control={<Checkbox  onChange={(e) => setSettingSix(e.target.checked)}/>} label="Multi order at bottom" />
-                        </FormGroup>
+                        <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
+                            window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
+                            setSettingTwo(e.target.checked)
+                        }} />} label="Sort Courier wise" />
+
+                        <FormControlLabel className="m-1" control={<Checkbox checked={settingThree} onChange={(e) => {
+                            window.localStorage.setItem("settingThree", JSON.stringify(e.target.checked))
+                            setSettingThree(e.target.checked)
+                        }} />} label="Keep Invoice" />
+
+                        <FormControlLabel className="m-1" control={<Checkbox checked={settingFour} onChange={(e) => {
+                            window.localStorage.setItem("settingFour", JSON.stringify(e.target.checked))
+                            setSettingFour(e.target.checked)
+                        }} />} label="Merge Files" />
+
+                        <FormControlLabel className="m-1" control={<Checkbox checked={settingFive} onChange={(e) => {
+                            window.localStorage.setItem("settingFive", JSON.stringify(e.target.checked))
+                            setSettingFive(e.target.checked)
+                        }} />} label="Print Date time on label" />
+
+                        <FormControlLabel className="m-1" control={<Checkbox checked={settingSix} onChange={(e) => {
+                            window.localStorage.setItem("settingSix", JSON.stringify(e.target.checked))
+                            setSettingSix(e.target.checked)
+                        }} />} label="Multi order at bottom" />
                     </div>
 
                     <Dashboard
@@ -185,11 +218,11 @@ function DropFileContainer() {
 
                     <h1 className='my-2 text-base  bg-red-300' onClick={() => {
                         console.log(`1st => ${settingOne}`)
-                        console.log(`2nd => ${settingTwo}`)
-                        console.log(`3rd => ${settingThree}`)
-                        console.log(`4th => ${settingFour}`)
-                        console.log(`5th => ${settingFive}`)
-                        console.log(`6th => ${settingSix}`)
+                        // console.log(`2nd => ${settingTwo}`)
+                        // console.log(`3rd => ${settingThree}`)
+                        // console.log(`4th => ${settingFour}`)
+                        // console.log(`5th => ${settingFive}`)
+                        // console.log(`6th => ${settingSix}`)
                     }}> setSettingOne   </h1>
 
                 </div>

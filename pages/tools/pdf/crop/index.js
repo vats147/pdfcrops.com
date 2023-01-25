@@ -20,7 +20,7 @@ const Index = () => {
     if(!pdfCropSiteDetails) {
       setPdfCropSiteDetails(PDFcropSiteOptionsConstantArray[0])
     }
-  },[])
+  },[]) 
   
 
 
