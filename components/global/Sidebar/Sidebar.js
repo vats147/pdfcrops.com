@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import logoOne from "../../../public/images/logos/logoOne.svg"
 
@@ -14,11 +14,14 @@ import { CgFileDocument } from "react-icons/cg"
 import { RxCross1, RxHamburgerMenu } from 'react-icons/rx'
 import { BrandName } from '@/constants/BrandDetails/BrandDetails'
 import Link from 'next/link'
+import pdfCropContext from '@/context/pdfCrop/PdfCropContext'
+import { PDFcropSiteOptions } from '@/constants/PDFcropSiteOptions/PDFcropSiteOptions'
 
 
 
 const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
   const [isPdfSectionOpen, setIsPdfSectionOpen] = useState(false)
+  const { pdfCropSiteDetails, setPdfCropSiteDetails } = useContext(pdfCropContext)
 
 
   return (
@@ -48,69 +51,37 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
         {/* Cards Container */}
         <div className='w-full flex flex-col justify-start items-start space-y-2 my-3'>
 
-          {/* Amazon Card */}
-          <div className='w-full flex justify-start items-center space-x-2 '>
-            {/* Icon */}
-            <div className='w-16 h-14 flex justify-center items-center mr-2 border bg-[#FF9900] rounded-lg'>
-              <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
-                <Image unoptimized src={amazonSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />
-              </div>
-            </div>
+          {PDFcropSiteOptions?.map((service) => {
+            return (
+              <Link
+                href={`/tools/pdf/crop`}
+                key={service.id}
+                onClick={() => {
+                  setPdfCropSiteDetails(service)
+                  setIsSidebarVisible(false)
+                }}
+                className='w-full flex justify-start items-center space-x-2'>
+                {/* Icon */}
+                <div className={`w-16 h-14 flex justify-center items-center mr-2 border ${service?.bgColor} rounded-lg`}>
+                  <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
+                    {service.icon === "amazonSmallLogo" && <Image unoptimized src={amazonSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                    {service.icon === "meeshoSmallLogo" && <Image unoptimized src={meeshoSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                    {service.icon === "flipkartSmallLogo" && <Image unoptimized src={flipkartSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                    {service.icon === "glowroadSmallLogo" && <Image unoptimized src={glowroadSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                  </div>
+                </div>
 
-            {/* Details */}
-            <div className='w-full flex flex-col justify-start items-start space-y-1'>
-              <p className='text-black text-base font-semibold'> Amazon Crop </p>
-              <p className='text-gray-600 text-xs font-normal'> Lorem ipsum dolor sit amet semibold. </p>
-            </div>
-          </div>
+                {/* Details */}
+                <div className='w-full flex flex-col justify-start items-start space-y-1'>
+                  <p className='text-black text-base font-semibold'> {service.name} </p>
+                  <p className='text-gray-600 text-xs font-normal'> {service.oneLineDescription} </p>
+                </div>
+              </Link>
+            )
+          })}
 
-          {/* Flipkart Card */}
-          <div className='w-full flex justify-start items-center space-x-2 '>
-            {/* Icon */}
-            <div className='w-16 h-14 flex justify-center items-center mr-2 border bg-[#FFE11B] rounded-lg'>
-              <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
-                <Image unoptimized src={flipkartSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />
-              </div>
-            </div>
 
-            {/* Details */}
-            <div className='w-full flex flex-col justify-start items-start space-y-1'>
-              <p className='text-black text-base font-semibold'> Flipkart Crop </p>
-              <p className='text-gray-600 text-xs font-normal'> Lorem ipsum dolor sit amet semibold. </p>
-            </div>
-          </div>
 
-          {/* Meesho Card */}
-          <div className='w-full flex justify-start items-center space-x-2 '>
-            {/* Icon */}
-            <div className='w-16 h-14 flex justify-center items-center mr-2 border bg-[#EA4E85] rounded-lg'>
-              <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
-                <Image unoptimized src={meeshoSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />
-              </div>
-            </div>
-
-            {/* Details */}
-            <div className='w-full flex flex-col justify-start items-start space-y-1'>
-              <p className='text-black text-base font-semibold'> Meesho Crop </p>
-              <p className='text-gray-600 text-xs font-normal'> Lorem ipsum dolor sit amet semibold. </p>
-            </div>
-          </div>
-
-          {/* Glowroad Card */}
-          <div className='w-full flex justify-start items-center space-x-2 '>
-            {/* Icon */}
-            <div className='w-16 h-14 flex justify-center items-center mr-2 border bg-[#1A6977] rounded-lg'>
-              <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
-                <Image unoptimized src={glowroadSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />
-              </div>
-            </div>
-
-            {/* Details */}
-            <div className='w-full flex flex-col justify-start items-start space-y-1'>
-              <p className='text-black text-base font-semibold'> Glowroad Crop </p>
-              <p className='text-gray-600 text-xs font-normal'> Lorem ipsum dolor sit amet semibold. </p>
-            </div>
-          </div>
 
 
 

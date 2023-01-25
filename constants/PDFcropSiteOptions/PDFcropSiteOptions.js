@@ -8,7 +8,8 @@ export const PDFcropSiteOptions = [
         value: 1,
         icon: "amazonSmallLogo",
         bgColor: "bg-[#FF9900]",
-        textColor: "text-black"
+        textColor: "text-black",
+        oneLineDescription: "Lorem ipsum dolor sit amet semibold"
     },
     {
         id: 2,
@@ -16,7 +17,8 @@ export const PDFcropSiteOptions = [
         value: 2,
         icon: "flipkartSmallLogo",
         bgColor: "bg-[#FFE11B]",
-        textColor: "text-[#287FF0]"
+        textColor: "text-[#287FF0]",
+        oneLineDescription: "Lorem ipsum dolor sit amet semibold"
     },
     {
         id: 4,
@@ -24,7 +26,8 @@ export const PDFcropSiteOptions = [
         value: 4,
         icon: "meeshoSmallLogo",
         bgColor: "bg-[#EA4E85]",
-        textColor: "text-white"
+        textColor: "text-white",
+        oneLineDescription: "Lorem ipsum dolor sit amet semibold"
     },
     {
         id: 3,
@@ -32,6 +35,7 @@ export const PDFcropSiteOptions = [
         value: 3,
         icon: "glowroadSmallLogo",
         bgColor: "bg-[#1A6977]",
-        textColor: "text-white"
+        textColor: "text-white",
+        oneLineDescription: "Lorem ipsum dolor sit amet semibold"
     }
 ]

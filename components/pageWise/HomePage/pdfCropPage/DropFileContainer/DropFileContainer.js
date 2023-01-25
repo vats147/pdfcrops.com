@@ -32,6 +32,7 @@ function DropFileContainer() {
 
     const postPDF = async () => {
         if (allPDFdata[0]?.data) {
+            console.log(`----- postPDF is running -----`)
             setIsLoading(true)
 
             let data = new FormData();
@@ -75,16 +76,23 @@ function DropFileContainer() {
     }
 
 
-    uppy.on('complete', result => {
-        console.log(result)
-        setAllPDFdata(result.successful)
-        postPDF()
+    // uppy.on('complete', result => {
+    //     console.log(result)
+    //     setAllPDFdata(result.successful)
+    //     console.log(allPDFdata)
+    // })
 
+
+
+    uppy.on('upload', (data) => {
+        console.log(data)
+        // setIsLoading(true)
+        // setTimeout(() => {
+        //     postPDF()
+        // }, 1000);
     })
 
 
-    
-    
     return (
         <>
             {!isLoading && (
