@@ -2,16 +2,15 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Uppy from '@uppy/core'
 import StatusBar from '@uppy/status-bar'
-import StatusBarComponent from './StatusBarComponent'
+import ProgressBar from './StatusBarComponent'
 import { Dashboard } from '@uppy/react'
 import { Checkbox } from '@material-tailwind/react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 
-
 function DropFileContainer() {
 
-    const [allPDFdata, setAllPDFdata] = useState([])
+    const [allPDFdata, setAllPDFdata] = useState({})
     const [isLoading, setIsLoading] = useState(false)
     const [firstSetting, setFirstSetting] = useState(true)
     const [secondSetting, setSecondSetting] = useState(false)
@@ -30,13 +29,21 @@ function DropFileContainer() {
     }, [])
 
 
+    uppy.on("file-added", (file) => {
+        console.log(file);
+        setAllPDFdata(file)
+    })
+
+
+
+
     const postPDF = async () => {
-        if (allPDFdata[0]?.data) {
+        if (allPDFdata?.data) {
             console.log(`----- postPDF is running -----`)
             setIsLoading(true)
 
             let data = new FormData();
-            data.append('file', allPDFdata[0]?.data);
+            data.append('file', allPDFdata?.data);
             data.append('Ecommerce', 1);
             data.append('UserDetails', {
                 uid: "xxxxxxxxxxxxxxxxxxxx"
@@ -70,27 +77,23 @@ function DropFileContainer() {
                     console.error(error);
                     setIsLoading(false)
                 });
-        } else {
-            alert("Add PDF file(s)")
+        } else if (!allPDFdata?.data) {
+            console.log(`no allPDFdata?.data `)
         }
     }
 
 
-    // uppy.on('complete', result => {
-    //     console.log(result)
-    //     setAllPDFdata(result.successful)
-    //     console.log(allPDFdata)
-    // })
+    
+
+    
+
+
+    
 
 
 
-    uppy.on('upload', (data) => {
-        console.log(data)
-        // setIsLoading(true)
-        // setTimeout(() => {
-        //     postPDF()
-        // }, 1000);
-    })
+
+
 
 
     return (
@@ -103,8 +106,12 @@ function DropFileContainer() {
                         height="500px"
                         showProgressDetails={true}
                         className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw]"
+                        hideUploadButton={true}
 
                     />
+
+
+                    <button onClick={postPDF}> POST </button>
 
 
                     <div className='flex flex-wrap justify-center items-center space-x-3 my-5'>
@@ -116,12 +123,9 @@ function DropFileContainer() {
                         <Checkbox label="Multi order at bottom" ripple={true} color="blue" />
                     </div>
 
-                    {/* 
-                <div className='w-72 h-20 flex flex-col justify-around items-center bg-blue-300'>
-                    <h1 className='my-2 text-base' onClick={() => console.log(allPDFdata[0])}> LOG allPDFdata </h1>
-                </div> */}
+                    
 
-                    {/* <h1 className='my-2 text-base  bg-red-300' onClick={() => postPDF()}> POST </h1> */}
+                    <h1 className='my-2 text-base  bg-red-300' onClick={() => console.log(allPDFdata)}> allPDFdata   </h1>
 
                 </div>
             )}

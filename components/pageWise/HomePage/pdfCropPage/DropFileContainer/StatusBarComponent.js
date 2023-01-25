@@ -1,14 +1,14 @@
 import React from 'react'
-import { StatusBar } from '@uppy/react'
+import { ProgressBar } from '@uppy/react'
 
-export default function StatusBarComponent ( {uppy} ) {
-
+export default function MyComponent (props) {
+  const { uppy } = props
   return (
-    <StatusBar
+    <ProgressBar
+      // assuming `props.uppy` contains an Uppy instance:
       uppy={uppy}
-      hideUploadButton
-      hideAfterFinish={false}
-      showProgressDetails
+      fixed
+      hideAfterFinish
     />
   )
 }
