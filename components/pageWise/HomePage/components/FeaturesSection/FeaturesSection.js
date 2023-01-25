@@ -12,7 +12,7 @@ const FeaturesSection = () => {
         <div className='w-full flex flex-wrap justify-center items-center my-5'>
           {FeaturesHomeSection && FeaturesHomeSection.map((feature) => {
             return (
-              <div key={feature.id} className='w-full sm:w-52 md:w-60 lg:w-80 px-5 py-8 m-4 bg-[#D9EFFF] flex flex-col justify-start items-center rounded-lg'>
+              <div key={feature.id} className='w-full sm:w-52 md:w-60 lg:w-64 px-5 py-8 m-4 bg-[#D9EFFF] flex flex-col justify-start items-center rounded-lg'>
                 
                 <div className='w-10 h-10 -mt-12 rounded-lg bg-[#FF4A53] flex justify-center items-center shadow-lg shadow-gray-300'>
                   {feature.icon}

@@ -3,6 +3,7 @@ import { PDFcropSiteOptions } from '@/constants/PDFcropSiteOptions/PDFcropSiteOp
 import { useRouter } from 'next/router'
 import pdfCropContext from '../../../../context/pdfCrop/PdfCropContext'
 import DropFileContainer from '@/components/pageWise/HomePage/pdfCropPage/DropFileContainer/DropFileContainer'
+import { PDFcropSiteOptions as PDFcropSiteOptionsConstantArray } from "../../../../constants/PDFcropSiteOptions/PDFcropSiteOptions"
 
 
 
@@ -14,6 +15,12 @@ const Index = () => {
   
   // States
   const { pdfCropSiteDetails, setPdfCropSiteDetails } = useContext(pdfCropContext)
+
+  useEffect(() => {
+    if(!pdfCropSiteDetails) {
+      setPdfCropSiteDetails(PDFcropSiteOptionsConstantArray[0])
+    }
+  },[])
   
 
 
@@ -24,7 +31,7 @@ const Index = () => {
       {/*Container */}
       <div className='w-full flex flex-col justify-start items-center'>
         <h4 className='my-5 font-bold text-3xl md:text-5xl text-center' onClick={() => console.log(pdfCropSiteDetails)}>
-          Crop Your PDF of <span className={`${pdfCropSiteDetails?.bgColor} ${pdfCropSiteDetails?.textColor} px-3 sm:p-1 rounded-sm`}> {!pdfCropSiteDetails != "_____" ? pdfCropSiteDetails.name : "_____"} </span>
+          Crop Your PDF of <span className={`${pdfCropSiteDetails?.bgColor} ${pdfCropSiteDetails?.textColor} px-3 sm:p-1 rounded-sm`}> {!pdfCropSiteDetails != "_____" ? pdfCropSiteDetails?.name : "_____"} </span>
         </h4>
 
         {/* Options */}
@@ -38,9 +45,9 @@ const Index = () => {
                     setPdfCropSiteDetails(site)
                     // console.log(site)
                   }}
-                  className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  ${pdfCropSiteDetails.name === site.name && site.bgColor} `}
+                  className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  ${pdfCropSiteDetails?.name === site?.name && site?.bgColor} `}
                 >
-                  <span className={`text-lg font-bold ${pdfCropSiteDetails.name === site.name ? site.textColor : "text-black"}`}> {site.name} </span>
+                  <span className={`text-lg font-bold ${pdfCropSiteDetails?.name === site?.name ? site?.textColor : "text-black"}`}> {site?.name} </span>
                 </button>
               )
             })}

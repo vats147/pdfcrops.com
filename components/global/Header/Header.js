@@ -31,14 +31,12 @@ const Header = () => {
         {/* Sign in Button */}
         <button
           type='signIn'
-          className='w-full px-5 py-2 my-2 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]'
+          className=' px-5 py-2 my-2 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]'
         >
           Sign in
         </button>
 
       </div>
-
-
 
 
       {/* Hamburger Icon */}

@@ -8,7 +8,7 @@ const Index = () => {
             <div className='w-full flex flex-col justify-start items-center space-y-4 px-5 md:px-32 lg:px-40 xl:px-52 pb-20 '>
                 {/* Terms & Conditions */}
                 <div className='flex flex-col justify-start items-center space-y-2 mb-5'>
-                    <h3 className='text-black text-4xl font-bold mb-5'> Terms & Conditions </h3>
+                    <h3 className='text-black text-5xl font-bold mb-5'> Terms & Conditions </h3>
                     <p className='text-gray-500 text-base font-normal'>
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt hic beatae ad aliquam molestiae tempora rerum molestias nam quibusdam odio officiis, optio facere quia modi similique eligendi ullam praesentium quod omnis veritatis? Quas animi modi hic nesciunt, ipsum recusandae sapiente quam assumenda. Similique quis eos velit aliquid, quam consequatur eius ea fugiat dolorem illum ex tempora omnis quas dolor alias reiciendis culpa repudiandae blanditiis fugit optio. Cum, esse illum quaerat nobis rerum ab quasi, iste dolor aut soluta culpa quos pariatur nam quibusdam id neque. Aperiam odio consequatur nostrum facilis aliquam, esse atque iure culpa possimus optio modi placeat libero.
                     </p>
@@ -16,7 +16,7 @@ const Index = () => {
 
 
                 {/* PDF Crops Services Provided */}
-                <div className='flex flex-col justify-start items-center space-y-2'>
+                <div className='flex flex-col justify-start items-start space-y-2'>
                     <h3 className='text-black text-4xl font-bold mb-5'> PDF Crops Services Provided </h3>
                     <p className='text-gray-500 text-base font-normal'>
                         TinyWow is a cost-free, ad-free, privacy conscious Site that allows Users to upload files on to the Site server for processing and converting PDF documents and providing other helpful tools related thereto and as set forth on this Site (collectively referred to as the “Services”). By utilizing this Site and the Services offered thereon, you hereby agree to all terms and conditions set forth herein and assume all liabilities and requirements related thereto. The Site does not currently require any registration or fees for usage, and therefore, your usage alone is an express acknowledgement and agreement to all terms and conditions herein.
@@ -28,7 +28,7 @@ const Index = () => {
                     {tosDetails && (
                         tosDetails?.map((tos) => {
                             return (
-                                <div key={tos.id} className="flex flex-col justify-start items-center">
+                                <div key={tos.id} className="flex flex-col justify-start items-start">
                                     <h3 className='text-black text-4xl font-bold mb-5'> {tos.heading} </h3>
                                     <p className='text-gray-500 text-base font-normal'> {tos.details} </p>
 
