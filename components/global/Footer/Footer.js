@@ -5,10 +5,10 @@ import logoOne from "../../../public/images/logos/logoOne.svg"
 
 const Footer = () => {
   return (
-    <footer className='w-full flex flex-col justify-start items-center pt-20 bg-gray-100'>
+  <footer className='w-full flex flex-col justify-start items-center mt-20 bg-gray-100'>
 
       {/* First footer */}
-      <div className='w-full md:w-[90%] lg:w-[60%] flex flex-col md:flex-row justify-start items-center p-5 bg-gray-100 '>
+      <div className='w-full md:w-[90%] lg:w-[70%] flex flex-col md:flex-row justify-start items-center p-1 bg-gray-100 '>
 
         {/* Brand details */}
         <div className='w-full flex flex-col justify-start items-start space-y-2 md:p-5 '>
@@ -17,7 +17,7 @@ const Footer = () => {
             <p className='text-black text-lg font-medium'> PDF Crops </p>
           </span>
 
-          <p className='text-gray-800 text-base font-normal hover:cursor-pointer'> PDFcrops provides free online conversion, pdf, and other handy tools to help you solve problems of all types. All files both processed and unprocessed are deleted after 1 hour.
+          <p className='text-gray-800 text-base font-normal hover:cursor-pointer px-1'> PDFcrops provides free online conversion, pdf, and other handy tools to help you solve problems of all types. All files both processed and unprocessed are deleted after 1 hour.
           </p>
         </div>
 
@@ -48,8 +48,8 @@ const Footer = () => {
       </div>
 
       {/* Last footer */}
-      <div className='w-full h-20 bg-[#EFF7FD] flex justify-center items-center p-5 '>
-        <div className='w-full md:w-[90%] lg:w-[60%] flex flex-col md:flex-row justify-between items-center p-5'>
+      <div className='w-full md:w-[90%] lg:w-[70%] h-20 bg-[#EFF7FD] flex justify-center items-center p-1 '>
+        <div className='w-full flex flex-col md:flex-row justify-between items-center p-5'>
           <p className='text-gray-700 text-base font-semibold'> PdfCrops </p>
           <p className='text-gray-700 text-base font-semibold'> @ 2023 PdfCrops. All rights reserved </p>
         </div>

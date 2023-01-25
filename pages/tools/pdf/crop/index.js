@@ -19,7 +19,7 @@ const Index = () => {
 
 
   return (
-    <main className='w-full mt-[8vh] h-screen bg-[#EFF6FB] flex flex-col items-center justify-start'>
+    <main className='w-full mt-[8vh] py-5 bg-[#EFF6FB] flex flex-col items-center justify-start'>
 
       {/*Container */}
       <div className='w-full flex flex-col justify-start items-center'>
@@ -38,7 +38,7 @@ const Index = () => {
                     setPdfCropSiteDetails(site)
                     // console.log(site)
                   }}
-                  className={`px-5 py-2 rounded-full m-2  ${pdfCropSiteDetails.name === site.name && site.bgColor} `}
+                  className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  ${pdfCropSiteDetails.name === site.name && site.bgColor} `}
                 >
                   <span className={`text-lg font-bold ${pdfCropSiteDetails.name === site.name ? site.textColor : "text-black"}`}> {site.name} </span>
                 </button>
@@ -49,7 +49,7 @@ const Index = () => {
 
 
         {/* Dropdown Container */}
-        <div className='w-full flex flex-col justify-start items-center'>
+        <div className='w-full flex flex-col justify-start items-center my-10 pb-20'>
           <DropFileContainer />
         </div>
 

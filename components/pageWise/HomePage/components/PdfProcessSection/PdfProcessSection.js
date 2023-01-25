@@ -13,7 +13,7 @@ import { TbCircleDot } from "react-icons/tb"
 
 const PdfProcessSection = () => {
     return (
-        <section className='w-full flex justify-center items-center py-5 bg-gray-100'>
+        <section className='w-full flex justify-center items-center py-5 bg-gray-100 pb-20'>
 
             <div className='w-full md:w-[80%] lg:w-[70%] bg-white flex flex-col justify-start items-center lg:items-start p-2 lg:py-5 md:rounded-lg md:shadow-2xl md:shadow-gray-300'>
 
