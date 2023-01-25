@@ -12,16 +12,21 @@ import { PDFcropSiteOptions as PDFcropSiteOptionsConstantArray } from "../../../
 const Index = () => {
   // console.log(`PDF/CROP is running`)
   const router = useRouter()
-  
+
   // States
   const { pdfCropSiteDetails, setPdfCropSiteDetails } = useContext(pdfCropContext)
 
   useEffect(() => {
-    if(!pdfCropSiteDetails) {
+    if (!pdfCropSiteDetails) {
       setPdfCropSiteDetails(PDFcropSiteOptionsConstantArray[0])
     }
-  },[]) 
-  
+  }, [])
+
+  // getting selected site data from local storage
+  useEffect(() => {
+    setPdfCropSiteDetails( JSON.parse(window.localStorage.getItem("selectedSiteDetails")) || PDFcropSiteOptionsConstantArray[0])
+  }, [])
+
 
 
 
@@ -43,6 +48,7 @@ const Index = () => {
                   key={site.icon}
                   onClick={() => {
                     setPdfCropSiteDetails(site)
+                    window.localStorage.setItem("selectedSiteDetails" ,JSON.stringify(site))
                     // console.log(site)
                   }}
                   className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  ${pdfCropSiteDetails?.name === site?.name && site?.bgColor} `}
@@ -56,7 +62,7 @@ const Index = () => {
 
 
         {/* Dropdown Container */}
-        <div className='w-full flex flex-col justify-start items-center my-10 pb-20'>
+        <div className='w-full flex flex-col justify-start items-center  pb-20'>
           <DropFileContainer />
         </div>
 

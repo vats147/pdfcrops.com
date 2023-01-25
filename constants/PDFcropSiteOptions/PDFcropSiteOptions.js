@@ -23,7 +23,7 @@ export const PDFcropSiteOptions = [
     {
         id: 4,
         name: "Meesho",
-        value: 4,
+        value: 1,
         icon: "meeshoSmallLogo",
         bgColor: "bg-[#EA4E85]",
         textColor: "text-white",
@@ -32,7 +32,7 @@ export const PDFcropSiteOptions = [
     {
         id: 3,
         name: "GlowRoad",
-        value: 3,
+        value: 2,
         icon: "glowroadSmallLogo",
         bgColor: "bg-[#1A6977]",
         textColor: "text-white",

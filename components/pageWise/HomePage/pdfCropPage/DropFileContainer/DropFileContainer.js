@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import Uppy from '@uppy/core'
 import StatusBar from '@uppy/status-bar'
@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import pdfCropContext from '@/context/pdfCrop/PdfCropContext'
 
 
 function DropFileContainer() {
@@ -19,6 +20,7 @@ function DropFileContainer() {
     const [isDownloadPDFsfilesAvailable, setIsDownloadPDFsfilesAvailable] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
 
+    // Checkbox states
     const [settingOne, setSettingOne] = useState(false)
     const [settingTwo, setSettingTwo] = useState(false)
     const [settingThree, setSettingThree] = useState(false)
@@ -26,7 +28,10 @@ function DropFileContainer() {
     const [settingFive, setSettingFive] = useState(false)
     const [settingSix, setSettingSix] = useState(false)
 
+    // Context states
+    const { pdfCropSiteDetails } = useContext(pdfCropContext)
 
+    const downloadFilesButtonRef = useRef()
 
     const uppy = React.useMemo(() => {
         return new Uppy({
@@ -53,7 +58,7 @@ function DropFileContainer() {
 
             let data = new FormData();
             data.append('file', allPDFdata?.data);
-            data.append('Ecommerce', 2);
+            data.append('Ecommerce', pdfCropSiteDetails?.value);
             data.append('UserDetails', {
                 uid: "xxxxxxxxxxxxxxxxxxxx"
             });
@@ -126,8 +131,10 @@ function DropFileContainer() {
     }
 
 
-    const downloadFilesButtonRef = useRef()
+   
 
+
+    // getting checkbox data from local storage
     useEffect(() => {
         setSettingOne(JSON.parse(window.localStorage.getItem("settingOne")) || false)
         setSettingTwo(JSON.parse(window.localStorage.getItem("settingTwo")) || false)
@@ -137,96 +144,101 @@ function DropFileContainer() {
         setSettingSix(JSON.parse(window.localStorage.getItem("settingSix")) || false)
     }, [])
 
+    
+
+
+
+
 
 
     return (
         <>
-            {true && (
-                <div className='flex flex-col items-center justify-start space-y-3'>
+            <div className='flex flex-col items-center justify-start space-y-3'>
 
-                    {/* Check boxes */}
-                    <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
-                        <FormControlLabel className="m-1" control={
-                            <Checkbox checked={settingOne} onChange={(e) => {
-                                window.localStorage.setItem("settingOne", JSON.stringify(e.target.checked))
-                                setSettingOne(e.target.checked)
-                            }} />} label="Sort Plastic and NPP" />
+                {/* Check boxes */}
+                <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
+                    <FormControlLabel className="m-1" control={
+                        <Checkbox checked={settingOne} onChange={(e) => {
+                            window.localStorage.setItem("settingOne", JSON.stringify(e.target.checked))
+                            setSettingOne(e.target.checked)
+                        }} />} label="Sort Plastic and NPP" />
 
-                        <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
-                            window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
-                            setSettingTwo(e.target.checked)
-                        }} />} label="Sort Courier wise" />
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
+                        window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
+                        setSettingTwo(e.target.checked)
+                    }} />} label="Sort Courier wise" />
 
-                        <FormControlLabel className="m-1" control={<Checkbox checked={settingThree} onChange={(e) => {
-                            window.localStorage.setItem("settingThree", JSON.stringify(e.target.checked))
-                            setSettingThree(e.target.checked)
-                        }} />} label="Keep Invoice" />
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingThree} onChange={(e) => {
+                        window.localStorage.setItem("settingThree", JSON.stringify(e.target.checked))
+                        setSettingThree(e.target.checked)
+                    }} />} label="Keep Invoice" />
 
-                        <FormControlLabel className="m-1" control={<Checkbox checked={settingFour} onChange={(e) => {
-                            window.localStorage.setItem("settingFour", JSON.stringify(e.target.checked))
-                            setSettingFour(e.target.checked)
-                        }} />} label="Merge Files" />
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingFour} onChange={(e) => {
+                        window.localStorage.setItem("settingFour", JSON.stringify(e.target.checked))
+                        setSettingFour(e.target.checked)
+                    }} />} label="Merge Files" />
 
-                        <FormControlLabel className="m-1" control={<Checkbox checked={settingFive} onChange={(e) => {
-                            window.localStorage.setItem("settingFive", JSON.stringify(e.target.checked))
-                            setSettingFive(e.target.checked)
-                        }} />} label="Print Date time on label" />
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingFive} onChange={(e) => {
+                        window.localStorage.setItem("settingFive", JSON.stringify(e.target.checked))
+                        setSettingFive(e.target.checked)
+                    }} />} label="Print Date time on label" />
 
-                        <FormControlLabel className="m-1" control={<Checkbox checked={settingSix} onChange={(e) => {
-                            window.localStorage.setItem("settingSix", JSON.stringify(e.target.checked))
-                            setSettingSix(e.target.checked)
-                        }} />} label="Multi order at bottom" />
-                    </div>
-
-                    <Dashboard
-                        uppy={uppy}
-                        width="90vw"
-                        height="500px"
-                        showProgressDetails={true}
-                        className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw] z-10 hover:cursor-pointer"
-                        hideUploadButton={true}
-                        proudlyDisplayPoweredByUppy={false}
-
-                    />
-
-
-
-
-
-                    <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
-
-                        <button
-
-                            disabled={allPDFdata?.data ? false : true}
-                            onClick={postPDF}
-                            className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
-                            POST
-
-                        </button>
-
-                        {isDownloadPDFsfilesAvailable && (
-                            <button
-                                onClick={() => { null }}
-                                className={`px-8 py-3 my-4 rounded-md bg-green-500 text-white text-sm font-medium "hover:cursor-pointer" hover:bg-green-600 `}>
-                                <a ref={downloadFilesButtonRef} target="_blank" rel="noreferrer" className='font-medium'> Download file </a>
-                            </button>
-                        )}
-                    </div>
-
-
-
-
-                    <h1 className='my-2 text-base  bg-red-300' onClick={() => {
-                        console.log(`1st => ${settingOne}`)
-                        // console.log(`2nd => ${settingTwo}`)
-                        // console.log(`3rd => ${settingThree}`)
-                        // console.log(`4th => ${settingFour}`)
-                        // console.log(`5th => ${settingFive}`)
-                        // console.log(`6th => ${settingSix}`)
-                    }}> setSettingOne   </h1>
-
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingSix} onChange={(e) => {
+                        window.localStorage.setItem("settingSix", JSON.stringify(e.target.checked))
+                        setSettingSix(e.target.checked)
+                    }} />} label="Multi order at bottom" />
                 </div>
-            )}
+
+                <Dashboard
+                    uppy={uppy}
+                    width="90vw"
+                    height="500px"
+                    showProgressDetails={true}
+                    className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw] z-10 hover:cursor-pointer"
+                    hideUploadButton={true}
+                    proudlyDisplayPoweredByUppy={false}
+
+                />
+
+
+
+
+
+                <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
+
+                    <button
+
+                        disabled={allPDFdata?.data ? false : true}
+                        onClick={postPDF}
+                        className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
+                        POST
+
+                    </button>
+
+                    {isDownloadPDFsfilesAvailable && (
+                        <button
+                            onClick={() => { null }}
+                            className={`px-8 py-3 my-4 rounded-md bg-green-500 text-white text-sm font-medium "hover:cursor-pointer" hover:bg-green-600 `}>
+                            <a ref={downloadFilesButtonRef} target="_blank" rel="noreferrer" className='font-medium'> Download file </a>
+                        </button>
+                    )}
+                </div>
+
+
+
+
+                <h1 className='my-2 text-base  bg-red-300' onClick={() => {
+                    // console.log(`1st => ${settingOne}`)
+                    // console.log(`2nd => ${settingTwo}`)
+                    // console.log(`3rd => ${settingThree}`)
+                    // console.log(`4th => ${settingFour}`)
+                    // console.log(`5th => ${settingFive}`)
+                    // console.log(`6th => ${settingSix}`)
+
+                    console.log(pdfCropSiteDetails)
+                }}> pdfCropSiteDetails   </h1>
+
+            </div>
 
             {isLoading && (
                 <div className='z-50 fixed inset-0 w-full h-screen bg-black opacity-75 flex flex-col justify-center items-center space-y-2'>
