@@ -17,7 +17,7 @@ const ServiceCardContainer = () => {
 
     const responsive = {
         0: {
-            items: 2,
+            items: 2.3,
         },
         450: {
             items: 3
@@ -33,12 +33,16 @@ const ServiceCardContainer = () => {
 
     return (
         <div className='w-full flex justify-center items-center py-5 lg:py-10 bg-gray-100'>
-            <div className='w-full lg:w-[80%] xl:w-[70%] flex justify-center items-center space-x-2'>
+            <div className='w-full lg:w-[80%] xl:w-[70%] flex justify-center items-center space-x-1 pl-2 sm:pl-0'>
                 <AliceCarousel
+                    // infinite
+                    // autoPlayInterval={1000}
+                    // animationDuration={1500}
                     disableButtonsControls
                     disableDotsControls
                     items={items}
                     responsive={responsive}
+                    // autoPlay
                 />
             </div>
 
