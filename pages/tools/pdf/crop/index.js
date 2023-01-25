@@ -19,7 +19,7 @@ const Index = () => {
 
 
   return (
-    <main className='w-full mt-[8vh] py-5 bg-[#EFF6FB] flex flex-col items-center justify-start'>
+    <main className='w-full mt-[8vh] py-5 bg-[#EFF6FB] flex flex-col items-center justify-start pb-40'>
 
       {/*Container */}
       <div className='w-full flex flex-col justify-start items-center'>

@@ -44,7 +44,7 @@ function DropFileContainer() {
 
             let data = new FormData();
             data.append('file', allPDFdata?.data);
-            data.append('Ecommerce', 1);
+            data.append('Ecommerce', 2);
             data.append('UserDetails', {
                 uid: "xxxxxxxxxxxxxxxxxxxx"
             });
@@ -83,12 +83,12 @@ function DropFileContainer() {
     }
 
 
-    
-
-    
 
 
-    
+
+
+
+
 
 
 
@@ -107,14 +107,12 @@ function DropFileContainer() {
                         showProgressDetails={true}
                         className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw]"
                         hideUploadButton={true}
+                        proudlyDisplayPoweredByUppy={false}
 
                     />
 
-
-                    <button onClick={postPDF}> POST </button>
-
-
-                    <div className='flex flex-wrap justify-center items-center space-x-3 my-5'>
+                    {/* Check boxes */}
+                    <div className='flex flex-wrap justify-center items-center space-x-3 my-5 px-3'>
                         <Checkbox label="Sort Plastic and NPP" ripple={true} color="blue" />
                         <Checkbox label="Sort Courier wise" ripple={true} color="blue" />
                         <Checkbox label="Keep Invoice" ripple={true} color="blue" />
@@ -123,9 +121,19 @@ function DropFileContainer() {
                         <Checkbox label="Multi order at bottom" ripple={true} color="blue" />
                     </div>
 
-                    
+                    <button
+                        
+                        disabled={allPDFdata?.data ? false : true}
+                        onClick={postPDF}
+                        className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
+                        POST
+                        
+                    </button>
 
-                    <h1 className='my-2 text-base  bg-red-300' onClick={() => console.log(allPDFdata)}> allPDFdata   </h1>
+
+
+
+                    {/* <h1 className='my-2 text-base  bg-red-300' onClick={() => console.log()}> allPDFdata   </h1> */}
 
                 </div>
             )}
