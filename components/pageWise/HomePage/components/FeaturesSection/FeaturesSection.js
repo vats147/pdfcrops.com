@@ -5,8 +5,8 @@ const FeaturesSection = () => {
   return (
     <section className='w-full flex justify-center items-center py-5 bg-gray-100'>
 
-      <div className='w-full md:w-[80%] lg:w-[70%] bg-white flex flex-col justify-start items-center lg:items-start p-2 lg:py-5 md:rounded-lg md:shadow-2xl md:shadow-gray-300'>
-        <p className='text-black font-semibold text-2xl lg:mx-5 lg:my-2 xl:ms-8 xl:my-4'> More about Crop PDF Tool </p>
+      <div className='w-full md:w-[80%] lg:w-[70%] bg-white flex flex-col justify-start items-center lg:items-center p-2 lg:py-5 md:rounded-lg md:shadow-2xl md:shadow-gray-300'>
+        <p className='text-black font-semibold text-2xl my-4 lg:mx-5 lg:my-2 xl:mx-8 xl:my-4'> More about Crop PDF Tool </p>
 
 
         <div className='w-full flex flex-wrap justify-center items-center my-5'>

@@ -4,7 +4,7 @@ import { SiteStatsArray } from "../../../../../constants/SiteStats/SiteStats"
 const StatsSection = () => {
     return (
         <div className='w-full flex justify-center items-center bg-gray-100 py-5'>
-            <section className='w-[90%] lg:w-[70%] xl:w-[60%] bg-white px-2 sm:px-4 py-5 rounded-md shadow-md shadow-slate-200 flex justify-center sm:justify-between items-center space-x-5 my-6'>
+            <section className='w-[95%] lg:w-[70%]  bg-white px-2 sm:px-4 py-5 rounded-md shadow-md shadow-slate-200 flex justify-center sm:justify-between items-center space-x-5 my-6'>
 
                 {SiteStatsArray && (
                     SiteStatsArray?.map((stat) => {

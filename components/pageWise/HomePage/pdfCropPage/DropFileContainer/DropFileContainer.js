@@ -6,17 +6,14 @@ import ProgressBar from './StatusBarComponent'
 import { Dashboard } from '@uppy/react'
 import { Checkbox } from '@material-tailwind/react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import FileReadyToDownloadModal from '../modals/FileReadyToDownloadModal'
 
 
 function DropFileContainer() {
-
     const [allPDFdata, setAllPDFdata] = useState({})
+
     const [isLoading, setIsLoading] = useState(false)
-    const [firstSetting, setFirstSetting] = useState(true)
-    const [secondSetting, setSecondSetting] = useState(false)
-
-
-
+    const [isFileReadyToDownloadModalOpen, setIsFileReadyToDownloadModalOpen] = useState(true)
 
 
     const uppy = React.useMemo(() => {
@@ -57,6 +54,7 @@ function DropFileContainer() {
                 .then((response) => {
                     uppy.cancelAll()
                     setIsLoading(false)
+                    setAllPDFdata({})
                     return response.blob()
 
                 }).then((blob) => {
@@ -86,26 +84,16 @@ function DropFileContainer() {
 
 
 
-
-
-
-
-
-
-
-
-
-
     return (
         <>
-            {!isLoading && (
+            {true && (
                 <div className='flex flex-col items-center justify-start space-y-3'>
                     <Dashboard
                         uppy={uppy}
                         width="90vw"
                         height="500px"
                         showProgressDetails={true}
-                        className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw]"
+                        className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw] z-10"
                         hideUploadButton={true}
                         proudlyDisplayPoweredByUppy={false}
 
@@ -121,13 +109,15 @@ function DropFileContainer() {
                         <Checkbox label="Multi order at bottom" ripple={true} color="blue" />
                     </div>
 
+                    {/* <FileReadyToDownloadModal isFileReadyToDownloadModalOpen={isFileReadyToDownloadModalOpen} setIsFileReadyToDownloadModalOpen={setIsFileReadyToDownloadModalOpen} isLoading={isLoading} />  */}
+
                     <button
-                        
+
                         disabled={allPDFdata?.data ? false : true}
                         onClick={postPDF}
                         className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
                         POST
-                        
+
                     </button>
 
 
@@ -138,7 +128,6 @@ function DropFileContainer() {
                 </div>
             )}
 
-
             {isLoading && (
                 <div className='z-50 fixed inset-0 w-full h-screen bg-black opacity-75 flex flex-col justify-center items-center space-y-2'>
                     <p> Cropping .... </p>
@@ -146,6 +135,9 @@ function DropFileContainer() {
                 </div>
 
             )}
+
+
+
         </>
     )
 }
