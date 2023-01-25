@@ -90,9 +90,9 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
 
         {/* Other Tabs */}
         <div className='flex flex-col justify-start items-start space-y-3 my-5'>
-          <Link href={`/pricing`} className="text-brandPrimaryColor font-semibold text-lg"> Pricing </Link>
-          <Link href={`/`} className="text-brandPrimaryColor font-semibold text-lg"> About </Link>
-          <Link href={`/`} className="text-brandPrimaryColor font-semibold text-lg"> Contact </Link>
+          <Link href={`/pricing`} onClick={() => setIsSidebarVisible(false)} className="text-brandPrimaryColor font-semibold text-lg"> Pricing </Link>
+          <Link href={`/`} onClick={() => setIsSidebarVisible(false)} className="text-brandPrimaryColor font-semibold text-lg"> About </Link>
+          <Link href={`/contact`} onClick={() => setIsSidebarVisible(false)} className="text-brandPrimaryColor font-semibold text-lg"> Contact </Link>
         </div>
       </div>
 

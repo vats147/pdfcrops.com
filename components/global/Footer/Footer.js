@@ -107,7 +107,7 @@ const Footer = () => {
 
             <nav className="flex flex-col gap-4">
               <div>
-                <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Contact</a>
+                <Link href="/contact" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Contact</Link>
               </div>
 
               <div>

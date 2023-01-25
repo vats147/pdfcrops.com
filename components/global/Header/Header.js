@@ -26,7 +26,7 @@ const Header = () => {
         <PdfTab />
         <Link href={`/pricing`} className="text-base font-medium text-black"> Pricing </Link>
         <Link href={`/`} className="text-base font-medium text-black"> About </Link>
-        <Link href={`/`} className="text-base font-medium text-black"> Contact </Link>
+        <Link href={`/contact`} className="text-base font-medium text-black"> Contact </Link>
 
         {/* Sign in Button */}
         <button
