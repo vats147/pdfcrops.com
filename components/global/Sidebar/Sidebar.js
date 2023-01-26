@@ -14,7 +14,7 @@ import { CgFileDocument } from "react-icons/cg"
 import { RxCross1, RxHamburgerMenu } from 'react-icons/rx'
 import { BrandName } from '@/constants/BrandDetails/BrandDetails'
 import Link from 'next/link'
-import pdfCropContext from '@/context/pdfCrop/PdfCropContext'
+import pdfCropContext from '@/context/PdfCrop/PdfCropContext'
 import { PDFcropSiteOptions } from '@/constants/PDFcropSiteOptions/PDFcropSiteOptions'
 
 

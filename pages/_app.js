@@ -1,4 +1,4 @@
-import PdfCropStateProvider from '../context/pdfCrop/pdfCropState';
+import PdfCropStateProvider from '../context/PdfCrop/PdfCropState';
 import BaseOneLayout from '@/layouts/BaseOneLayout/BaseOneLayout'
 import '@/styles/globals.css'
 

@@ -1,4 +1,4 @@
-import pdfCropContext from '@/context/pdfCrop/PdfCropContext'
+import pdfCropContext from '@/context/PdfCrop/PdfCropContext'
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useContext, useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'

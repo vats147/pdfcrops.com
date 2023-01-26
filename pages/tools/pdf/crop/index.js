@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { PDFcropSiteOptions } from '@/constants/PDFcropSiteOptions/PDFcropSiteOptions'
 import { useRouter } from 'next/router'
-import pdfCropContext from '../../../../context/pdfCrop/PdfCropContext'
+import pdfCropContext from '../../../../context/PdfCrop/PdfCropContext'
 import DropFileContainer from '@/components/pageWise/HomePage/pdfCropPage/DropFileContainer/DropFileContainer'
 import { PDFcropSiteOptions as PDFcropSiteOptionsConstantArray } from "../../../../constants/PDFcropSiteOptions/PDFcropSiteOptions"
 

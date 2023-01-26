@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import pdfCropContext from '@/context/pdfCrop/PdfCropContext'
+import pdfCropContext from '@/context/PdfCrop/PdfCropContext'
 
 
 function DropFileContainer() {
