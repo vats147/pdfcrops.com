@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { PDFcropSiteOptions } from '@/constants/PDFcropSiteOptions/PDFcropSiteOptions'
 import { useRouter } from 'next/router'
-import PdfCropContext from '../../../../context/PdfCrop/PdfCropContext'
 import DropFileContainer from '@/components/pageWise/HomePage/pdfCropPage/DropFileContainer/DropFileContainer'
 import { PDFcropSiteOptions as PDFcropSiteOptionsConstantArray } from "../../../../constants/PDFcropSiteOptions/PDFcropSiteOptions"
 import { useAuthState } from 'react-firebase-hooks/auth'

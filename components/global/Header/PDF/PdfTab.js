@@ -8,7 +8,6 @@ import flipkartSmallLogo from "../../../../public/images/logos/flipkartSmallLogo
 import glowroadSmallLogo from "../../../../public/images/logos/glowroadSmallLogo.png"
 
 import Link from 'next/link'
-import pdfCropContext from '../../../../context/PdfCrop/PdfCropContext'
 
 
 const solutions = [

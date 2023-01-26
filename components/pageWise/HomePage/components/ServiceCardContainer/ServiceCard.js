@@ -8,7 +8,6 @@ import meeshoSmallLogo from "../../../../../public/images/logos/meeshoSmallLogo.
 import flipkartSmallLogo from "../../../../../public/images/logos/flipkartSmallLogo.png"
 import glowroadSmallLogo from "../../../../../public/images/logos/glowroadSmallLogo.png"
 import Link from 'next/link'
-import PdfCropContext from '../../../../../context/PdfCrop/PdfCropContext'
 
 
 
