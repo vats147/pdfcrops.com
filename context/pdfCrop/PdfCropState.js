@@ -1,5 +1,5 @@
 import PdfCropContext from "./PdfCropContext";
-import { useState } from 'react'
+import { useState, Provider } from 'react'
 
 const PdfCropState = ({ children }) => {
     const [pdfCropSiteDetails, setPdfCropSiteDetails] = useState(  )

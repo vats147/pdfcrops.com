@@ -1,5 +1,5 @@
 import PdfCropStateProvider from '../context/PdfCrop/PdfCropState';
-import BaseOneLayout from '@/layouts/BaseOneLayout/BaseOneLayout'
+import BaseOneLayout from '../layouts/BaseOneLayout/BaseOneLayout'
 import '@/styles/globals.css'
 
 import 'react-alice-carousel/lib/alice-carousel.css';
