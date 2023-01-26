@@ -129,7 +129,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
 
 
-                    const notify = () => toast.success('Files are ready for download!', {
+                    const notify = () => toast.error('Files are ready for download!', {
                         position: "bottom-center",
                         autoClose: false,
                         hideProgressBar: false,
