@@ -57,6 +57,10 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
         setAllPDFdata(file)
     })
 
+    uppy.on("file-removed", (file) => {
+        setAllPDFdata({})
+    })
+
     const signInWithGoogle = async () => {
         try {
             const googleProvider = new GoogleAuthProvider()
