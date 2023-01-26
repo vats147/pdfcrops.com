@@ -14,7 +14,7 @@ import { CgFileDocument } from "react-icons/cg"
 import { RxCross1, RxHamburgerMenu } from 'react-icons/rx'
 
 import Link from 'next/link'
-import { BrandName } from '@/constants/BrandDetails/BrandDetails'
+import { BrandName } from '../../../constants/BrandDetails/BrandDetails'
 import pdfCropContext from '../../../context/PdfCrop/PdfCropContext'
 import { PDFcropSiteOptions } from '../../../constants/PDFcropSiteOptions/PDFcropSiteOptions'
 import SidebarLoginComponent from "../../global/LoginComponent/sidebar/SidebarLoginComponent"
