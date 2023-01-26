@@ -115,14 +115,14 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     // alink.remove()
 
                     setHrefState(fileURL)
-                    setFileDownloadState( "givemereport_" + Date.now() + ".pdf" )
+                    setFileDownloadState("givemereport_" + Date.now() + ".pdf")
                     setIsDownloadPDFsfilesAvailable(true)
 
 
 
 
-                    
-                    
+
+
 
 
                     const notify = () => toast.success('Files are ready for download!', {
@@ -241,11 +241,12 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     </button>
 
                     {isDownloadPDFsfilesAvailable && (
-                        <button
-                            onClick={() => { downloadFilesButtonRef?.current?.click() }}
-                            className={`px-8 py-3 my-4 rounded-md bg-green-500 text-white text-sm font-medium "hover:cursor-pointer" hover:bg-green-600 `} >
-                            <a id='popop' href={hrefState} download={fileDownloadState} ref={downloadFilesButtonRef}  className='font-medium'> Download file </a>
-                        </button>
+                        <a
+                            id='popop'
+                            href={hrefState}
+                            download={fileDownloadState}
+                            ref={downloadFilesButtonRef}
+                            className={`px-8 py-3 my-4 rounded-md bg-green-500 text-white text-sm font-medium "hover:cursor-pointer" hover:bg-green-600 `} > Download file </a>
                     )}
                 </div>
 
