@@ -34,8 +34,11 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
     const [settingFive, setSettingFive] = useState(false)
     const [settingSix, setSettingSix] = useState(false)
 
-    // Context states
+    const [hrefState, setHrefState] = useState("")
+    const [fileDownloadState, setFileDownloadState] = useState("")
 
+
+    // Context states
     const downloadFilesButtonRef = useRef()
     const uploadContainerRef = useRef()
 
@@ -106,28 +109,20 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     const fileURL = window.URL.createObjectURL(new Blob(binaryData, { type: "application/pdf" }))
 
                     let alink = document.createElement('a');
-                    alink.href = fileURL;
-                    alink.download = "givemereport_" + Date.now() + ".pdf";
-                    alink.click();
-                    alink.remove()
+                    // alink.href = fileURL;
+                    // alink.download = "givemereport_" + Date.now() + ".pdf";
+                    // alink.click();
+                    // alink.remove()
 
-                    // downloadFilesButtonRef?.current?.href = fileURL
-                    // downloadFilesButtonRef?.current?.download = "givemereport_" + Date.now() + ".pdf";
-
-                    // downloadFilesButtonRef.href = fileURL
-                    // downloadFilesButtonRef.download = "givemereport_" + Date.now() + ".pdf"
-
-
-                    if (document) {
-                        const atag = document?.querySelector("#popop")
-                        atag.href = fileURL
-                        atag.download = "givemereport_" + Date.now() + ".pdf"
-                    } else {
-                        console.log(`0`)
-                    }
-
-
+                    setHrefState(fileURL)
+                    setFileDownloadState( "givemereport_" + Date.now() + ".pdf" )
                     setIsDownloadPDFsfilesAvailable(true)
+
+
+
+
+                    
+                    
 
 
                     const notify = () => toast.success('Files are ready for download!', {
@@ -249,7 +244,8 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                         <button
                             onClick={() => { console.log(downloadFilesButtonRef) }}
                             className={`px-8 py-3 my-4 rounded-md bg-green-500 text-white text-sm font-medium "hover:cursor-pointer" hover:bg-green-600 `}>
-                            <a id='popop' href='' ref={downloadFilesButtonRef} target="_blank" rel="noreferrer" className='font-medium'> Download file </a>
+                            {/* <a id='popop' href='' ref={downloadFilesButtonRef} target="_blank" rel="noreferrer" className='font-medium'> Download file </a> */}
+                            <a id='popop' href={hrefState} download={fileDownloadState} ref={downloadFilesButtonRef}  className='font-medium'> Download file </a>
                         </button>
                     )}
                 </div>
