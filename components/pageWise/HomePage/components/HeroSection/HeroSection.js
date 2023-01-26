@@ -3,10 +3,11 @@ import React from 'react'
 import heroImage from "../../../../../public/images/heroImage.png"
 
 
+// h-[45vh] lg:h-[70vh] xl:h-[65vh]
 
 const HeroSection = () => {
   return (
-    <section className='w-full h-[45vh] lg:h-[70vh] xl:h-[65vh] flex flex-col justify-start items-center lg:flex-row lg:items-center lg:justify-center lg:bg-gradient-to-b from-sky-500 via-fuchsia-400 to-gray-100'> 
+    <section className='w-full border border-black pt-20 flex flex-col justify-start items-center lg:flex-row lg:items-center lg:justify-center lg:bg-gradient-to-b from-sky-500 via-fuchsia-400 to-gray-100'> 
 
       {/* ---- Text Section ---- */}
       <div className='w-full h-full lg:w-[50%] flex flex-col justify-start lg:justify-center items-center pt-20 bg-gradient-to-b from-sky-500 via-fuchsia-400 to-gray-100 lg:bg-transparent'>
@@ -29,7 +30,7 @@ const HeroSection = () => {
           alt="hero-image"
           width={30}
           height={30}
-          className="w-full lg:w-[60%] xl:w-[50%] 2xl:w-[35%] aspect-square " />
+          className="w-full lg:w-[45%] xl:w-[45%] 2xl:w-[35%] aspect-square " />
 
       </div>
 

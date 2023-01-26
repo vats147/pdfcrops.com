@@ -16,7 +16,7 @@ const Header = () => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
   return (
-    <header className='z-50 fixed top-0 w-full h-[8vh] bg-brandMidColor flex justify-between items-center px-3 '>
+    <header className='z-50 fixed top-0 w-full h-[8vh] bg-gray-100 flex justify-between items-center px-3 '>
 
       {/* Brand Name and Logo */}
       <Link href={`/`} className='flex justify-center items-center space-x-3'>
