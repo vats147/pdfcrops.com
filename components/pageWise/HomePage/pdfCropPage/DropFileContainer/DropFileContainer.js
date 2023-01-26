@@ -73,7 +73,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
 
     const postPDF = async () => {
-        if (selectedSiteDetailsState) {
+        if (selectedSiteDetailsState && allPDFdata) {
             console.log(`----- postPDF is running -----`)
             setIsLoading(true)
 
@@ -145,8 +145,8 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     console.error(error);
                     setIsLoading(false)
                 });
-        } else if (!selectedSiteDetailsState) {
-            alert("Selected a site")
+        } else if (!selectedSiteDetailsState && !allPDFdata) {
+            alert("Selected a site and Pick a file")
         }
     }
 
