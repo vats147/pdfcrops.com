@@ -5,8 +5,8 @@ import logoOne from "../../../public/images/logos/logoOne.svg"
 
 const Footer = () => {
   return (
-    <div className='pt-4 sm:pt-10 lg:pt-12'>
-      <footer className="max-w-screen-2xl px-4 md:px-8 mx-auto bg-gray-100">
+    <div className='w-full pt-4 sm:pt-10 lg:pt-12  flex justify-center items-center'>
+      <footer className="w-full md:w-[80%] lg:w-[70%]   bg-gray-100">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 border-t gap-12 lg:gap-8 pt-10 lg:pt-12 mb-16">
           <div className="col-span-full lg:col-span-2">
             {/* <!-- logo - start --> */}
