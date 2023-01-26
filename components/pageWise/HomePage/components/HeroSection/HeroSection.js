@@ -7,7 +7,7 @@ import heroImage from "../../../../../public/images/heroImage.png"
 
 const HeroSection = () => {
   return (
-    <section className='w-full py-10 md:py-20 flex flex-col justify-start items-center bg-gradient-to-b from-sky-500 via-fuchsia-400 to-gray-100 lg:flex-row lg:items-center lg:justify-center lg:bg-black'> 
+    <section className='w-full py-10 md:py-20 2xl:py-32 flex flex-col justify-start items-center bg-gradient-to-b from-sky-500 via-fuchsia-400 to-gray-100 lg:flex-row lg:items-center lg:justify-center lg:bg-black'> 
 
       {/* ---- Text Section ---- */}
       <div className='w-full h-full lg:w-[50%] flex flex-col justify-start lg:justify-center items-center pt-20 '>
