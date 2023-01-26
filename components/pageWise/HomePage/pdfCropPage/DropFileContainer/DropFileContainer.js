@@ -253,19 +253,6 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
                 </div>
 
 
-
-
-                <h1 className='my-2 text-base  bg-red-300' onClick={() => {
-                    // console.log(`1st => ${settingOne}`)
-                    // console.log(`2nd => ${settingTwo}`)
-                    // console.log(`3rd => ${settingThree}`)
-                    // console.log(`4th => ${settingFour}`)
-                    // console.log(`5th => ${settingFive}`)
-                    // console.log(`6th => ${settingSix}`)
-
-                    console.log(selectedSiteDetailsState)
-                }}> selectedSiteDetailsState   </h1>
-
             </div>
 
             {isLoading && (
