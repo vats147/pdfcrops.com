@@ -12,10 +12,12 @@ import glowroadSmallLogo from "../../../public/images/logos/glowroadSmallLogo.pn
 import { RiArrowDownSLine, RiArrowUpSLine } from "react-icons/ri"
 import { CgFileDocument } from "react-icons/cg"
 import { RxCross1, RxHamburgerMenu } from 'react-icons/rx'
-import { BrandName } from '@/constants/BrandDetails/BrandDetails'
+
 import Link from 'next/link'
-import pdfCropContext from '@/context/PdfCrop/PdfCropContext'
-import { PDFcropSiteOptions } from '@/constants/PDFcropSiteOptions/PDFcropSiteOptions'
+import { BrandName } from '@/constants/BrandDetails/BrandDetails'
+import pdfCropContext from '../../../context/PdfCrop/PdfCropContext'
+import { PDFcropSiteOptions } from '../../../constants/PDFcropSiteOptions/PDFcropSiteOptions'
+import SidebarLoginComponent from "../../global/LoginComponent/sidebar/SidebarLoginComponent"
 
 
 
@@ -98,18 +100,9 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
 
 
 
-
-
-
-
       {/* Sign in Button */}
-      <div className='w-full px-3 my-3 flex justify-end items-center'>
-        <button
-          type='signIn'
-          className='w-full px-5 py-2 my-2 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]'
-        >
-          Sign in
-        </button>
+      <div className='w-full my-3 flex justify-center items-center'>
+        <SidebarLoginComponent />
       </div>
 
     </div>

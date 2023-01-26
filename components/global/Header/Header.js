@@ -29,22 +29,22 @@ const Header = () => {
         <Link href={`/pricing`} className="text-base font-medium text-black"> Pricing </Link>
         <Link href={`/`} className="text-base font-medium text-black"> About </Link>
         <Link href={`/contact`} className="text-base font-medium text-black"> Contact </Link>
-        
+
 
         {/* Sign in Button */}
         <LoginComponent />
       </div>
 
-        
-      {/* <LoginComponent /> */}
 
 
-      {/* Hamburger Icon */}
-      {!isSidebarVisible ? (
-        <RxHamburgerMenu className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
-      ) : (
-        <RxCross1 className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
-      )}
+
+
+        {/* Hamburger Icon */}
+        {!isSidebarVisible ? (
+          <RxHamburgerMenu className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
+        ) : (
+          <RxCross1 className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
+        )}
 
       {/* Sidebar */}
       <Sidebar isSidebarVisible={isSidebarVisible} setIsSidebarVisible={setIsSidebarVisible} />

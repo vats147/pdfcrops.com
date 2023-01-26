@@ -7,8 +7,9 @@ import { Fragment } from 'react'
 
 
 // ICONS
-import { AiOutlineLogout, AiOutlineUser } from "react-icons/ai"
+import { AiOutlineUser, AiOutlineLogout } from "react-icons/ai"
 import { HiChevronDown } from "react-icons/hi"
+
 
 export default function Example() {
 
@@ -21,30 +22,31 @@ export default function Example() {
 
 
         } catch (error) {
-            alert('TRY AGAIN')
+            console.log(error)
         }
     }
 
     return (
-        <div className="text-right">
-            <Menu as="div" className="relative inline-block text-left">
-                <div>
+        <div className="w-[90%] text-right">
+            <Menu as="div" className="w-full relative inline-block text-left">
+                <div className='w-full flex justify-center items-center'>
                     <Menu.Button onClick={() => {
                         if (!user && !loading) {
                             signInWithGoogle()
                         }
-                    }} className="px-5 py-2 my-2 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]">
+                    }} className="w-full px-10 py-3 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]">
                         {/* {session?.user?.name} */}
 
                         {!user && !loading ? (
-                            <p> Sign in </p>
+                            <div className='w-full flex justify-center items-center space-x-1'>
+                                <p> Sign in </p>
+                            </div>
                         ) : null}
 
                         {user && (
-                            <div className='flex justify-center items-center space-x-1'>
-                                {/* {user.photoURL ? <img src={user?.photoURL} alt="dp" className='w-8 h-8 rounded-full' />: <AiOutlineUser className='w-8 h-8' />} */}
+                            <div className='w-full  flex justify-center items-center space-x-5'>
                                 <p> {user?.displayName} </p>
-                                <HiChevronDown className='w-5 h-5 text-white' />
+                                <AiOutlineLogout onClick={() => signOut(auth)} className='w-5 h-5 hover:cursor-pointer text-white' />
                             </div>
                         )}
 
@@ -67,10 +69,9 @@ export default function Example() {
                                         <button
                                             onClick={() => signOut(auth)}
                                             className={`${active ? 'bg-red-500 text-white' : 'text-gray-900'
-                                                } group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium space-x-2`}
+                                                } group flex w-full items-center rounded-md px-2 py-2 text-sm font-medium`}
                                         >
-                                            <AiOutlineLogout className='w-4 h-4' />
-                                            <span> Log out </span>
+                                            Log out
                                         </button>
                                     )}
                                 </Menu.Item>

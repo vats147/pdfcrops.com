@@ -13,9 +13,16 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import pdfCropContext from '@/context/PdfCrop/PdfCropContext'
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../../../../firebaseConfig'
 
 
 function DropFileContainer() {
+
+    const [user, loading] = useAuthState(auth)
+
+    // States
     const [allPDFdata, setAllPDFdata] = useState({})
     const [isDownloadPDFsfilesAvailable, setIsDownloadPDFsfilesAvailable] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
@@ -48,6 +55,18 @@ function DropFileContainer() {
         setAllPDFdata(file)
     })
 
+    const signInWithGoogle = async () => {
+        try {
+          const googleProvider = new GoogleAuthProvider()
+          const result = await signInWithPopup(auth, googleProvider)
+    
+    
+        } catch (error) {
+            console.log(error);
+          alert('TRY AGAIN')
+        }
+      }
+
 
 
 
@@ -60,7 +79,7 @@ function DropFileContainer() {
             data.append('file', allPDFdata?.data);
             data.append('Ecommerce', pdfCropSiteDetails?.value);
             data.append('UserDetails', {
-                uid: "xxxxxxxxxxxxxxxxxxxx"
+                uid: user?.uid
             });
             data.append("settingDetails", {
                 settingOne: false ? 0 : 1,
@@ -218,7 +237,13 @@ function DropFileContainer() {
                     <button
 
                         disabled={allPDFdata?.data ? false : true}
-                        onClick={postPDF}
+                        onClick={() => {
+                            if(!user && !loading) {
+                                signInWithGoogle()
+                            } else if ( user && !loading ) {
+                                postPDF()
+                            }
+                        }}
                         className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
                         POST
 

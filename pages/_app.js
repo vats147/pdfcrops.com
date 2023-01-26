@@ -12,13 +12,11 @@ import '@uppy/status-bar/dist/style.css'
 
 
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
-import {SessionProvider} from "next-auth/react"
 
-export default function App({ Component, pageProps, session }) {
+export default function App({ Component, pageProps }) {
   return (
-    <SessionProvider session={session}>
       <PdfCropStateProvider>
         <BaseOneLayout>
           <Component {...pageProps} />
@@ -36,6 +34,5 @@ export default function App({ Component, pageProps, session }) {
           />
         </BaseOneLayout>
       </PdfCropStateProvider>
-    </SessionProvider>
   )
 }

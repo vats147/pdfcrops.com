@@ -4,13 +4,14 @@ import { useRouter } from 'next/router'
 import pdfCropContext from '../../../../context/PdfCrop/PdfCropContext'
 import DropFileContainer from '@/components/pageWise/HomePage/pdfCropPage/DropFileContainer/DropFileContainer'
 import { PDFcropSiteOptions as PDFcropSiteOptionsConstantArray } from "../../../../constants/PDFcropSiteOptions/PDFcropSiteOptions"
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../../../firebaseConfig'
 
 
 
 
 
 const Index = () => {
-  // console.log(`PDF/CROP is running`)
   const router = useRouter()
 
   // States
@@ -24,9 +25,11 @@ const Index = () => {
 
   // getting selected site data from local storage
   useEffect(() => {
-    setPdfCropSiteDetails( JSON.parse(window.localStorage.getItem("selectedSiteDetails")) || PDFcropSiteOptionsConstantArray[0])
+    setPdfCropSiteDetails(JSON.parse(window.localStorage.getItem("selectedSiteDetails")) || PDFcropSiteOptionsConstantArray[0])
   }, [])
 
+
+  
 
 
 
@@ -48,7 +51,7 @@ const Index = () => {
                   key={site.icon}
                   onClick={() => {
                     setPdfCropSiteDetails(site)
-                    window.localStorage.setItem("selectedSiteDetails" ,JSON.stringify(site))
+                    window.localStorage.setItem("selectedSiteDetails", JSON.stringify(site))
                     // console.log(site)
                   }}
                   className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  ${pdfCropSiteDetails?.name === site?.name && site?.bgColor} `}
