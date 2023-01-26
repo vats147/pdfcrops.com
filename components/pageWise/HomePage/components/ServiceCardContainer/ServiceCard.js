@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, { useContext } from 'react'
+import React from 'react'
 import { HiOutlineArrowNarrowRight } from "react-icons/hi"
 
 // Images
@@ -8,19 +8,18 @@ import meeshoSmallLogo from "../../../../../public/images/logos/meeshoSmallLogo.
 import flipkartSmallLogo from "../../../../../public/images/logos/flipkartSmallLogo.png"
 import glowroadSmallLogo from "../../../../../public/images/logos/glowroadSmallLogo.png"
 import Link from 'next/link'
-import pdfCropContext from '../../../../../context/PdfCrop/PdfCropContext'
+import PdfCropContext from '../../../../../context/PdfCrop/PdfCropContext'
 
 
 
 
 const ServiceCard = ({ service }) => {
 
-    const { pdfCropSiteDetails, setPdfCropSiteDetails } = useContext(pdfCropContext)
 
     return (
         <Link
             href={`/tools/pdf/crop`}
-            onClick={() => setPdfCropSiteDetails(service)}
+            onClick={() => console.log(service)}
             key={service.id}
             className={`w-36 h-36 sm:w-48 sm:h-48 md:w-52 md:h-52  
              ${service.name === "Amazon" && "bg-[#FF9900]"} 

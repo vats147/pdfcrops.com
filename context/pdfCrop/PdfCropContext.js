@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-const pdfCropContext = createContext({})
+const PdfCropContext = createContext({})
 
-export default pdfCropContext
+export default PdfCropContext

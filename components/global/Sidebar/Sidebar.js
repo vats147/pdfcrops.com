@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import logoOne from "../../../public/images/logos/logoOne.svg"
 
@@ -23,7 +23,6 @@ import SidebarLoginComponent from "../../global/LoginComponent/sidebar/SidebarLo
 
 const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
   const [isPdfSectionOpen, setIsPdfSectionOpen] = useState(false)
-  const { pdfCropSiteDetails, setPdfCropSiteDetails } = useContext(pdfCropContext)
 
 
   return (
@@ -59,7 +58,6 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
                 href={`/tools/pdf/crop`}
                 key={service.id}
                 onClick={() => {
-                  setPdfCropSiteDetails(service)
                   setIsSidebarVisible(false)
                 }}
                 className='w-full flex justify-start items-center space-x-2'>

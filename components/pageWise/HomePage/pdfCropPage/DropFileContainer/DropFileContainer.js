@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import Uppy from '@uppy/core'
 import StatusBar from '@uppy/status-bar'
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import pdfCropContext from '../../../../../context/PdfCrop/PdfCropContext'
+import PdfCropContext from '../../../../../context/PdfCrop/PdfCropContext'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../../../firebaseConfig'
@@ -36,7 +36,6 @@ function DropFileContainer() {
     const [settingSix, setSettingSix] = useState(false)
 
     // Context states
-    const { pdfCropSiteDetails } = useContext(pdfCropContext)
 
     const downloadFilesButtonRef = useRef()
 
@@ -269,7 +268,7 @@ function DropFileContainer() {
                     // console.log(`5th => ${settingFive}`)
                     // console.log(`6th => ${settingSix}`)
 
-                    console.log(pdfCropSiteDetails)
+                    console.log('w')
                 }}> pdfCropSiteDetails   </h1>
 
             </div>

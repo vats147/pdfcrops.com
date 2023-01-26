@@ -1,6 +1,6 @@
 import pdfCropContext from '@/context/PdfCrop/PdfCropContext'
 import { Dialog, Transition } from '@headlessui/react'
-import { Fragment, useContext, useState } from 'react'
+import { Fragment , useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 export default function FileReadyToDownloadModal ( { isFileReadyToDownloadModalOpen ,setIsFileReadyToDownloadModalOpen, isLoading} ) {

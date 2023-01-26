@@ -1,6 +1,6 @@
 import { Popover, Transition } from '@headlessui/react'
 import Image from 'next/image'
-import { Fragment, useContext } from 'react'
+import { Fragment } from 'react'
 // Images
 import amazonSmallLogo from "../../../../public/images/logos/amazonSmallLogo.png"
 import meeshoSmallLogo from "../../../../public/images/logos/meeshoSmallLogo.png"
@@ -53,7 +53,6 @@ const solutions = [
 
 export default function PdfTab() {
 
-  const {setPdfCropSiteDetails} = useContext(pdfCropContext)
 
   return (
     <div className="">
