@@ -17,7 +17,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../../../firebaseConfig'
 
 
-function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetailsState} ) {
+function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsState }) {
 
     const [user, loading] = useAuthState(auth)
 
@@ -37,6 +37,7 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
     // Context states
 
     const downloadFilesButtonRef = useRef()
+    const uploadContainerRef = useRef()
 
     const uppy = React.useMemo(() => {
         return new Uppy({
@@ -55,15 +56,15 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
 
     const signInWithGoogle = async () => {
         try {
-          const googleProvider = new GoogleAuthProvider()
-          const result = await signInWithPopup(auth, googleProvider)
-    
-    
+            const googleProvider = new GoogleAuthProvider()
+            const result = await signInWithPopup(auth, googleProvider)
+
+
         } catch (error) {
             console.log(error);
-          alert('TRY AGAIN')
+            alert('TRY AGAIN')
         }
-      }
+    }
 
 
 
@@ -222,6 +223,7 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
                     hideUploadButton={true}
                     proudlyDisplayPoweredByUppy={false}
 
+
                 />
 
 
@@ -232,9 +234,9 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
 
                     <button
                         onClick={() => {
-                            if(!user && !loading) {
+                            if (!user && !loading) {
                                 signInWithGoogle()
-                            } else if ( user && !loading ) {
+                            } else if (user && !loading) {
                                 postPDF()
                             }
                         }}
@@ -251,6 +253,8 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
                         </button>
                     )}
                 </div>
+
+
 
 
             </div>
