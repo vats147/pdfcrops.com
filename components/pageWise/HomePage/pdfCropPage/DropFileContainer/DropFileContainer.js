@@ -17,7 +17,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../../../firebaseConfig'
 
 
-function DropFileContainer() {
+function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetailsState} ) {
 
     const [user, loading] = useAuthState(auth)
 
@@ -69,13 +69,13 @@ function DropFileContainer() {
 
 
     const postPDF = async () => {
-        if (allPDFdata?.data) {
+        if (selectedSiteDetailsState) {
             console.log(`----- postPDF is running -----`)
             setIsLoading(true)
 
             let data = new FormData();
             data.append('file', allPDFdata?.data);
-            data.append('Ecommerce', pdfCropSiteDetails?.value);
+            data.append('Ecommerce', selectedSiteDetailsState?.value);
             data.append('UserDetails', {
                 uid: user?.uid
             });
@@ -151,8 +151,8 @@ function DropFileContainer() {
                     console.error(error);
                     setIsLoading(false)
                 });
-        } else if (!allPDFdata?.data) {
-            console.log(`no allPDFdata?.data `)
+        } else if (!selectedSiteDetailsState) {
+            alert("Selected a site")
         }
     }
 
@@ -233,8 +233,6 @@ function DropFileContainer() {
                 <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
 
                     <button
-
-                        disabled={allPDFdata?.data ? false : true}
                         onClick={() => {
                             if(!user && !loading) {
                                 signInWithGoogle()
@@ -267,8 +265,8 @@ function DropFileContainer() {
                     // console.log(`5th => ${settingFive}`)
                     // console.log(`6th => ${settingSix}`)
 
-                    console.log('w')
-                }}> pdfCropSiteDetails   </h1>
+                    console.log(selectedSiteDetailsState)
+                }}> selectedSiteDetailsState   </h1>
 
             </div>
 

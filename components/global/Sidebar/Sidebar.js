@@ -58,6 +58,7 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
                 key={service.id}
                 onClick={() => {
                   setIsSidebarVisible(false)
+                  window.localStorage.setItem("selectedSiteDetails", JSON.stringify(service))
                 }}
                 className='w-full flex justify-start items-center space-x-2'>
                 {/* Icon */}

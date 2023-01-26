@@ -18,7 +18,9 @@ const ServiceCard = ({ service }) => {
     return (
         <Link
             href={`/tools/pdf/crop`}
-            onClick={() => console.log(service)}
+            onClick={() => {
+                window.localStorage.setItem("selectedSiteDetails", JSON.stringify(service))
+            }}
             key={service.id}
             className={`w-36 h-36 sm:w-48 sm:h-48 md:w-52 md:h-52  
              ${service.name === "Amazon" && "bg-[#FF9900]"} 

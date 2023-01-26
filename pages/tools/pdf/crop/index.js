@@ -13,6 +13,8 @@ import { auth } from '../../../../firebaseConfig'
 const Index = () => {
   const router = useRouter()
 
+  const [selectedSiteDetailsState, setSelectedSiteDetailsState] = useState({})
+
 
   // useEffect(() => {
   //   if (!pdfCropSiteDetails) {
@@ -26,7 +28,19 @@ const Index = () => {
   // }, [])
 
 
-  
+  // getting selectedSiteDetails from local storage and storing it in state
+  useEffect(() => {
+    if (!window.localStorage.getItem("selectedSiteDetails")) {
+      window.localStorage.setItem("selectedSiteDetails", JSON.stringify(PDFcropSiteOptions[0]))
+    } else if (window.localStorage.getItem("selectedSiteDetails")) {
+        const siteData = JSON.parse(window.localStorage.getItem("selectedSiteDetails"))
+        setSelectedSiteDetailsState(siteData)
+    }
+
+  }, [])
+
+
+
 
 
 
@@ -35,15 +49,12 @@ const Index = () => {
 
       {/*Container */}
       <div className='w-full flex flex-col justify-start items-center'>
-        {/* <h4 className='my-5 font-bold text-3xl md:text-5xl text-center' onClick={() => console.log(pdfCropSiteDetails)}>
-          Crop Your PDF of <span className={`${pdfCropSiteDetails?.bgColor} ${pdfCropSiteDetails?.textColor} px-3 sm:p-1 rounded-sm`}> {!pdfCropSiteDetails != "_____" ? pdfCropSiteDetails?.name : "_____"} </span>
-        </h4> */}
-
-        <h4 className='my-5 font-bold text-3xl md:text-5xl text-center' onClick={() => console.log(1)}>
-          Crop Your PDF of <span className={`bg-red-300 text-black px-3 sm:p-1 rounded-sm`}> "sd" </span>
+        <h4 className='my-5 font-bold text-3xl md:text-5xl text-center' onClick={() => console.log(selectedSiteDetailsState)}>
+          Crop Your PDF of <span className={`${selectedSiteDetailsState?.bgColor} ${selectedSiteDetailsState?.textColor} px-3 sm:p-1 rounded-sm`}> {selectedSiteDetailsState?.name} </span>
         </h4>
 
-        {/* Options */}
+
+        {/* ----------- Options Bar ----------- */}
         <div className='w-full flex justify-center items-center my-5'>
           <div className='w-[95%] md:w-auto flex flex-wrap justify-center items-center space-x-1 rounded-full bg-white shadow-xl shadow-gray-300 px-5 py-2'>
             {PDFcropSiteOptions && PDFcropSiteOptions?.map((site) => {
@@ -51,9 +62,9 @@ const Index = () => {
                 <button
                   key={site.icon}
                   onClick={() => {
-                    // setPdfCropSiteDetails(site)
+                    setSelectedSiteDetailsState(site)
                     window.localStorage.setItem("selectedSiteDetails", JSON.stringify(site))
-                    // console.log(site)
+
                   }}
                   className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  `}
                 >
@@ -67,7 +78,7 @@ const Index = () => {
 
         {/* Dropdown Container */}
         <div className='w-full flex flex-col justify-start items-center  pb-20'>
-          <DropFileContainer />
+          <DropFileContainer selectedSiteDetailsState={selectedSiteDetailsState}  setSelectedSiteDetailsState={setSelectedSiteDetailsState}  />
         </div>
 
 

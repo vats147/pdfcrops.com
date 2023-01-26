@@ -79,7 +79,7 @@ export default function PdfTab() {
                     {solutions?.map((item) => (
                       <Link
                         href={"/tools/pdf/crop"}
-                        onClick={() => setPdfCropSiteDetails(item)}
+                        onClick={() => window.localStorage.setItem("selectedSiteDetails", JSON.stringify(item))}
                         key={item.id}
                         className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none"
                       >
