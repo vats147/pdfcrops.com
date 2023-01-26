@@ -66,9 +66,10 @@ const Index = () => {
                     window.localStorage.setItem("selectedSiteDetails", JSON.stringify(site))
 
                   }}
-                  className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2  `}
+                  className={`px-2 py-1 md:px-5 md:py-2 rounded-full m-1 md:m-2 ${selectedSiteDetailsState?.name === site?.name && site?.bgColor}`}
                 >
-                  <span className={`text-lg font-bold text-black `}> {site?.name} </span>
+                  {/* <span className={`text-lg font-bold text-black `}> {site?.name} </span> */}
+                  <span className={`text-lg font-bold ${selectedSiteDetailsState?.name === site?.name ? site?.textColor : "text-black"}`}> {site?.name} </span>
                 </button>
               )
             })}
