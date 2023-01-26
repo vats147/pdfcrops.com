@@ -55,15 +55,15 @@ const Footer = () => {
 
             <nav className="flex flex-col gap-4">
               <div>
-                <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> PDF Crop tools </a>
+                <Link href="/" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> PDF Crop tools </Link>
               </div>
 
               <div>
-                <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> TOS </a>
+                <Link href="/tos" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> TOS </Link>
               </div>
 
               <div>
-                <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Privacy Policy </a>
+                <Link href="/privacyPolicy" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Privacy Policy </Link>
               </div>
 
               <div>

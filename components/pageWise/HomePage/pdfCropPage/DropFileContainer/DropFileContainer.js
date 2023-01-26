@@ -107,10 +107,8 @@ function DropFileContainer ( { selectedSiteDetailsState , setSelectedSiteDetails
                     let alink = document.createElement('a');
                     alink.href = fileURL;
                     alink.download = "givemereport_" + Date.now() + ".pdf";
-
-                    // console.log(alink)
-                    // alink.click();
-                    // alink.remove()
+                    alink.click();
+                    alink.remove()
 
                     // downloadFilesButtonRef?.current?.href = fileURL
                     // downloadFilesButtonRef?.current?.download = "givemereport_" + Date.now() + ".pdf";
