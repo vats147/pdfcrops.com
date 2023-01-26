@@ -1,4 +1,3 @@
-import PdfCropStateProvider from '../context/PdfCrop/PdfCropState';
 import BaseOneLayout from '../layouts/BaseOneLayout/BaseOneLayout'
 import '@/styles/globals.css'
 
@@ -14,10 +13,12 @@ import '@uppy/status-bar/dist/style.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
+import PdfCropState from '../context/PdfCrop/PdfCropState';
+
 
 export default function App({ Component, pageProps }) {
   return (
-      <PdfCropStateProvider>
+      <PdfCropState>
         <BaseOneLayout>
           <Component {...pageProps} />
           <ToastContainer
@@ -33,6 +34,6 @@ export default function App({ Component, pageProps }) {
             theme="light"
           />
         </BaseOneLayout>
-      </PdfCropStateProvider>
+      </PdfCropState>
   )
 }
