@@ -231,7 +231,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                         onClick={() => {
                             if (!user && !loading) {
                                 signInWithGoogle()
-                            } else if (user && !loading) {
+                            } else if (user && !loading && allPDFdata.data) {
                                 postPDF()
                             }
                         }}
