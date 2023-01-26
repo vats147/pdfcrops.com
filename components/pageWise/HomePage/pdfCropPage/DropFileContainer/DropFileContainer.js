@@ -155,6 +155,19 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
     }
 
 
+    const uploadFileInfoToast = () => {
+        const notify = () => toast.info('Please upload a file', {
+            position: "bottom-center",
+            autoClose: 2500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+        notify()
+    }
 
 
 
@@ -237,6 +250,8 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                                 signInWithGoogle()
                             } else if (user && !loading && allPDFdata.data) {
                                 postPDF()
+                            } else if (!allPDFdata?.data) {
+                                uploadFileInfoToast()
                             }
                         }}
                         className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
