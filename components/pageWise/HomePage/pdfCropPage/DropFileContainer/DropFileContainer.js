@@ -129,7 +129,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
 
 
-                    const notify = () => toast.error('Files are ready for download!', {
+                    const notify = () => toast.success('Files are ready for download!', {
                         position: "bottom-center",
                         autoClose: false,
                         hideProgressBar: false,
@@ -156,7 +156,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
 
     const uploadFileInfoToast = () => {
-        const notify = () => toast.info('Please upload a file', {
+        const notify = () => toast.error('Please upload a file', {
             position: "bottom-center",
             autoClose: 2500,
             hideProgressBar: false,
