@@ -48,6 +48,7 @@ const ServiceCard = ({ service }) => {
                 </div>
 
                 <HiOutlineArrowNarrowRight />
+                {/* asdasda */}
             </div>
         </Link>
     )
