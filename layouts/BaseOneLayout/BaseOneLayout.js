@@ -1,10 +1,14 @@
+import React from 'react'
 import Footer from '@/components/global/Footer/Footer'
 import Header from '@/components/global/Header/Header'
 import Sidebar from '@/components/global/Sidebar/Sidebar'
 import Head from 'next/head'
-import React from 'react'
 
 const BaseOneLayout = ({ children }) => {
+
+
+
+
     return (
         <div className='w-full h-auto bg-gray-100 flex flex-col justify-start items-center overflow-x-hidden overflow-y-scroll'>
             <Head>

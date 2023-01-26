@@ -8,6 +8,8 @@ import Sidebar from '../Sidebar/Sidebar'
 import { RxHamburgerMenu, RxCross1 } from "react-icons/rx"
 import PdfTab from './PDF/PdfTab'
 import Link from 'next/link'
+import LoginComponent from '../LoginComponent/LoginComponent'
+
 
 
 const Header = () => {
@@ -27,16 +29,14 @@ const Header = () => {
         <Link href={`/pricing`} className="text-base font-medium text-black"> Pricing </Link>
         <Link href={`/`} className="text-base font-medium text-black"> About </Link>
         <Link href={`/contact`} className="text-base font-medium text-black"> Contact </Link>
+        
 
         {/* Sign in Button */}
-        <button
-          type='signIn'
-          className=' px-5 py-2 my-2 rounded-md bg-brandPrimaryColor text-white text-sm font-medium hover:cursor-pointer hover:bg-[#156BA9]'
-        >
-          Sign in
-        </button>
-
+        <LoginComponent />
       </div>
+
+        
+      {/* <LoginComponent /> */}
 
 
       {/* Hamburger Icon */}

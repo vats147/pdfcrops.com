@@ -24,10 +24,12 @@
     "@uppy/status-bar": "^3.0.1",
     "axios": "^1.2.3",
     "next": "13.1.2",
+    "next-auth": "^4.18.10",
     "react": "18.2.0",
     "react-alice-carousel": "^2.7.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
+    "react-new-window": "^1.0.1",
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6"
   },

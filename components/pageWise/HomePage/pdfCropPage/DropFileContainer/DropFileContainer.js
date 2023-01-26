@@ -98,12 +98,21 @@ function DropFileContainer() {
                     // downloadFilesButtonRef?.current?.href = fileURL
                     // downloadFilesButtonRef?.current?.download = "givemereport_" + Date.now() + ".pdf";
 
+                    // downloadFilesButtonRef.href = fileURL
+                    // downloadFilesButtonRef.download = "givemereport_" + Date.now() + ".pdf"
+
+
+                    if (document) {
+                        const atag = document?.querySelector("#popop")
+                        atag.href = fileURL
+                        atag.download = "givemereport_" + Date.now() + ".pdf"
+                    } else {
+                        console.log(`0`)
+                    }
 
 
                     setIsDownloadPDFsfilesAvailable(true)
 
-                    downloadFilesButtonRef.href = fileURL
-                    downloadFilesButtonRef.download = "givemereport_" + Date.now() + ".pdf"
 
                     const notify = () => toast.success('Files are ready for download!', {
                         position: "bottom-center",
@@ -131,7 +140,7 @@ function DropFileContainer() {
     }
 
 
-   
+
 
 
     // getting checkbox data from local storage
@@ -144,7 +153,7 @@ function DropFileContainer() {
         setSettingSix(JSON.parse(window.localStorage.getItem("settingSix")) || false)
     }, [])
 
-    
+
 
 
 
@@ -217,9 +226,9 @@ function DropFileContainer() {
 
                     {isDownloadPDFsfilesAvailable && (
                         <button
-                            onClick={() => { null }}
+                            onClick={() => { console.log(downloadFilesButtonRef) }}
                             className={`px-8 py-3 my-4 rounded-md bg-green-500 text-white text-sm font-medium "hover:cursor-pointer" hover:bg-green-600 `}>
-                            <a ref={downloadFilesButtonRef} target="_blank" rel="noreferrer" className='font-medium'> Download file </a>
+                            <a id='popop' href='' ref={downloadFilesButtonRef} target="_blank" rel="noreferrer" className='font-medium'> Download file </a>
                         </button>
                     )}
                 </div>

@@ -90,13 +90,13 @@ export default function PdfTab() {
                         ${item.name === "Amazon" && "bg-[#FF9900] rounded-md"}
                         ${item.name === "Flipkart" && "bg-[#FFE11B] rounded-md"}
                         ${item.name === "Meesho" && "bg-[#EA4E85] rounded-md"}
-                        ${item.name === "Glowroad"  && "bg-[#1A6977] rounded-md"}
+                        ${item.name === "GlowRoad"  && "bg-[#1A6977] rounded-md"}
                         `}>
                           <div className='w-8 h-8 flex justify-center items-center rounded-full bg-white'>
                             {item.name === "Amazon" && <Image unoptimized src={amazonSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
                             {item.name === "Meesho" && <Image unoptimized src={meeshoSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
                             {item.name === "Flipkart" && <Image unoptimized src={flipkartSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
-                            {item.name === "Glowroad" && <Image unoptimized src={glowroadSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
+                            {item.name === "GlowRoad" && <Image unoptimized src={glowroadSmallLogo} alt="icon" width={5} height={6} className="w-5 h-5" />}
                           </div>
                         </div>
 
