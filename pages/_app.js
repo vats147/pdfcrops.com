@@ -1,6 +1,6 @@
 import BaseOneLayout from '../layouts/BaseOneLayout/BaseOneLayout'
 import '@/styles/globals.css'
-
+import Head from 'next/head';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import '@uppy/core/dist/style.css'
