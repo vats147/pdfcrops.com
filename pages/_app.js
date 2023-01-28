@@ -19,6 +19,9 @@ export default function App({ Component, pageProps }) {
   return (
 
         <BaseOneLayout>
+    <Head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5174630229786506" crossorigin="anonymous"></script>
+      </Head>
           <Component {...pageProps} />
           <ToastContainer
             position="bottom-center"
