@@ -45,7 +45,7 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
 
       {/* ---- PDF Section ---- */}
       <div className='mt-[10vh] w-full py-3 flex flex-col justify-start items-start px-3' onClick={() => setIsPdfSectionOpen(!isPdfSectionOpen)}>
-        <p className='text-brandPrimaryColor font-semibold text-lg'> PDF </p>
+        <p className='text-brandPrimaryColor font-semibold text-lg'> PDF  </p>
         <p className='text-gray-700 font-medium text-sm mt-2'> Featured Tools </p>
 
         {/* Cards Container */}
@@ -90,8 +90,7 @@ const Sidebar = ({ isSidebarVisible, setIsSidebarVisible }) => {
 
         {/* Other Tabs */}
         <div className='flex flex-col justify-start items-start space-y-3 my-5'>
-          <Link href={`/pricing`} onClick={() => setIsSidebarVisible(false)} className="text-brandPrimaryColor font-semibold text-lg"> Pricing </Link>
-          <Link href={`/`} onClick={() => setIsSidebarVisible(false)} className="text-brandPrimaryColor font-semibold text-lg"> About </Link>
+          
           <Link href={`/contact`} onClick={() => setIsSidebarVisible(false)} className="text-brandPrimaryColor font-semibold text-lg"> Contact </Link>
         </div>
       </div>

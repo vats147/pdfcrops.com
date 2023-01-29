@@ -11,19 +11,11 @@ import Link from 'next/link'
 
 
 const solutions = [
-  {
-    id: 1,
-    name: "Amazon",
-    value: 1,
-    icon: "amazonSmallLogo",
-    bgColor: "bg-[#FF9900]",
-    textColor: "text-black",
-    oneLineDescription: "Lorem ipsum dolor sit amet semibold"
-},
+ 
 {
     id: 2,
     name: "Flipkart",
-    value: 2,
+    value: 1,
     icon: "flipkartSmallLogo",
     bgColor: "bg-[#FFE11B]",
     textColor: "text-[#287FF0]",
@@ -32,7 +24,7 @@ const solutions = [
 {
     id: 4,
     name: "Meesho",
-    value: 1,
+    value: 2,
     icon: "meeshoSmallLogo",
     bgColor: "bg-[#EA4E85]",
     textColor: "text-white",
@@ -41,7 +33,7 @@ const solutions = [
 {
     id: 3,
     name: "GlowRoad",
-    value: 2,
+    value: 3,
     icon: "glowroadSmallLogo",
     bgColor: "bg-[#1A6977]",
     textColor: "text-white",
@@ -61,7 +53,7 @@ export default function PdfTab() {
             <Popover.Button
               className="group inline-flex items-center rounded-md text-base font-medium text-black ring-0 focus:ring-0 outline-none"
             >
-              <span>PDF</span>
+              <span>Ecommerce PDF</span>
 
             </Popover.Button>
             <Transition

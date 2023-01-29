@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { BrandName } from '@/constants/BrandDetails/BrandDetails'
-import logoOne from "../../../public/images/logos/logoOne.svg"
+import logoOne from "../../../public/images/logos/logo1.png"
 import Image from 'next/image'
 import Sidebar from '../Sidebar/Sidebar'
 
@@ -20,15 +20,15 @@ const Header = () => {
 
       {/* Brand Name and Logo */}
       <Link href={`/`} className='flex justify-center items-center space-x-3'>
-        <Image src={logoOne} alt="logoOne" width={8} height={8} className="w-8 h-8 rounded-full" />
+        <Image src={logoOne} alt="logoOne"className="w-8 h-8 rounded-full" />
         <h1 className='text-base font-semibold text-brandDarkColor'> {BrandName} </h1>
       </Link>
 
       <div className='hidden md:inline-flex flex-center items-center space-x-10'>
         <PdfTab />
-        <Link href={`/pricing`} className="text-base font-medium text-black"> Pricing </Link>
-        <Link href={`/`} className="text-base font-medium text-black"> About </Link>
-        <Link href={`/contact`} className="text-base font-medium text-black"> Contact </Link>
+       
+        
+        <Link href={`/contact`} className="text-base font-medium text-black"> Contact Us</Link>
 
 
         {/* Sign in Button */}

@@ -111,12 +111,15 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     let binaryData = [];
                     binaryData.push(blob);
                     const fileURL = window.URL.createObjectURL(new Blob(binaryData, { type: "application/pdf" }))
-
+                    if(settingOne)
+                    {
                     let alink = document.createElement('a');
-                    // alink.href = fileURL;
-                    // alink.download = "givemereport_" + Date.now() + ".pdf";
-                    // alink.click();
-                    // alink.remove()
+                   
+                    alink.href = fileURL;
+                    alink.download = "givemereport_" + Date.now() + ".pdf";
+                    alink.click();
+                    alink.remove()
+                    }
 
                     setHrefState(fileURL)
                     setFileDownloadState("givemereport_" + Date.now() + ".pdf")
@@ -198,32 +201,14 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                         <Checkbox checked={settingOne} onChange={(e) => {
                             window.localStorage.setItem("settingOne", JSON.stringify(e.target.checked))
                             setSettingOne(e.target.checked)
-                        }} />} label="Sort Plastic and NPP" />
+                        }} />} label="Auto Download" />
 
                     <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
                         window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
                         setSettingTwo(e.target.checked)
-                    }} />} label="Sort Courier wise" />
+                    }} />} label="Merge Crop" />
 
-                    <FormControlLabel className="m-1" control={<Checkbox checked={settingThree} onChange={(e) => {
-                        window.localStorage.setItem("settingThree", JSON.stringify(e.target.checked))
-                        setSettingThree(e.target.checked)
-                    }} />} label="Keep Invoice" />
-
-                    <FormControlLabel className="m-1" control={<Checkbox checked={settingFour} onChange={(e) => {
-                        window.localStorage.setItem("settingFour", JSON.stringify(e.target.checked))
-                        setSettingFour(e.target.checked)
-                    }} />} label="Merge Files" />
-
-                    <FormControlLabel className="m-1" control={<Checkbox checked={settingFive} onChange={(e) => {
-                        window.localStorage.setItem("settingFive", JSON.stringify(e.target.checked))
-                        setSettingFive(e.target.checked)
-                    }} />} label="Print Date time on label" />
-
-                    <FormControlLabel className="m-1" control={<Checkbox checked={settingSix} onChange={(e) => {
-                        window.localStorage.setItem("settingSix", JSON.stringify(e.target.checked))
-                        setSettingSix(e.target.checked)
-                    }} />} label="Multi order at bottom" />
+                   
                 </div>
 
                 <Dashboard

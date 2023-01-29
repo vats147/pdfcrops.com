@@ -17,7 +17,7 @@ const Index = () => {
     const submitForm = async (e) => {
         e.preventDefault();
 
-        fetch(`https://formcarry.com/s/EfFhKhMi0k`, {
+        fetch(`https://formcarry.com/s/18RjRPZrxl`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

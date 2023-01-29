@@ -31,7 +31,7 @@ const Index = () => {
   // getting selectedSiteDetails from local storage and storing it in state
   useEffect(() => {
     if (!window.localStorage.getItem("selectedSiteDetails")) {
-      window.localStorage.setItem("selectedSiteDetails", JSON.stringify(PDFcropSiteOptions[0]))
+      window.localStorage.setItem("selectedSiteDetails", JSON.stringify(PDFcropSiteOptions[1]))
     } else if (window.localStorage.getItem("selectedSiteDetails")) {
         const siteData = JSON.parse(window.localStorage.getItem("selectedSiteDetails"))
         setSelectedSiteDetailsState(siteData)

@@ -17,7 +17,7 @@ const PdfProcessSection = () => {
 
             <div className='w-full md:w-[80%] lg:w-[70%] bg-white flex flex-col justify-start items-center lg:items-start p-2 lg:py-5 md:rounded-lg md:shadow-2xl md:shadow-gray-300'>
 
-                <p className='text-black font-semibold text-2xl mpy-5 lg:mx-5 lg:my-2 xl:ms-8 xl:my-4 '> How Crop PDF Works </p>
+                <p className='text-black font-semibold text-2xl mpy-5 lg:mx-5 lg:my-2 xl:ms-8 xl:my-4 '> How PDF Crops Works </p>
                 <div className='w-full flex flex-col md:flex-row items-center justify-start py-5'>
 
                     {/* Images */}

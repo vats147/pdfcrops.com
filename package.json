@@ -32,7 +32,8 @@
     "react-icons": "^4.7.1",
     "react-new-window": "^1.0.1",
     "react-toastify": "^9.1.1",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "tailwind": "^4.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
