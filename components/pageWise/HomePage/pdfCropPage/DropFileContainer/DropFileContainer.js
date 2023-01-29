@@ -196,6 +196,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             <div className='flex flex-col items-center justify-start space-y-3'>
 
                 {/* Check boxes */}
+                   <h1 className='mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl '> Our Features</h1>
                 <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
                     <FormControlLabel className="m-1" control={
                         <Checkbox checked={settingOne} onChange={(e) => {
@@ -203,10 +204,10 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             setSettingOne(e.target.checked)
                         }} />} label="Auto Download" />
 
-                    <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
+                    {/* <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
                         window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
                         setSettingTwo(e.target.checked)
-                    }} />} label="Merge Crop" />
+                    }} />} label="Merge Crop" /> */}
 
                    
                 </div>
