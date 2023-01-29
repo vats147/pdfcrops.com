@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import logoOne from "../../../public/images/logos/logoOne.svg"
+import logoOne from "../../../public/images/logos/logoOne.png"
 
 // Images
 import amazonSmallLogo from "../../../public/images/logos/amazonSmallLogo.png"
