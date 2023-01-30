@@ -38,7 +38,7 @@ export default function App({ Component, pageProps }) {
 
           gtag('config', 'G-BRL79MR0BB');
         `}
-      </Script>
+      </Script> 
           <Component {...pageProps} />
           <Analytics />
           <ToastContainer
