@@ -14,6 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Script from 'next/script'
 
+import { Analytics } from '@vercel/analytics/react';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -41,6 +42,7 @@ export default function App({ Component, pageProps }) {
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5174630229786506" crossorigin="anonymous"></script>
       </Head>
           <Component {...pageProps} />
+          <Analytics />
           <ToastContainer
             position="bottom-center"
             autoClose={2500}
