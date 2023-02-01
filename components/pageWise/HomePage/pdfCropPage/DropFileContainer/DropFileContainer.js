@@ -280,7 +280,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             }
                         }}
                         className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
-                        POST
+                        UPLOAD
 
                     </button>
 
