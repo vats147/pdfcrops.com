@@ -82,22 +82,34 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             setIsLoading(true)
 
             let data = new FormData();
-            data.append('file', allPDFdata?.data);
+            data.append('pdfs', allPDFdata?.data);
             data.append('Ecommerce', selectedSiteDetailsState?.value);
             data.append('UserDetails', {
                 uid: user?.uid
             });
-            data.append("settingDetails", {
-                settingOne: false ? 0 : 1,
-                settingTwo: false ? 0 : 1,
-                settingThree: false ? 0 : 1,
-                settingFour: false ? 0 : 1,
-                settingFive: false ? 0 : 1,
-                settingSix: false ? 0 : 1,
-            })
+            
+            if({settingTwo: false ? 0 : 1})
+            {
+                data.append('settingTwo', 1);
+            }
+            else
+            {
+                data.append('settingTwo', 0);
+            }
+            // data.append('settingOne', {settingOne: false ? 0 : 1});
+
+            // data.append("settingDetails", {
+                
+            //     // settingOne: false ? 0 : 1,
+            //     // settingTwo: false ? 0 : 1,
+            //     // settingThree: false ? 0 : 1,
+            //     // settingFour: false ? 0 : 1,
+            //     // settingFive: false ? 0 : 1,
+            //     // settingSix: false ? 0 : 1,
+            // })
 
 
-            fetch("https://nodeapivercelhostingyoutube-production.up.railway.app/", {
+            fetch("http://localhost:3000/ ", {
                 method: 'POST',
                 body: data,
             })
@@ -111,18 +123,45 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     let binaryData = [];
                     binaryData.push(blob);
                     const fileURL = window.URL.createObjectURL(new Blob(binaryData, { type: "application/pdf" }))
+                    
+                    // Create Current Date object
+                    let currentDate = new Date();
+
+                    // Store EcommerceChoice 
+                    let EcommerceChoice = selectedSiteDetailsState?.value
+
+                    // Declare a prefix 
+                    let prefix;
+
+                    // Append value acccoring to user choice
+                    if(EcommerceChoice==1)
+                    {
+                        prefix="Flipkart"
+                    }
+                    else if(EcommerceChoice==2)
+                    {
+                        prefix="Meesho"
+
+                    }
+                    else if(EcommerceChoice==3)
+                    {
+                        prefix="GlowRoad"
+
+                    }
+                    
+                    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                     if(settingOne)
                     {
                     let alink = document.createElement('a');
                    
                     alink.href = fileURL;
-                    alink.download = "givemereport_" + Date.now() + ".pdf";
+                    alink.download ="PDFCROPS-"+prefix+"-" +currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf";
                     alink.click();
                     alink.remove()
                     }
-
+                    
                     setHrefState(fileURL)
-                    setFileDownloadState("givemereport_" + Date.now() + ".pdf")
+                    setFileDownloadState("PDFCROPS-"+prefix+"-" +currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf")
                     setIsDownloadPDFsfilesAvailable(true)
 
 
@@ -204,10 +243,10 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             setSettingOne(e.target.checked)
                         }} />} label="Auto Download" />
 
-                    {/* <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
                         window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
                         setSettingTwo(e.target.checked)
-                    }} />} label="Merge Crop" /> */}
+                    }} />} label="Merge Crop" />
 
                    
                 </div>

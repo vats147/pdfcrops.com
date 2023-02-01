@@ -50,7 +50,7 @@ const Index = () => {
       {/*Container */}
       <div className='w-full flex flex-col justify-start items-center'>
         <h4 className='my-5 font-bold text-3xl md:text-5xl text-center' onClick={() => console.log(selectedSiteDetailsState)}>
-          Crop  label of<span className={`${selectedSiteDetailsState?.bgColor} ${selectedSiteDetailsState?.textColor} px-3 sm:p-1 rounded-sm`}> {selectedSiteDetailsState?.name} </span>
+          Crop  label of <span className={`${selectedSiteDetailsState?.bgColor} ${selectedSiteDetailsState?.textColor} px-3 sm:p-1 rounded-sm`}> {selectedSiteDetailsState?.name} </span>
           
         </h4>
 
