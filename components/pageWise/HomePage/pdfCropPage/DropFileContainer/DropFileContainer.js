@@ -82,7 +82,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             setIsLoading(true)
 
             let data = new FormData();
-            data.append('files', allPDFdata?.data);
+            data.append('file', allPDFdata?.data);
             data.append('Ecommerce', selectedSiteDetailsState?.value);
             data.append('UserDetails', {
                 uid: user?.uid
