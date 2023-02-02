@@ -110,7 +110,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             // })
 
 
-            fetch("http://localhost:3000 ", {
+            fetch("https://nodeapivercelhostingyoutube-production.up.railway.app", {
                 method: 'POST',
                 body: data,
             })
