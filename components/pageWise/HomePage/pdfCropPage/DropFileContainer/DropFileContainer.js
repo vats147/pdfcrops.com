@@ -45,6 +45,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
     const uppy = React.useMemo(() => {
         return new Uppy({
             id: "uppy",
+             allowMultipleUploads: true,
             restrictions: {
                 allowedFileTypes: ["application/pdf"]
             }
@@ -109,7 +110,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             // })
 
 
-            fetch("https://nodeapivercelhostingyoutube-production.up.railway.app/ ", {
+            fetch("http://localhost:3000 ", {
                 method: 'POST',
                 body: data,
             })
@@ -156,6 +157,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                    
                     alink.href = fileURL;
                     alink.download ="PDFCROPS-"+prefix+"-" +currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf";
+                    
                     alink.click();
                     alink.remove()
                     }
@@ -243,10 +245,10 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             setSettingOne(e.target.checked)
                         }} />} label="Auto Download" />
 
-                    {/* <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
+                    <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
                         window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
                         setSettingTwo(e.target.checked)
-                    }} />} label="Merge Crop" /> */}
+                    }} />} label="Merge Crop" />
 
                    
                 </div>
@@ -280,7 +282,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             }
                         }}
                         className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data ? "hover:cursor-pointer" : "hover:cursor-not-allowed"} hover:bg-[#156BA9] `}>
-                        UPLOAD
+                        Upload
 
                     </button>
 

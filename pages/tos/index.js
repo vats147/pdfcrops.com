@@ -9,9 +9,7 @@ const Index = () => {
                 {/* Terms & Conditions */}
                 <div className='flex flex-col justify-start items-center space-y-2 mb-5'>
                     <h3 className='text-black text-5xl font-bold mb-5'> Terms & Conditions </h3>
-                    <p className='text-gray-500 text-base font-normal'>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt hic beatae ad aliquam molestiae tempora rerum molestias nam quibusdam odio officiis, optio facere quia modi similique eligendi ullam praesentium quod omnis veritatis? Quas animi modi hic nesciunt, ipsum recusandae sapiente quam assumenda. Similique quis eos velit aliquid, quam consequatur eius ea fugiat dolorem illum ex tempora omnis quas dolor alias reiciendis culpa repudiandae blanditiis fugit optio. Cum, esse illum quaerat nobis rerum ab quasi, iste dolor aut soluta culpa quos pariatur nam quibusdam id neque. Aperiam odio consequatur nostrum facilis aliquam, esse atque iure culpa possimus optio modi placeat libero.
-                    </p>
+                  
                 </div>
 
 
