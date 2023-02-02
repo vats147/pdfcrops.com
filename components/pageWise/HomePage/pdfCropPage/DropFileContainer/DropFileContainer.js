@@ -44,11 +44,11 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
     const uppy = React.useMemo(() => {
         return new Uppy({
-            id: "uppy",
+            id: "uppy",   autoProceed: true,
              allowMultipleUploads: true,
             restrictions: {
                 allowedFileTypes: ["application/pdf"]
-            }
+            },
         })
     }, [])
 
@@ -245,10 +245,10 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             setSettingOne(e.target.checked)
                         }} />} label="Auto Download" />
 
-                    <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
+                    {/* <FormControlLabel className="m-1" control={<Checkbox checked={settingTwo} onChange={(e) => {
                         window.localStorage.setItem("settingTwo", JSON.stringify(e.target.checked))
                         setSettingTwo(e.target.checked)
-                    }} />} label="Merge Crop" />
+                    }} />} label="Merge Crop" /> */}
 
                    
                 </div>
