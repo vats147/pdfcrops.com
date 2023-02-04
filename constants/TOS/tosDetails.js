@@ -13,7 +13,7 @@ export const tosDetails = [
     {
         id: 2,
         heading: "Fees",
-        details: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minus dignissimos dolor sequi accusantium aliquam expedita tempore sint harum nulla aliquid, numquam, possimus libero aut eligendi obcaecati, dolorum pariatur autem fugiat rerum suscipit? Ipsa consequuntur labore, ex fugiat dolorem exercitationem quaerat aliquid dolore aspernatur voluptate voluptatum fuga, reiciendis illo cumque veniam dicta perspiciatis iste? Voluptatem molestias nesciunt ipsa aperiam suscipit quis placeat, mollitia autem eveniet, nam dolore ex distinctio enim dicta eum expedita. Corporis, officiis amet numquam illum temporibus tenetur cum! Consectetur voluptate ex porro molestias amet fugiat natus perspiciatis sequi officiis iusto officia modi quo, magni eveniet eius omnis possimus voluptates quia at ullam nesciunt, maiores quam sed ad. Rerum sit dolorem inventore cum dolor atque excepturi fugiat id eligendi eos at pariatur, natus velit necessitatibus nam optio possimus, consequatur sint in quos deleniti. Hic ab quo fugit minus nemo perspiciatis quis dolores distinctio ipsam totam recusandae, ullam ratione libero eius? Recusandae at, vero corporis voluptates quae error nostrum, cum vel atque, officia enim autem impedit voluptate obcaecati officiis. A dignissimos architecto quasi minima deleniti quam modi obcaecati"
+        details: "Our service is free to use. Enjoy your free pack"
     },
     {
         id: 3,

@@ -19,7 +19,7 @@ const solutions = [
     icon: "flipkartSmallLogo",
     bgColor: "bg-[#FFE11B]",
     textColor: "text-[#287FF0]",
-    oneLineDescription: "Lorem ipsum dolor sit amet semibold"
+    oneLineDescription: "Flipkart Crop Option"
 },
 {
     id: 4,
@@ -28,7 +28,7 @@ const solutions = [
     icon: "meeshoSmallLogo",
     bgColor: "bg-[#EA4E85]",
     textColor: "text-white",
-    oneLineDescription: "Lorem ipsum dolor sit amet semibold"
+    oneLineDescription: "Meesho Crop Option"
 },
 {
     id: 3,
@@ -37,7 +37,7 @@ const solutions = [
     icon: "glowroadSmallLogo",
     bgColor: "bg-[#1A6977]",
     textColor: "text-white",
-    oneLineDescription: "Lorem ipsum dolor sit amet semibold"
+    oneLineDescription: "GlowRoad Crop Option"
 }
 ]
 
