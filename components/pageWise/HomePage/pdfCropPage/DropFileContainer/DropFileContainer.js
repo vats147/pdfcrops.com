@@ -137,14 +137,18 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     // Append value acccoring to user choice
                     if(EcommerceChoice==1)
                     {
+                        prefix="Amazon"
+                    }
+                    if(EcommerceChoice==2)
+                    {
                         prefix="Flipkart"
                     }
-                    else if(EcommerceChoice==2)
+                    else if(EcommerceChoice==3)
                     {
                         prefix="Meesho"
 
                     }
-                    else if(EcommerceChoice==3)
+                    else if(EcommerceChoice==4)
                     {
                         prefix="GlowRoad"
 
