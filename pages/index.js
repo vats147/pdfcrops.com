@@ -5,6 +5,8 @@ import ServiceCardContainer from '@/components/pageWise/HomePage/components/Serv
 import PdfProcessSection from '@/components/pageWise/HomePage/components/PdfProcessSection/PdfProcessSection'
 import FeaturesSection from '@/components/pageWise/HomePage/components/FeaturesSection/FeaturesSection'
 
+
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -16,6 +18,7 @@ export default function Home() {
         <StatsSection />
         <PdfProcessSection />
         <FeaturesSection />
+        
       </main>
     </>
   )
