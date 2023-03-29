@@ -19,7 +19,7 @@ const BaseOneLayout = ({ children }) => {
     return (
         <div className='w-full h-auto bg-gray-100 flex flex-col justify-start items-center overflow-x-hidden overflow-y-scroll'>
             <Head>
-                <title> PDF Crops | Your Cloud PDF Tools </title>
+                <title> PDF Crops | Your Cloud PDF Tools & Online Label Crop</title>
                 <link rel="canonical" href="https://pdfcrops.com/"></link>
 
                 <meta property="og:description" content="pdfcrops is best and safe site for tool such as crop and process Amazon, Flipkart and other e-commerce label, merge crop pdf"></meta>
