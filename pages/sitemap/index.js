@@ -32,7 +32,7 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
 <priority>0.9</priority>
 </url>
 <url>
-<loc>https://www.pdfcrops.com/tools/pdf/crop</loc>
+<loc>https://www.pdfcrops.com/tools/pdf/compress</loc>
 <lastmod>2023-03-29T12:16:24+01:00</lastmod>
 <priority>0.7</priority>
 </url>
