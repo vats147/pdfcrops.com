@@ -29,6 +29,7 @@ export default function App({ Component, pageProps }) {
     <meta name="monetag" content="cd3bff155eced31eeea63e53f2045562"></meta>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5174630229786506" crossorigin="anonymous"></script>
       </Head>
+      
       <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-BRL79MR0BB"/>
     <Script id="google-analytics" strategy="afterInteractive">
         {`
