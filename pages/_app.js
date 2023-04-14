@@ -18,7 +18,7 @@ import Script from 'next/script';
 
 
 import { Analytics } from '@vercel/analytics/react';
-import sw from '../public/sw';
+
 
 export default function App({ Component, pageProps }) {
   return (
@@ -28,8 +28,6 @@ export default function App({ Component, pageProps }) {
   
     
     <meta name="monetag" content="cd3bff155eced31eeea63e53f2045562"></meta>
-    
-    <Script src="../public/sw.js"></Script>
     
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5174630229786506" crossorigin="anonymous"></script>
       </Head>

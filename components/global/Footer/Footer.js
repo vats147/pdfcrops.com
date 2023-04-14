@@ -68,6 +68,9 @@ const Footer = () => {
               <div>
                 <Link href="/tools/pdf/compress" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Compress </Link>
               </div>
+              <div>
+                <Link href="/blog" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Blog </Link>
+              </div>
 
               {/* <div>
                 <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> About </a>
