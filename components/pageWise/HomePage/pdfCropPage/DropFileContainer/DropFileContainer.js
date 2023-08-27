@@ -124,7 +124,19 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
         } catch (error) {
             console.error(error);
-            throw error;
+            const notify = () => toast.error('Please upload a file again', {
+                position: "bottom-center",
+                autoClose: 2500,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            notify()
+            
+
         }
     }
 
