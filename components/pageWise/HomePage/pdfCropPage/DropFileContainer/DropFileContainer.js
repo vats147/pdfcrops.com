@@ -16,6 +16,8 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../../../../firebaseConfig'
 
+// Import pdf-lib for cropping logic
+import { PDFDocument } from 'pdf-lib';
 
 function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsState }) {
 
@@ -44,8 +46,8 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
     const uppy = React.useMemo(() => {
         return new Uppy({
-            id: "uppy",   autoProceed: true,
-             allowMultipleUploads: true,
+            id: "uppy", autoProceed: true,
+            allowMultipleUploads: true,
             restrictions: {
                 allowedFileTypes: ["application/pdf"]
             },
@@ -76,6 +78,55 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
 
 
 
+    const cropPdf = async (x, y, width, height) => {
+        setIsLoading(true)
+        console.log("Croppdf Called");
+        try {
+            const pdfBuffer = await allPDFdata.data.arrayBuffer(); // Convert Blob to ArrayBuffer
+            const pdfDoc = await PDFDocument.load(pdfBuffer);
+
+            for (let i = 0; i < pdfDoc.getPages().length; i++) {
+                const page = pdfDoc.getPage(i);
+                page.setCropBox(x, y, width, height);
+            }
+
+
+            console.log("PDF CROPPED Called");
+
+            const modifiedPDFBuffer = await pdfDoc.save();
+            const modifiedBlob = new Blob([modifiedPDFBuffer], { type: 'application/pdf' });
+
+            const currentDate = new Date();
+            const prefix = selectedSiteDetailsState.value === 1 ? "Amazon" :
+                selectedSiteDetailsState.value === 2 ? "Flipkart" :
+                    selectedSiteDetailsState.value === 3 ? "Meesho" :
+                        selectedSiteDetailsState.value === 4 ? "GlowRoad" : "Unknown";
+            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            const filename = `PDFCROPS.com-${prefix}-${currentDate.getDate()}-${months[currentDate.getMonth()]}-${currentDate.getFullYear().toString().slice(-2)}-${currentDate.getHours()}-${currentDate.getMinutes()}-${currentDate.getSeconds()}.pdf`;
+
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(modifiedBlob);
+            downloadLink.download = filename;
+            downloadLink.click();
+
+            console.log(downloadLink.href);
+
+            setHrefState(URL.createObjectURL(modifiedBlob))
+            setFileDownloadState(filename)
+
+            setIsDownloadPDFsfilesAvailable(true)
+
+            
+            URL.revokeObjectURL(downloadLink.href);
+            // setHrefState(downloadLink)
+
+
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
 
     const postPDF = async () => {
         if (selectedSiteDetailsState && allPDFdata) {
@@ -88,19 +139,17 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             data.append('UserDetails', {
                 uid: user?.uid
             });
-            
-            if({settingTwo: false ? 0 : 1})
-            {
+
+            if ({ settingTwo: false ? 0 : 1 }) {
                 data.append('settingTwo', 1);
             }
-            else
-            {
+            else {
                 data.append('settingTwo', 0);
             }
             // data.append('settingOne', {settingOne: false ? 0 : 1});
 
             // data.append("settingDetails", {
-                
+
             //     // settingOne: false ? 0 : 1,
             //     // settingTwo: false ? 0 : 1,
             //     // settingThree: false ? 0 : 1,
@@ -124,7 +173,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     let binaryData = [];
                     binaryData.push(blob);
                     const fileURL = window.URL.createObjectURL(new Blob(binaryData, { type: "application/pdf" }))
-                    
+
                     // Create Current Date object
                     let currentDate = new Date();
 
@@ -135,39 +184,35 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                     let prefix;
 
                     // Append value acccoring to user choice
-                    if(EcommerceChoice==1)
-                    {
-                        prefix="Amazon"
+                    if (EcommerceChoice == 1) {
+                        prefix = "Amazon"
                     }
-                    if(EcommerceChoice==2)
-                    {
-                        prefix="Flipkart"
+                    if (EcommerceChoice == 2) {
+                        prefix = "Flipkart"
                     }
-                    else if(EcommerceChoice==3)
-                    {
-                        prefix="Meesho"
+                    else if (EcommerceChoice == 3) {
+                        prefix = "Meesho"
 
                     }
-                    else if(EcommerceChoice==4)
-                    {
-                        prefix="GlowRoad"
+                    else if (EcommerceChoice == 4) {
+                        prefix = "GlowRoad"
 
                     }
 
                     let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                    if(settingOne)
-                    {
-                    let alink = document.createElement('a');
-                   
-                    alink.href = fileURL;
-                    alink.download ="PDFCROPS-"+prefix+"-" +currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf";
-                    
-                    alink.click();
-                    alink.remove()
+                    if (settingOne) {
+                        let alink = document.createElement('a');
+
+                        alink.href = fileURL;
+                        alink.download = "PDFCROPS-" + prefix + "-" + currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf";
+
+                        alink.click();
+                        alink.remove()
                     }
-                    
+
                     setHrefState(fileURL)
-                    setFileDownloadState("PDFCROPS-"+prefix+"-" +currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf")
+                    setFileDownloadState("PDFCROPS-" + prefix + "-" + currentDate.getDate() + "-" + months[currentDate.getMonth()] + "-" + currentDate.getFullYear().toString().slice(-2) + "-" + currentDate.getHours() + "-" + currentDate.getMinutes() + ".pdf")
+
                     setIsDownloadPDFsfilesAvailable(true)
 
 
@@ -241,7 +286,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
             <div className='flex flex-col items-center justify-start space-y-3'>
 
                 {/* Check boxes */}
-                   <h1 className='mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl '> Our Features</h1>
+                <h1 className='mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-2xl lg:text-2xl '> Our Features</h1>
                 <div className='w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200'>
                     <FormControlLabel className="m-1" control={
                         <Checkbox checked={settingOne} onChange={(e) => {
@@ -254,7 +299,7 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                         setSettingTwo(e.target.checked)
                     }} />} label="Merge Crop" /> */}
 
-                   
+
                 </div>
 
                 <Dashboard
@@ -280,7 +325,53 @@ function DropFileContainer({ selectedSiteDetailsState, setSelectedSiteDetailsSta
                             if (!user && !loading) {
                                 signInWithGoogle()
                             } else if (user && !loading && allPDFdata.data) {
-                                postPDF()
+
+                                // Client side rendering
+                                
+                                // Amazon
+                                if (selectedSiteDetailsState?.value === 1) {
+                                    cropPdf()
+                                }
+
+                                // Flipkart
+                                if (selectedSiteDetailsState?.value === 2) {
+
+                                    cropPdf( 170, 467, 255, 353)
+                                }
+
+                                // Meesho
+                                if (selectedSiteDetailsState?.value === 3) {
+
+                                    cropPdf( 0, 490, 600, 600)
+                                }
+                                
+                                // GlowRoad
+                                if (selectedSiteDetailsState?.value === 4) {
+
+                                    cropPdf(25, 220, 545, 300)
+                                }
+
+                                uppy.cancelAll()
+                                setIsLoading(false)
+
+                                setIsDownloadPDFsfilesAvailable(true)
+                                setAllPDFdata({})
+
+                                const notify = () => toast.success('Files are ready for download!', {
+                                    position: "bottom-center",
+                                    autoClose: false,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    theme: "light",
+                                });
+                                notify()
+
+                                // API CALLED
+                                // postPDF()
+
                             } else if (!allPDFdata?.data) {
                                 uploadFileInfoToast()
                             }
