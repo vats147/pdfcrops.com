@@ -21,7 +21,10 @@ import Modal from "@mui/material/Modal";
 
 // Import pdf-lib for cropping logic
 import { PDFDocument } from "pdf-lib";
-import UPIImage from "../../../../../public/images/UPI.jpg"
+
+import Image from "next/image";
+
+import UPIImage from "../../../../../public/images/UPI.jpg";
 
 function DropFileContainer({
   selectedSiteDetailsState,
@@ -366,42 +369,60 @@ function DropFileContainer({
 
   return (
     <>
-      <div>
-        <Modal
-          disableEnforceFocus
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={style}>
-            <Typography id="modal-modal-title" variant="h4" component="h1">
-              Consider To Donate 😊
-            </Typography>
-
-            <div className="flex items-center">
-              <img
-                src="../../../../../public/images/UPI.jpg"
-                alt="Description of the image"
-                className="w-32 h-auto mr-4"
-              />
-              <div>
-                <Typography id="modal-modal-description" className="mt-2">
-                  I'm a single developer, and keeping TheSellerBuddy has a
-                  pretty high annual cost. I want to keep the website free and
-                  I've been doing it for years but if you use my website and
-                  want to help me in their development, a donation is the best
-                  way to do it. Most of all, your donation will make it possible
-                  to keep up the current development standards, and will bring
-                  new features and improvements to the website.
-                </Typography>
-              </div>
-            </div>
-          </Box>
-        </Modal>
+      <div className="w-full">
+  <Modal
+    disableEnforceFocus
+    open={open}
+    onClose={handleClose}
+    aria-labelledby="modal-modal-title"
+    aria-describedby="modal-modal-description"
+  >
+    <div className="w-11/12 md:w-3/4 lg:w-1/2 xl:w-2/5 mx-auto bg-white rounded-lg p-6">
+      <div className="flex justify-end">
+        <button onClick={handleClose} className="text-gray-500 hover:text-gray-700 focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
 
-      <Button onClick={handleOpen}>Open modal</Button>
+      <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">
+        Consider To Donate 😊
+      </h1>
+
+      <div className="flex flex-col md:flex-row items-center justify-center">
+        <Image
+          draggable="false"
+          quality={100}
+          unoptimized
+          src={UPIImage}
+          alt="upi image "
+          className="w-64 md:w-96 h-auto mb-4 md:mb-0"
+        />
+
+        <div className="md:ml-8">
+          <Typography className="text-base md:text-lg">
+            I'm a single developer, and keeping pdfcrops.com has a pretty high annual cost. I want to keep the website free and I've been doing it for years but if you use my website and want to help me in their development, a donation is the best way to do it. Most of all, your donation will make it possible to keep up the current development standards, and will bring new features and improvements to the website.
+          </Typography>
+        </div>
+      </div>
+    </div>
+  </Modal>
+</div>
+
+
+     
 
       <div className="flex flex-col items-center justify-start space-y-3">
         {/* Check boxes */}
