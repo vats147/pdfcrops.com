@@ -31,6 +31,13 @@ import {
 } from "../../../../../utils/flipkartPdfCropper";
 import { getFlipkartCropCoordinates } from "../../../../../utils/flipkartPdfCropper";
 
+// Import Meesho-specific cropping utility
+import { 
+  cropMeeshoLabel,
+  cropMeeshoLabelSimple,
+  generateMeeshoFilename 
+} from "../../../../../utils/meeshoPdfCropper";
+
 import Image from "next/image";
 
 import UPIImage from "../../../../../public/images/UPI.jpg";
@@ -55,6 +62,16 @@ function DropFileContainer({
   const [settingFive, setSettingFive] = useState(false);
   const [settingSix, setSettingSix] = useState(false);
   const [debugCrop, setDebugCrop] = useState(false);
+
+  // Meesho-specific checkbox states
+  const [meeshoPickupSorting, setMeeshoPickupSorting] = useState(false);
+  const [meeshoSkuSorting, setMeeshoSkuSorting] = useState(false);
+  const [meesho4LabelA4, setMeesho4LabelA4] = useState(false);
+  const [meeshoOrderNumber, setMeeshoOrderNumber] = useState(false);
+  const [meeshoPrintText, setMeeshoPrintText] = useState(false);
+  const [meeshoPrintTextValue, setMeeshoPrintTextValue] = useState("Dispatch on 04-10-2025, Thank you for choosing us...");
+  const [meeshoInvoice, setMeeshoInvoice] = useState(false);
+  const [meeshoSkuOrderSummary, setMeeshoSkuOrderSummary] = useState(false);
 
   const [hrefState, setHrefState] = useState("");
   const [fileDownloadState, setFileDownloadState] = useState("");
@@ -245,6 +262,74 @@ function DropFileContainer({
     }
   };
 
+  // Dedicated Meesho cropping function with all options
+  const cropMeeshoPdf = async () => {
+    setIsLoading(true);
+    console.log("Meesho Advanced Crop Called");
+    console.log("Meesho Options:", {
+      pickupSorting: meeshoPickupSorting,
+      skuSorting: meeshoSkuSorting,
+      fourLabelA4: meesho4LabelA4,
+      orderNumber: meeshoOrderNumber,
+      printText: meeshoPrintText,
+      printTextValue: meeshoPrintTextValue,
+      invoice: meeshoInvoice,
+      skuOrderSummary: meeshoSkuOrderSummary,
+    });
+
+    try {
+      // Use the advanced Meesho cropper with all selected options
+      const croppedBlob = await cropMeeshoLabel(
+        allPDFdata.data,
+        {
+          pickupSorting: meeshoPickupSorting,
+          skuSorting: meeshoSkuSorting,
+          fourLabelA4: meesho4LabelA4,
+          orderNumber: meeshoOrderNumber,
+          printText: meeshoPrintText,
+          printTextValue: meeshoPrintTextValue,
+          invoice: meeshoInvoice,
+          skuOrderSummary: meeshoSkuOrderSummary,
+          debug: debugCrop,
+        }
+      );
+
+      // Generate filename
+      const filename = generateMeeshoFilename();
+
+      // Create download link
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(croppedBlob);
+      downloadLink.download = filename;
+      downloadLink.click();
+
+      console.log("Meesho PDF cropped successfully:", downloadLink.href);
+
+      // Update state for download button
+      setHrefState(URL.createObjectURL(croppedBlob));
+      setFileDownloadState(filename);
+      setIsDownloadPDFsfilesAvailable(true);
+
+      URL.revokeObjectURL(downloadLink.href);
+    } catch (error) {
+      console.error("Meesho crop error:", error);
+      const notify = () =>
+        toast.error("Failed to crop Meesho label. Please upload the file again.", {
+          position: "bottom-center",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      notify();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const postPDF = async () => {
     if (selectedSiteDetailsState && allPDFdata) {
       console.log(`----- postPDF is running -----`);
@@ -427,6 +512,32 @@ function DropFileContainer({
     setSettingSix(
       JSON.parse(window.localStorage.getItem("settingSix")) || false
     );
+
+    // Meesho-specific settings from localStorage
+    setMeeshoPickupSorting(
+      JSON.parse(window.localStorage.getItem("meeshoPickupSorting")) || false
+    );
+    setMeeshoSkuSorting(
+      JSON.parse(window.localStorage.getItem("meeshoSkuSorting")) || false
+    );
+    setMeesho4LabelA4(
+      JSON.parse(window.localStorage.getItem("meesho4LabelA4")) || false
+    );
+    setMeeshoOrderNumber(
+      JSON.parse(window.localStorage.getItem("meeshoOrderNumber")) || false
+    );
+    setMeeshoPrintText(
+      JSON.parse(window.localStorage.getItem("meeshoPrintText")) || false
+    );
+    setMeeshoPrintTextValue(
+      window.localStorage.getItem("meeshoPrintTextValue") || "Dispatch on 04-10-2025, Thank you for choosing us..."
+    );
+    setMeeshoInvoice(
+      JSON.parse(window.localStorage.getItem("meeshoInvoice")) || false
+    );
+    setMeeshoSkuOrderSummary(
+      JSON.parse(window.localStorage.getItem("meeshoSkuOrderSummary")) || false
+    );
   }, []);
 
   const style = {
@@ -531,6 +642,145 @@ function DropFileContainer({
                     }} />} label="Merge Crop" /> */}
         </div>
 
+        {/* Meesho-specific options - HIDDEN FOR NOW (WILL BE ENABLED IN 1 WEEK) */}
+        {/* TODO: Uncomment this section for production release after 1 week */}
+        {/* {selectedSiteDetailsState?.value === 3 && (
+          <div className="w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-col justify-start items-start space-y-2 my-5 p-5 rounded-md bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg border-2 border-green-200">
+            <h2 className="text-xl font-bold text-gray-800 mb-3 w-full text-center">
+              Meesho Label Crop Options
+            </h2>
+            
+            <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meeshoPickupSorting}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meeshoPickupSorting",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeeshoPickupSorting(e.target.checked);
+                    }}
+                  />
+                }
+                label="Pickup Sorting"
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meeshoSkuSorting}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meeshoSkuSorting",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeeshoSkuSorting(e.target.checked);
+                    }}
+                  />
+                }
+                label="SKU Sorting"
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meesho4LabelA4}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meesho4LabelA4",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeesho4LabelA4(e.target.checked);
+                    }}
+                  />
+                }
+                label="4 Label in A4 Page"
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meeshoOrderNumber}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meeshoOrderNumber",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeeshoOrderNumber(e.target.checked);
+                    }}
+                  />
+                }
+                label="Order Number"
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meeshoInvoice}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meeshoInvoice",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeeshoInvoice(e.target.checked);
+                    }}
+                  />
+                }
+                label="Invoice"
+              />
+
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meeshoSkuOrderSummary}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meeshoSkuOrderSummary",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeeshoSkuOrderSummary(e.target.checked);
+                    }}
+                  />
+                }
+                label="SKU and Order Summary"
+              />
+            </div>
+
+            <div className="w-full flex flex-col space-y-2 mt-3">
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={meeshoPrintText}
+                    onChange={(e) => {
+                      window.localStorage.setItem(
+                        "meeshoPrintText",
+                        JSON.stringify(e.target.checked)
+                      );
+                      setMeeshoPrintText(e.target.checked);
+                    }}
+                  />
+                }
+                label="Print text on label"
+              />
+              
+              {meeshoPrintText && (
+                <input
+                  type="text"
+                  value={meeshoPrintTextValue}
+                  onChange={(e) => {
+                    window.localStorage.setItem("meeshoPrintTextValue", e.target.value);
+                    setMeeshoPrintTextValue(e.target.value);
+                  }}
+                  placeholder="e.g. Dispatch on 04-10-2025, Thank you for choosing us..."
+                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-sm"
+                />
+              )}
+            </div>
+          </div>
+        )} */}
+
         <Dashboard
           uppy={uppy}
           width="90vw"
@@ -590,7 +840,8 @@ function DropFileContainer({
                   notify();
                 }
 
-                // Meesho
+                // Meesho - Using basic crop for now (advanced options hidden for 1 week)
+                // TODO: Switch to cropMeeshoPdf() when advanced options are enabled
                 else if (selectedSiteDetailsState?.value === 3) {
                   cropPdf(0, 490, 600, 600);
                   uppy.cancelAll();
@@ -611,6 +862,26 @@ function DropFileContainer({
                     });
                   notify();
                 }
+                
+                // ALTERNATIVE (for when advanced options are enabled):
+                // else if (selectedSiteDetailsState?.value === 3) {
+                //   await cropMeeshoPdf();
+                //   uppy.cancelAll();
+                //   setAllPDFdata({});
+                //   
+                //   const notify = () =>
+                //     toast.success("Files are ready for download!", {
+                //       position: "bottom-center",
+                //       autoClose: false,
+                //       hideProgressBar: false,
+                //       closeOnClick: true,
+                //       pauseOnHover: true,
+                //       draggable: true,
+                //       progress: undefined,
+                //       theme: "light",
+                //     });
+                //   notify();
+                // }
 
                 // GlowRoad
                 else if (selectedSiteDetailsState?.value === 4) {

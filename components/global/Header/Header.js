@@ -27,8 +27,11 @@ const Header = () => {
       <div className='hidden md:inline-flex flex-center items-center space-x-10'>
         <PdfTab />
        
+        <Link href={`/blog`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> Blog</Link>
         
-        <Link href={`/contact`} className="text-base font-medium text-black"> Contact Us</Link>
+        <Link href={`/faq`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> FAQ</Link>
+        
+        <Link href={`/contact`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> Contact Us</Link>
        
 
 

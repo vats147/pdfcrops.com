@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "print-flipkart": "node ./scripts/print-flipkart-pdf.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -27,6 +28,8 @@
     "firebase": "^9.16.0",
     "next": "^13.1.6",
     "pdf-lib": "^1.17.1",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^3.11.174",
     "react": "18.2.0",
     "react-alice-carousel": "^2.7.0",
     "react-dom": "18.2.0",

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic PDF Cropper - Standalone Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .section {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        input[type="file"]:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .option {
+            display: flex;
+            flex-direction: column;
+        }
+        .option label {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+        .option input, .option select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .btn-preview {
+            background: #3b82f6;
+            color: white;
+        }
+        .btn-preview:hover:not(:disabled) {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+        .btn-crop {
+            background: #10b981;
+            color: white;
+        }
+        .btn-crop:hover:not(:disabled) {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+        }
+        .result-box {
+            background: #f0fdf4;
+            border: 2px solid #10b981;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+        }
+        .result-box.show {
+            display: block;
+        }
+        .result-box h3 {
+            color: #059669;
+            margin-bottom: 10px;
+        }
+        .result-box pre {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .error-box {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            display: none;
+        }
+        .error-box.show {
+            display: block;
+        }
+        .error-box h3 {
+            color: #dc2626;
+            margin-bottom: 10px;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+        .loading.show {
+            display: block;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .info-box strong {
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔪 Dynamic PDF Cropper</h1>
+        <p class="subtitle">Automatically detect and crop PDFs at dashed line separators</p>
+        
+        <div class="info-box">
+            <strong>✨ How it works:</strong> Upload a PDF with a dashed line (like shipping labels). 
+            The tool will automatically detect the line position and crop the content above or below it—no hardcoded coordinates needed!
+        </div>
+        
+        <div class="section">
+            <h3>📤 Upload PDF</h3>
+            <label for="pdfInput">Select a PDF file with a dashed line separator:</label>
+            <input type="file" id="pdfInput" accept="application/pdf">
+        </div>
+        
+        <div class="section">
+            <h3>⚙️ Options</h3>
+            <div class="options-grid">
+                <div class="option">
+                    <label>Crop Direction</label>
+                    <select id="cropDirection">
+                        <option value="above">Keep content above line</option>
+                        <option value="below">Keep content below line</option>
+                    </select>
+                </div>
+                <div class="option">
+                    <label>Min Dash Length (px)</label>
+                    <input type="number" id="minDashLength" value="50">
+                </div>
+                <div class="option">
+                    <label>Top Margin</label>
+                    <input type="number" id="topMargin" value="10">
+                </div>
+                <div class="option">
+                    <label>Bottom Margin</label>
+                    <input type="number" id="bottomMargin" value="10">
+                </div>
+                <div class="option">
+                    <label>Left Margin</label>
+                    <input type="number" id="leftMargin" value="10">
+                </div>
+                <div class="option">
+                    <label>Right Margin</label>
+                    <input type="number" id="rightMargin" value="10">
+                </div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <button class="btn-preview" id="previewBtn" disabled>🔍 Preview Detection</button>
+            <button class="btn-crop" id="cropBtn" disabled>✂️ Crop PDF</button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing PDF...</p>
+        </div>
+        
+        <div class="result-box" id="resultBox">
+            <h3>✅ Detection Results</h3>
+            <pre id="resultContent"></pre>
+        </div>
+        
+        <div class="error-box" id="errorBox">
+            <h3>❌ Error</h3>
+            <p id="errorContent"></p>
+        </div>
+    </div>
+
+    <script>
+        // Set up PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+        
+        let selectedFile = null;
+        
+        // File selection
+        document.getElementById('pdfInput').addEventListener('change', (e) => {
+            selectedFile = e.target.files[0];
+            const previewBtn = document.getElementById('previewBtn');
+            const cropBtn = document.getElementById('cropBtn');
+            
+            if (selectedFile && selectedFile.type === 'application/pdf') {
+                previewBtn.disabled = false;
+                cropBtn.disabled = false;
+                hideMessages();
+            } else {
+                previewBtn.disabled = true;
+                cropBtn.disabled = true;
+                showError('Please select a valid PDF file');
+            }
+        });
+        
+        // Preview Detection
+        document.getElementById('previewBtn').addEventListener('click', async () => {
+            if (!selectedFile) return;
+            
+            showLoading();
+            hideMessages();
+            
+            try {
+                const result = await detectDashedLines(selectedFile);
+                const resultText = JSON.stringify(result, null, 2);
+                document.getElementById('resultContent').textContent = resultText;
+                document.getElementById('resultBox').classList.add('show');
+                console.log('Detection result:', result);
+            } catch (error) {
+                showError(error.message);
+                console.error(error);
+            } finally {
+                hideLoading();
+            }
+        });
+        
+        // Crop PDF
+        document.getElementById('cropBtn').addEventListener('click', async () => {
+            if (!selectedFile) return;
+            
+            showLoading();
+            hideMessages();
+            
+            try {
+                const croppedBlob = await cropPdfByDashedLine(selectedFile);
+                
+                // Download the cropped PDF
+                const url = URL.createObjectURL(croppedBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `cropped-${selectedFile.name}`;
+                a.click();
+                URL.revokeObjectURL(url);
+                
+                showResult('✅ PDF cropped successfully! Download started.');
+            } catch (error) {
+                showError(error.message);
+                console.error(error);
+            } finally {
+                hideLoading();
+            }
+        });
+        
+        // Detect dashed lines in PDF
+        async function detectDashedLines(file) {
+            const options = getOptions();
+            const arrayBuffer = await file.arrayBuffer();
+            
+            const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+            const pdf = await loadingTask.promise;
+            const page = await pdf.getPage(1);
+            const viewport = page.getViewport({ scale: 1.0 });
+            const ops = await page.getOperatorList();
+            
+            const dashedLines = [];
+            let isDashedMode = false;
+            let lastMoveTo = null;
+            
+            for (let i = 0; i < ops.fnArray.length; i++) {
+                const op = ops.fnArray[i];
+                const args = ops.argsArray[i];
+                
+                if (op === pdfjsLib.OPS.setLineDash) {
+                    const dashArray = args[0];
+                    isDashedMode = dashArray && dashArray.length > 0;
+                }
+                
+                if (op === pdfjsLib.OPS.moveTo) {
+                    lastMoveTo = { x: args[0], y: args[1] };
+                }
+                
+                if (op === pdfjsLib.OPS.lineTo && isDashedMode && lastMoveTo) {
+                    const lineEnd = { x: args[0], y: args[1] };
+                    const length = Math.sqrt(
+                        Math.pow(lineEnd.x - lastMoveTo.x, 2) + 
+                        Math.pow(lineEnd.y - lastMoveTo.y, 2)
+                    );
+                    
+                    const isHorizontal = Math.abs(lineEnd.y - lastMoveTo.y) < 5;
+                    
+                    if (isHorizontal && length >= options.minDashLength) {
+                        dashedLines.push({
+                            y: lastMoveTo.y,
+                            x1: lastMoveTo.x,
+                            x2: lineEnd.x,
+                            length: length,
+                        });
+                    }
+                    
+                    lastMoveTo = lineEnd;
+                }
+            }
+            
+            await pdf.destroy();
+            
+            return {
+                pageWidth: viewport.width,
+                pageHeight: viewport.height,
+                dashedLinesFound: dashedLines.length,
+                dashedLines: dashedLines,
+            };
+        }
+        
+        // Crop PDF by dashed line
+        async function cropPdfByDashedLine(file) {
+            const options = getOptions();
+            
+            // Detect line first
+            const detection = await detectDashedLines(file);
+            
+            if (detection.dashedLines.length === 0) {
+                throw new Error('No dashed lines detected. Try lowering the "Min Dash Length" value.');
+            }
+            
+            const dashedLineY = detection.dashedLines[0].y;
+            console.log('Using dashed line at Y =', dashedLineY);
+            
+            // Load PDF with pdf-lib
+            const arrayBuffer = await file.arrayBuffer();
+            const pdfDoc = await PDFLib.PDFDocument.load(arrayBuffer);
+            const pages = pdfDoc.getPages();
+            
+            for (const page of pages) {
+                const { width, height } = page.getSize();
+                
+                let cropX, cropY, cropWidth, cropHeight;
+                
+                if (options.cropAboveLine) {
+                    cropX = 0 + options.leftMargin;
+                    cropY = dashedLineY + options.bottomMargin;
+                    cropWidth = width - options.leftMargin - options.rightMargin;
+                    cropHeight = height - dashedLineY - options.topMargin - options.bottomMargin;
+                } else {
+                    cropX = 0 + options.leftMargin;
+                    cropY = 0 + options.bottomMargin;
+                    cropWidth = width - options.leftMargin - options.rightMargin;
+                    cropHeight = dashedLineY - options.topMargin - options.bottomMargin;
+                }
+                
+                page.setCropBox(cropX, cropY, cropWidth, cropHeight);
+                console.log('Crop applied:', { x: cropX, y: cropY, width: cropWidth, height: cropHeight });
+            }
+            
+            const pdfBytes = await pdfDoc.save();
+            return new Blob([pdfBytes], { type: 'application/pdf' });
+        }
+        
+        // Get options from form
+        function getOptions() {
+            return {
+                cropAboveLine: document.getElementById('cropDirection').value === 'above',
+                minDashLength: parseInt(document.getElementById('minDashLength').value),
+                topMargin: parseInt(document.getElementById('topMargin').value),
+                bottomMargin: parseInt(document.getElementById('bottomMargin').value),
+                leftMargin: parseInt(document.getElementById('leftMargin').value),
+                rightMargin: parseInt(document.getElementById('rightMargin').value),
+            };
+        }
+        
+        // UI helpers
+        function showLoading() {
+            document.getElementById('loading').classList.add('show');
+        }
+        
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('show');
+        }
+        
+        function showResult(text) {
+            document.getElementById('resultContent').textContent = text;
+            document.getElementById('resultBox').classList.add('show');
+        }
+        
+        function showError(text) {
+            document.getElementById('errorContent').textContent = text;
+            document.getElementById('errorBox').classList.add('show');
+        }
+        
+        function hideMessages() {
+            document.getElementById('resultBox').classList.remove('show');
+            document.getElementById('errorBox').classList.remove('show');
+        }
+    </script>
+</body>
+</html>

@@ -55,21 +55,19 @@ const Footer = () => {
 
             <nav className="flex flex-col gap-4">
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Flipkart Crop</Link>
+                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Flipkart Label Crop</Link>
               </div>
 
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Meesho Crop </Link>
+                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Meesho Label Crop </Link>
               </div>
 
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> GlowRoad Crop </Link>
+                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> GlowRoad Label Crop </Link>
               </div>
+              
               <div>
-                <Link href="/tools/pdf/compress" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Compress </Link>
-              </div>
-              <div>
-                <Link href="/blog" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Blog </Link>
+                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Amazon Label Crop </Link>
               </div>
 
               {/* <div>
@@ -109,12 +107,12 @@ const Footer = () => {
                 <Link href="/contact" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Contact Us</Link>
               </div>
 
-              
-
-              
+              <div>
+                <Link href="/faq" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">FAQ</Link>
+              </div>
 
               <div>
-                <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">FAQ</a>
+                <Link href="/blog" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Blog</Link>
               </div>
             </nav>
           </div>
