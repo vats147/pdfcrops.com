@@ -20,11 +20,11 @@ const BaseOneLayout = ({ children }) => {
         <div className='w-full h-auto bg-gray-100 flex flex-col justify-start items-center overflow-x-hidden overflow-y-scroll'>
             <Head>
                 <title> PDF Crops | Free Online Label Crop | GlowRoad Meesho Flipkart  </title>
-                <link rel="canonical" href="https://pdfcrops.com/"></link>
+                <link rel="canonical" href="https://pdfcrops.app/"></link>
 
                 <meta property="og:description" content="pdfcrops is best, free and safe site for tool such as crop and process Amazon, Flipkart and other e-commerce label, merge crop pdf"></meta>
 
-                <meta property="og:url" content="https://pdfcrops.com/"></meta>
+                <meta property="og:url" content="https://pdfcrops.app/"></meta>
 
                 <meta property="og:title" content=" PDF Crops | Free Online Label Crop | GlowRoad Meesho Flipkart "></meta>
 

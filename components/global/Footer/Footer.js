@@ -18,7 +18,7 @@ const Footer = () => {
             </div>
             {/* <!-- logo - end --> */}
 
-            <p className="text-gray-500 sm:pr-8 mb-6">pdfcrops.com is the fastest and easiest way to crop PDFs for your ecommerce business.</p>
+            <p className="text-gray-500 sm:pr-8 mb-6">pdfcrops.app is the fastest and easiest way to crop PDFs for your ecommerce business.</p>
 
             {/* <!-- social - start --> */}
             <div className="flex gap-4">

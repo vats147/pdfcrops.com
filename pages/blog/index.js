@@ -21,7 +21,7 @@ export default function BlogList() {
         <meta property="og:title" content="Blog - Label Crop Expert Guides | PDFCrops" />
         <meta property="og:description" content="Expert guides on Meesho label crop, Flipkart label crop, and ecommerce optimization." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pdfcrops.com/blog" />
+        <meta property="og:url" content="https://pdfcrops.app/blog" />
         
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -29,7 +29,7 @@ export default function BlogList() {
         <meta name="twitter:description" content="Learn label crop techniques for Meesho, Flipkart, and GlowRoad" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://pdfcrops.com/blog" />
+        <link rel="canonical" href="https://pdfcrops.app/blog" />
       </Head>
 
       <main className='w-full mt-[8vh] py-12 md:py-20 flex flex-col justify-center items-center bg-gray-50'>

@@ -256,10 +256,10 @@ export async function getFlipkartCropCoordinates(pdfFile, options = {}) {
 
 /**
  * Generate filename for cropped Flipkart PDF
- * @param {string} prefix - Prefix for filename (default: "PDFCROPS.com-Flipkart")
+ * @param {string} prefix - Prefix for filename (default: "pdfcrops.app-Flipkart")
  * @returns {string} - Generated filename
  */
-export function generateFlipkartFilename(prefix = "PDFCROPS.com-Flipkart") {
+export function generateFlipkartFilename(prefix = "pdfcrops.app-Flipkart") {
   const currentDate = new Date();
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   

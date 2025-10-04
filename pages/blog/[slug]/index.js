@@ -50,7 +50,7 @@ export default function BlogPost() {
         <meta property="og:title" content={blog.seo.ogTitle} />
         <meta property="og:description" content={blog.seo.ogDescription} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://pdfcrops.com/blog/${blog.slug}`} />
+        <meta property="og:url" content={`https://pdfcrops.app/blog/${blog.slug}`} />
         <meta property="og:image" content={blog.seo.ogImage} />
         <meta property="article:published_time" content={blog.publishDate} />
         <meta property="article:modified_time" content={blog.lastUpdated} />
@@ -63,7 +63,7 @@ export default function BlogPost() {
         <meta name="twitter:image" content={blog.seo.ogImage} />
         
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://pdfcrops.com/blog/${blog.slug}`} />
+        <link rel="canonical" href={`https://pdfcrops.app/blog/${blog.slug}`} />
         
         {/* Structured Data */}
         <script

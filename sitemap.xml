@@ -7,56 +7,56 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-	<loc>https://www.pdfcrops.com/</loc>
+	<loc>https://pdfcrops.app/</loc>
 	<lastmod>2023-01-29T12:16:24+01:00</lastmod>
 	<priority>1.00</priority>
 </url>
 <url>
-	<loc>https://www.pdfcrops.com/tos</loc>
+	<loc>https://pdfcrops.app/tos</loc>
 	<lastmod>2023-01-29T12:16:24+01:00</lastmod>
 	<priority>0.9</priority>
 </url>
 <url>
-	<loc>https://www.pdfcrops.com/tools/pdf/crop</loc>
+	<loc>https://pdfcrops.app/tools/pdf/crop</loc>
 	<lastmod>2025-10-04T12:00:00+01:00</lastmod>
 	<priority>0.9</priority>
 </url>
 
 <!-- FAQ Page -->
 <url>
-	<loc>https://www.pdfcrops.com/faq</loc>
+	<loc>https://pdfcrops.app/faq</loc>
 	<lastmod>2025-10-04T12:00:00+01:00</lastmod>
 	<priority>0.8</priority>
 </url>
 
 <!-- Blog Pages -->
 <url>
-	<loc>https://www.pdfcrops.com/blog</loc>
+	<loc>https://pdfcrops.app/blog</loc>
 	<lastmod>2025-10-04T12:00:00+01:00</lastmod>
 	<priority>0.8</priority>
 </url>
 
 <url>
-	<loc>https://www.pdfcrops.com/blog/meesho-label-crop-complete-guide</loc>
+	<loc>https://pdfcrops.app/blog/meesho-label-crop-complete-guide</loc>
 	<lastmod>2025-10-01T12:00:00+01:00</lastmod>
 	<priority>0.7</priority>
 </url>
 
 <url>
-	<loc>https://www.pdfcrops.com/blog/flipkart-glowroad-label-crop-comparison</loc>
+	<loc>https://pdfcrops.app/blog/flipkart-glowroad-label-crop-comparison</loc>
 	<lastmod>2025-10-02T12:00:00+01:00</lastmod>
 	<priority>0.7</priority>
 </url>
 
 <!-- Other Pages -->
 <url>
-	<loc>https://www.pdfcrops.com/contact</loc>
+	<loc>https://pdfcrops.app/contact</loc>
 	<lastmod>2025-10-04T12:00:00+01:00</lastmod>
 	<priority>0.3</priority>
 </url>
 
 <url>
-	<loc>https://www.pdfcrops.com/privacyPolicy</loc>
+	<loc>https://pdfcrops.app/privacyPolicy</loc>
 	<lastmod>2025-10-04T12:00:00+01:00</lastmod>
 	<priority>0.2</priority>
 </url>

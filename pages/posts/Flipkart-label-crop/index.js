@@ -38,7 +38,7 @@ export default function Home({ data }) {
 
 
                     <p >Once your Flipkart shipping label pdf is generated you can use the same pdf here to crop labels. You don’t have to do any other process on your Flipkart shipping label pdf file. </p>
-                    <p > Select Flipkart in <u><a href="http://localhost:3000/tools/pdf/crop">pdfcrops.com/tools</a> </u></p>
+                    <p > Select Flipkart in <u><a href="http://localhost:3000/tools/pdf/crop">pdfcrops.app/tools</a> </u></p>
 
                     <h3 className='text-black text-4xl font-bold mb-5'>Click on “Upload PDF”</h3>
                     <p >Once you click on “Upload PDF” you will automatically crop pdf by just single click. </p>

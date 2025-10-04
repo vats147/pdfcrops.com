@@ -16,34 +16,34 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
   http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-<loc>https://www.pdfcrops.com/</loc>
+<loc>https://www.pdfcrops.app/</loc>
 <lastmod>2023-01-29T12:16:24+01:00</lastmod>
 <priority>1.00</priority>
 </url>
 <url>
-<loc>https://www.pdfcrops.com/tos</loc>
+<loc>https://www.pdfcrops.app/tos</loc>
 <lastmod>2023-01-29T12:16:24+01:00</lastmod>
 <priority>0.8</priority>
 </url>
 
 <url>
-<loc>https://www.pdfcrops.com/tools/pdf/crop</loc>
+<loc>https://www.pdfcrops.app/tools/pdf/crop</loc>
 <lastmod>2023-01-29T12:16:24+01:00</lastmod>
 <priority>0.9</priority>
 </url>
 <url>
-<loc>https://www.pdfcrops.com/tools/pdf/compress</loc>
+<loc>https://www.pdfcrops.app/tools/pdf/compress</loc>
 <lastmod>2023-03-29T12:16:24+01:00</lastmod>
 <priority>0.7</priority>
 </url>
 <url>
-<loc>https://www.pdfcrops.com/contact</loc>
+<loc>https://www.pdfcrops.app/contact</loc>
 <lastmod>2023-01-29T12:16:24+01:00</lastmod>
 <priority>0.2</priority>
 </url>
 
 <url>
-<loc>https://www.pdfcrops.com/privacyPolicy</loc>
+<loc>https://www.pdfcrops.app/privacyPolicy</loc>
 <lastmod>2023-01-29T12:16:24+01:00</lastmod>
 <priority>0.2</priority>
 </url>

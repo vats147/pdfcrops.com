@@ -4,8 +4,8 @@
 export const faqData = [
   {
     id: 1,
-    question: "What is PDFCrops.com and how does it help with label cropping?",
-    answer: "PDFCrops.com is a powerful online tool that helps ecommerce sellers crop shipping labels from platforms like Meesho, Flipkart, GlowRoad, Amazon, and other marketplaces. Our label crop tool saves time and paper by automatically cropping labels from PDF files, making it perfect for Meesho label crop, Flipkart label crop, and GlowRoad label crop needs. Simply upload your PDF and let our smart cropping technology handle the rest.",
+    question: "What is pdfcrops.app and how does it help with label cropping?",
+    answer: "pdfcrops.app is a powerful online tool that helps ecommerce sellers crop shipping labels from platforms like Meesho, Flipkart, GlowRoad, Amazon, and other marketplaces. Our label crop tool saves time and paper by automatically cropping labels from PDF files, making it perfect for Meesho label crop, Flipkart label crop, and GlowRoad label crop needs. Simply upload your PDF and let our smart cropping technology handle the rest.",
     category: "General",
     keywords: ["label crop", "meesho label crop", "flipkart label crop", "glowroad label crop", "ecommerce label crop"]
   },

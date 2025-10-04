@@ -22,7 +22,7 @@ Created a standalone utility module with three main functions:
 
 #### `generateFlipkartFilename(prefix)`
 - Generates timestamped filenames
-- Format: `PDFCROPS.com-Flipkart-DD-MMM-YY-HH-MM-SS.pdf`
+- Format: `pdfcrops.app-Flipkart-DD-MMM-YY-HH-MM-SS.pdf`
 
 #### `FLIPKART_THERMAL_CONFIG`
 - Pre-configured settings optimized for thermal printers

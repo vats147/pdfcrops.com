@@ -173,7 +173,7 @@ export function generateMeeshoFilename(prefix = 'Meesho') {
     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
-  return `PDFCROPS.com-${prefix}-${currentDate.getDate()}-${
+  return `pdfcrops.app-${prefix}-${currentDate.getDate()}-${
     months[currentDate.getMonth()]
   }-${currentDate.getFullYear().toString().slice(-2)}-${
     currentDate.getHours()

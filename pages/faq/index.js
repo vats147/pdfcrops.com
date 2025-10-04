@@ -40,7 +40,7 @@ export default function FAQ() {
         <meta property="og:title" content="FAQ - Label Crop Tool | Meesho, Flipkart, GlowRoad Label Crop" />
         <meta property="og:description" content="Get answers about Meesho label crop, Flipkart label crop, and ecommerce label cropping tools." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://pdfcrops.com/faq" />
+        <meta property="og:url" content="https://pdfcrops.app/faq" />
         
         {/* Twitter Card tags */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -48,7 +48,7 @@ export default function FAQ() {
         <meta name="twitter:description" content="Frequently asked questions about label crop for ecommerce sellers" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://pdfcrops.com/faq" />
+        <link rel="canonical" href="https://pdfcrops.app/faq" />
         
         {/* Structured Data */}
         <script

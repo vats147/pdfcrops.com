@@ -52,4 +52,4 @@ Allow: *
 Disallow: 
 
 Disallow: /cgi-bin/
-Sitemap: https://pdfcrops.com/sitemap.xml
+Sitemap: https://pdfcrops.app/sitemap.xml

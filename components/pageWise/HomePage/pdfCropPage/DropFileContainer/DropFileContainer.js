@@ -155,7 +155,7 @@ function DropFileContainer({
         "Dec",
       ];
 
-      const filename = `PDFCROPS.com-${prefix}-${currentDate.getDate()}-${
+      const filename = `pdfcrops.app-${prefix}-${currentDate.getDate()}-${
         months[currentDate.getMonth()]
       }-${currentDate
         .getFullYear()
@@ -601,7 +601,7 @@ function DropFileContainer({
 
         <div className="md:ml-8">
           <Typography className="text-base md:text-lg">
-            I'm a single developer, and keeping pdfcrops.com has a pretty high annual cost. I want to keep the website free and I've been doing it for years but if you use my website and want to help me in their development, a donation is the best way to do it. Most of all, your donation will make it possible to keep up the current development standards, and will bring new features and improvements to the website.
+            I'm a single developer, and keeping pdfcrops.app has a pretty high annual cost. I want to keep the website free and I've been doing it for years but if you use my website and want to help me in their development, a donation is the best way to do it. Most of all, your donation will make it possible to keep up the current development standards, and will bring new features and improvements to the website.
           </Typography>
         </div>
       </div>

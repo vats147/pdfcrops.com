@@ -3,7 +3,7 @@ export const PdfProcessSteps = [
     {
         id: 1,
         heading: "Upload Label",
-        details: "Upload your PDF by clicking the Add PDF button on the pdfcrops.com website. "
+        details: "Upload your PDF by clicking the Add PDF button on the pdfcrops.app website. "
     },
     {
         id: 2,

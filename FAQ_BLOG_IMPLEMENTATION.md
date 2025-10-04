@@ -210,9 +210,9 @@ All content redirects traffic to: **`/tools/pdf/crop`**
 ## 🌐 Live URLs (When Deployed)
 
 Replace `localhost:3001` with your domain:
-- https://pdfcrops.com/faq
-- https://pdfcrops.com/blog
-- https://pdfcrops.com/blog/[slug]
+- https://pdfcrops.app/faq
+- https://pdfcrops.app/blog
+- https://pdfcrops.app/blog/[slug]
 
 ---
 
