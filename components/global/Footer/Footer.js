@@ -112,6 +112,10 @@ const Footer = () => {
               </div>
 
               <div>
+                <a href="/sitemap.xml" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Sitemap</a>
+              </div>
+
+              <div>
                 <Link href="/blog" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100">Blog</Link>
               </div>
             </nav>
