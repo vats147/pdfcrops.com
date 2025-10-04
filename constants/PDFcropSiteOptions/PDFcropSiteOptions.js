@@ -2,16 +2,16 @@
 
 
 export const PDFcropSiteOptions = [
-    //Amazon PDF
-    // {
-    //     id: 1,
-    //     name: "Amazon",
-    //     value: 1,
-    //     icon: "amazonSmallLogo",
-    //     bgColor: "bg-[#FF9900]",
-    //     textColor: "text-black",
-    //     oneLineDescription: "Amazon Card"
-    // },
+    // Amazon PDF
+    {
+        id: 1,
+        name: "Amazon",
+        value: 1,
+        icon: "amazonSmallLogo",
+        bgColor: "bg-[#FF9900]",
+        textColor: "text-black",
+        oneLineDescription: "Amazon Card"
+    },
     {
         id: 2,
         name: "Flipkart",

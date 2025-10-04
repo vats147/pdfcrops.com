@@ -22,6 +22,15 @@ import Modal from "@mui/material/Modal";
 // Import pdf-lib for cropping logic
 import { PDFDocument } from "pdf-lib";
 
+// Import Flipkart-specific cropping utility
+import { 
+  cropFlipkartLabel, 
+  cropFlipkartLabelAdvanced,
+  generateFlipkartFilename,
+  FLIPKART_THERMAL_CONFIG 
+} from "../../../../../utils/flipkartPdfCropper";
+import { getFlipkartCropCoordinates } from "../../../../../utils/flipkartPdfCropper";
+
 import Image from "next/image";
 
 import UPIImage from "../../../../../public/images/UPI.jpg";
@@ -45,6 +54,7 @@ function DropFileContainer({
   const [settingFour, setSettingFour] = useState(false);
   const [settingFive, setSettingFive] = useState(false);
   const [settingSix, setSettingSix] = useState(false);
+  const [debugCrop, setDebugCrop] = useState(false);
 
   const [hrefState, setHrefState] = useState("");
   const [fileDownloadState, setFileDownloadState] = useState("");
@@ -165,6 +175,73 @@ function DropFileContainer({
           theme: "light",
         });
       notify();
+    }
+  };
+
+  // Dedicated Flipkart cropping function with dynamic content detection
+  const cropFlipkartPdf = async () => {
+    setIsLoading(true);
+    console.log("Flipkart Dynamic Crop Called");
+    try {
+      // Use the advanced Flipkart cropper with thermal printer optimizations
+      const croppedBlob = await cropFlipkartLabelAdvanced(
+        allPDFdata.data,
+        { ...FLIPKART_THERMAL_CONFIG, debug: debugCrop }
+      );
+
+      // Generate filename
+      const filename = generateFlipkartFilename();
+
+      // Create download link
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(croppedBlob);
+      downloadLink.download = filename;
+      downloadLink.click();
+
+      console.log("Flipkart PDF cropped successfully:", downloadLink.href);
+
+      // Update state for download button
+      setHrefState(URL.createObjectURL(croppedBlob));
+      setFileDownloadState(filename);
+      setIsDownloadPDFsfilesAvailable(true);
+
+      URL.revokeObjectURL(downloadLink.href);
+    } catch (error) {
+      console.error("Flipkart crop error:", error);
+      const notify = () =>
+        toast.error("Failed to crop Flipkart label. Please upload the file again.", {
+          position: "bottom-center",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      notify();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Handler to compute and print crop coordinates without modifying the PDF
+  const printCropCoordinates = async () => {
+    if (!allPDFdata || !allPDFdata.data) {
+      uploadFileInfoToast();
+      return;
+    }
+
+    try {
+      const coords = await getFlipkartCropCoordinates(allPDFdata.data, FLIPKART_THERMAL_CONFIG);
+      console.log("Computed Flipkart crop coordinates:", coords);
+      toast.info(`Computed crop for ${coords.length} page(s). See console for details.`, {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to compute crop coordinates. Check console.");
     }
   };
 
@@ -363,7 +440,7 @@ function DropFileContainer({
     boxShadow: 24,
     p: 4,
   };
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
@@ -466,50 +543,96 @@ function DropFileContainer({
 
         <div className="w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200">
           <button
-            onClick={() => {
+            onClick={async () => {
               if (!user && !loading) {
                 signInWithGoogle();
               } else if (user && !loading && allPDFdata.data) {
                 // Client side rendering
+                console.log('Selected Site Details:', selectedSiteDetailsState);
+                console.log('Selected Site Value:', selectedSiteDetailsState?.value);
 
-                // Amazon
+                // Amazon - No crop needed, just download as is
                 if (selectedSiteDetailsState?.value === 1) {
-                  cropPdf();
+                  // For Amazon, we don't crop - just show error for now
+                  const notify = () =>
+                    toast.info("Amazon label cropping is not yet implemented", {
+                      position: "bottom-center",
+                      autoClose: 2500,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                    });
+                  notify();
+                  uppy.cancelAll();
+                  setAllPDFdata({});
                 }
 
-                // Flipkart
-                if (selectedSiteDetailsState?.value === 2) {
-                  cropPdf(170, 467, 255, 353);
+                // Flipkart - Using dynamic cropper for thermal printer compatibility
+                else if (selectedSiteDetailsState?.value === 2) {
+                  await cropFlipkartPdf();
+                  uppy.cancelAll();
+                  setAllPDFdata({});
+                  
+                  const notify = () =>
+                    toast.success("Files are ready for download!", {
+                      position: "bottom-center",
+                      autoClose: false,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                    });
+                  notify();
                 }
 
                 // Meesho
-                if (selectedSiteDetailsState?.value === 3) {
+                else if (selectedSiteDetailsState?.value === 3) {
                   cropPdf(0, 490, 600, 600);
+                  uppy.cancelAll();
+                  setIsLoading(false);
+                  setIsDownloadPDFsfilesAvailable(true);
+                  setAllPDFdata({});
+                  
+                  const notify = () =>
+                    toast.success("Files are ready for download!", {
+                      position: "bottom-center",
+                      autoClose: false,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                    });
+                  notify();
                 }
 
                 // GlowRoad
-                if (selectedSiteDetailsState?.value === 4) {
+                else if (selectedSiteDetailsState?.value === 4) {
                   cropPdf(25, 220, 545, 300);
+                  uppy.cancelAll();
+                  setIsLoading(false);
+                  setIsDownloadPDFsfilesAvailable(true);
+                  setAllPDFdata({});
+                  
+                  const notify = () =>
+                    toast.success("Files are ready for download!", {
+                      position: "bottom-center",
+                      autoClose: false,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                    });
+                  notify();
                 }
-
-                uppy.cancelAll();
-                setIsLoading(false);
-
-                setIsDownloadPDFsfilesAvailable(true);
-                setAllPDFdata({});
-
-                const notify = () =>
-                  toast.success("Files are ready for download!", {
-                    position: "bottom-center",
-                    autoClose: false,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                  });
-                notify();
 
                 // API CALLED
                 // postPDF()
@@ -525,6 +648,30 @@ function DropFileContainer({
           >
             Upload
           </button>
+
+          <div className="flex items-center space-x-3">
+            <label className="flex items-center space-x-2 text-sm">
+              <input
+                type="checkbox"
+                checked={debugCrop}
+                onChange={(e) => setDebugCrop(e.target.checked)}
+              />
+              <span>Enable crop debug</span>
+            </label>
+
+            <button
+              onClick={async () => {
+                if (!allPDFdata?.data) {
+                  uploadFileInfoToast();
+                  return;
+                }
+                await printCropCoordinates();
+              }}
+              className="px-4 py-2 rounded-md bg-slate-700 text-white text-sm font-medium hover:bg-slate-800"
+            >
+              Print crop coords
+            </button>
+          </div>
 
           {isDownloadPDFsfilesAvailable && (
             <a
