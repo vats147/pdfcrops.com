@@ -55,19 +55,19 @@ const Footer = () => {
 
             <nav className="flex flex-col gap-4">
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Flipkart Label Crop</Link>
+                <Link href="/tools/flipkart-label-crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Flipkart Label Crop</Link>
               </div>
 
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Meesho Label Crop </Link>
+                <Link href="/tools/meesho-label-crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Meesho Label Crop </Link>
               </div>
 
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> GlowRoad Label Crop </Link>
+                <Link href="/tools/glowroad-label-crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> GlowRoad Label Crop </Link>
               </div>
               
               <div>
-                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Amazon Label Crop </Link>
+                <Link href="/tools/amazon-label-crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Amazon Label Crop </Link>
               </div>
 
               {/* <div>
