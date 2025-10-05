@@ -17,7 +17,7 @@ const BaseOneLayout = ({ children }) => {
 
 
     return (
-        <div className='w-full h-auto bg-gray-100 flex flex-col justify-start items-center overflow-x-hidden overflow-y-scroll'>
+        <div className='w-full min-h-screen bg-gray-100 flex flex-col justify-start items-center overflow-x-hidden'>
             <Head>
                 <title> PDF Crops | Free Online Label Crop | GlowRoad Meesho Flipkart  </title>
                 <link rel="canonical" href="https://pdfcrops.app/"></link>
@@ -47,9 +47,11 @@ const BaseOneLayout = ({ children }) => {
 
             <Header />
 
-            {/* <Sidebar /> */}
+            {/* Main content with padding to account for fixed header */}
+            <main className="w-full pt-[8vh]">
+                {children}
+            </main>
 
-            {children}
             <Footer />
 
         </div>

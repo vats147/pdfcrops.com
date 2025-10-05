@@ -41,6 +41,7 @@ import {
 import Image from "next/image";
 
 import UPIImage from "../../../../../public/images/UPI.jpg";
+import AnimatedPDFPreview from "../AnimatedPDFPreview/AnimatedPDFPreview";
 
 function DropFileContainer({
   selectedSiteDetailsState,
@@ -167,7 +168,8 @@ function DropFileContainer({
       const downloadLink = document.createElement("a");
       downloadLink.href = URL.createObjectURL(modifiedBlob);
       downloadLink.download = filename;
-      downloadLink.click();
+      // Auto-download removed - users must click Download button
+      // downloadLink.click();
 
       console.log(downloadLink.href);
 
@@ -213,7 +215,8 @@ function DropFileContainer({
       const downloadLink = document.createElement("a");
       downloadLink.href = URL.createObjectURL(croppedBlob);
       downloadLink.download = filename;
-      downloadLink.click();
+      // Auto-download removed - users must click Download button
+      // downloadLink.click();
 
       console.log("Flipkart PDF cropped successfully:", downloadLink.href);
 
@@ -239,26 +242,6 @@ function DropFileContainer({
       notify();
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  // Handler to compute and print crop coordinates without modifying the PDF
-  const printCropCoordinates = async () => {
-    if (!allPDFdata || !allPDFdata.data) {
-      uploadFileInfoToast();
-      return;
-    }
-
-    try {
-      const coords = await getFlipkartCropCoordinates(allPDFdata.data, FLIPKART_THERMAL_CONFIG);
-      console.log("Computed Flipkart crop coordinates:", coords);
-      toast.info(`Computed crop for ${coords.length} page(s). See console for details.`, {
-        position: "bottom-center",
-        autoClose: 2500,
-      });
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to compute crop coordinates. Check console.");
     }
   };
 
@@ -301,7 +284,8 @@ function DropFileContainer({
       const downloadLink = document.createElement("a");
       downloadLink.href = URL.createObjectURL(croppedBlob);
       downloadLink.download = filename;
-      downloadLink.click();
+      // Auto-download removed - users must click Download button
+      // downloadLink.click();
 
       console.log("Meesho PDF cropped successfully:", downloadLink.href);
 
@@ -430,7 +414,8 @@ function DropFileContainer({
               currentDate.getMinutes() +
               ".pdf";
 
-            alink.click();
+            // Auto-download removed - users must click Download button
+            // alink.click();
             alink.remove();
           }
 
@@ -781,15 +766,39 @@ function DropFileContainer({
           </div>
         )} */}
 
-        <Dashboard
-          uppy={uppy}
-          width="90vw"
-          height="500px"
-          showProgressDetails={true}
-          className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw] z-10 hover:cursor-pointer"
-          hideUploadButton={true}
-          proudlyDisplayPoweredByUppy={false}
-        />
+        {/* Dashboard - always mounted but hidden when preview is shown */}
+        <div className={allPDFdata?.data ? 'hidden' : 'block'}>
+          <Dashboard
+            uppy={uppy}
+            width="90vw"
+            height="500px"
+            showProgressDetails={true}
+            className="md:w-[60vw] lg:w-[50vw] xl:w-[40vw] z-10 hover:cursor-pointer"
+            hideUploadButton={true}
+            proudlyDisplayPoweredByUppy={false}
+          />
+        </div>
+
+        {/* Animated PDF Preview - shown when file is uploaded */}
+        {allPDFdata?.data && selectedSiteDetailsState?.name && (
+          <div className="w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw]">
+            <AnimatedPDFPreview
+              pdfFile={allPDFdata.data}
+              platform={selectedSiteDetailsState.name}
+              onCropComplete={() => {
+                console.log('Animation complete');
+              }}
+              onDelete={() => {
+                // Remove file from Uppy
+                uppy.removeFile(allPDFdata.id);
+                setAllPDFdata({});
+                setIsDownloadPDFsfilesAvailable(false);
+                setHrefState("");
+                setFileDownloadState("");
+              }}
+            />
+          </div>
+        )}
 
         <div className="w-[90vw] md:w-[60vw] lg:w-[50vw] xl:w-[40vw] flex flex-wrap justify-center items-center space-x-3 my-5 p-3 rounded-md  bg-white shadow-lg shadow-slate-200">
           <button
@@ -929,19 +938,6 @@ function DropFileContainer({
               />
               <span>Enable crop debug</span>
             </label>
-
-            <button
-              onClick={async () => {
-                if (!allPDFdata?.data) {
-                  uploadFileInfoToast();
-                  return;
-                }
-                await printCropCoordinates();
-              }}
-              className="px-4 py-2 rounded-md bg-slate-700 text-white text-sm font-medium hover:bg-slate-800"
-            >
-              Print crop coords
-            </button>
           </div>
 
           {isDownloadPDFsfilesAvailable && (

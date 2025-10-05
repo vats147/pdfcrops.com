@@ -69,17 +69,25 @@ const Footer = () => {
               <div>
                 <Link href="/tools/amazon-label-crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> Amazon Label Crop </Link>
               </div>
-
-              {/* <div>
-                <a href="#" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> About </a>
-              </div> */}
             </nav>
           </div>
           {/* <!-- nav - end --> */}
 
-          
+          {/* <!-- nav - start --> */}
+          <div>
+            <div className="text-gray-800 font-bold tracking-widest uppercase mb-4">PDF Tools</div>
 
-          
+            <nav className="flex flex-col gap-4">
+              <div>
+                <Link href="/tools/pdf-to-jpg" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> PDF to JPG </Link>
+              </div>
+
+              <div>
+                <Link href="/tools/pdf/crop" className="text-gray-500 hover:text-indigo-500 active:text-indigo-600 transition duration-100"> PDF Crop </Link>
+              </div>
+            </nav>
+          </div>
+          {/* <!-- nav - end --> */}
 
           {/* <!-- nav - start --> */}
           <div>
