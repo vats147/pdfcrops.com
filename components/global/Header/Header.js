@@ -20,19 +20,21 @@ const Header = () => {
 
       {/* Brand Name and Logo */}
       <Link href={`/`} className='flex justify-center items-center space-x-3'>
-        <Image src={logoOne} alt="logoOne"className="w-8 h-8 rounded-full" />
+        <Image src={logoOne} alt="logoOne" className="w-8 h-8 rounded-full" />
         <h1 className='text-base font-semibold text-brandDarkColor'> {BrandName} </h1>
       </Link>
 
       <div className='hidden md:inline-flex flex-center items-center space-x-10'>
         <PdfTab />
-       
+
+        <Link href={`/tools/calculators`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> Calculators</Link>
+
         <Link href={`/blog`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> Blog</Link>
-        
+
         <Link href={`/faq`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> FAQ</Link>
-        
+
         <Link href={`/contact`} className="text-base font-medium text-black hover:text-blue-600 transition-colors"> Contact Us</Link>
-       
+
 
 
         {/* Sign in Button */}
@@ -43,12 +45,12 @@ const Header = () => {
 
 
 
-        {/* Hamburger Icon */}
-        {!isSidebarVisible ? (
-          <RxHamburgerMenu className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
-        ) : (
-          <RxCross1 className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
-        )}
+      {/* Hamburger Icon */}
+      {!isSidebarVisible ? (
+        <RxHamburgerMenu className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
+      ) : (
+        <RxCross1 className='md:hidden w-5 h-5 text-brandDarkColor hover:cursor-pointer' onClick={() => setIsSidebarVisible(!isSidebarVisible)} />
+      )}
 
       {/* Sidebar */}
       <Sidebar isSidebarVisible={isSidebarVisible} setIsSidebarVisible={setIsSidebarVisible} />

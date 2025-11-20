@@ -48,6 +48,43 @@
 	<priority>0.7</priority>
 </url>
 
+<!-- Calculator Pages -->
+<url>
+	<loc>https://pdfcrops.app/tools/calculators</loc>
+	<lastmod>2025-11-20T12:00:00+01:00</lastmod>
+	<priority>0.9</priority>
+</url>
+
+<url>
+	<loc>https://pdfcrops.app/tools/calculators/meesho-profit-calculator</loc>
+	<lastmod>2025-11-20T12:00:00+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://pdfcrops.app/tools/calculators/amazon-profit-calculator</loc>
+	<lastmod>2025-11-20T12:00:00+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://pdfcrops.app/tools/calculators/flipkart-profit-calculator</loc>
+	<lastmod>2025-11-20T12:00:00+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://pdfcrops.app/tools/calculators/ebay-profit-calculator</loc>
+	<lastmod>2025-11-20T12:00:00+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+
+<url>
+	<loc>https://pdfcrops.app/tools/calculators/alibaba-profit-calculator</loc>
+	<lastmod>2025-11-20T12:00:00+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+
 <!-- Other Pages -->
 <url>
 	<loc>https://pdfcrops.app/contact</loc>
