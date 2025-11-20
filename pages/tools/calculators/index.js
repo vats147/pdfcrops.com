@@ -29,20 +29,68 @@ const calculators = [
         color: 'bg-blue-50 text-blue-600'
     },
     {
-        id: 'ebay',
-        name: 'eBay Fee & Profit Calculator',
-        description: 'Calculate eBay final value fees, insertion fees, and PayPal/managed payments costs.',
-        link: '/tools/calculators/ebay-profit-calculator',
-        icon: '🏷️',
+        id: 'jiomart',
+        name: 'JioMart Seller Calculator',
+        description: 'Streamline your business with the JioMart Seller Calculator. Accurately calculate fees and profits.',
+        link: '/tools/calculators/jiomart-seller-calculator',
+        icon: '🏪',
+        color: 'bg-red-50 text-red-600'
+    },
+    {
+        id: 'gst',
+        name: 'GST Calculator India',
+        description: 'Calculate GST effortlessly. Quickly determine tax liabilities and stay compliant with Indian tax regulations.',
+        link: '/tools/calculators/gst-calculator-india',
+        icon: '🇮🇳',
+        color: 'bg-purple-50 text-purple-600'
+    },
+    {
+        id: 'volumetric',
+        name: 'Volumetric Weight Calculator',
+        description: 'Determine the shipping cost of a package based on its dimensions rather than its actual weight.',
+        link: '/tools/calculators/volumetric-weight-calculator',
+        icon: '⚖️',
+        color: 'bg-cyan-50 text-cyan-600'
+    },
+    {
+        id: 'finance',
+        name: 'Finance Margin Calculator',
+        description: 'Maximize profits with our Finance Margin Calculator. Effortlessly calculate margins and ensure financial health.',
+        link: '/tools/calculators/finance-margin-calculator',
+        icon: '📈',
         color: 'bg-green-50 text-green-600'
     },
     {
+        id: 'ebay',
+        name: 'eBay Seller Calculator',
+        description: 'Optimize your earnings with the eBay Seller Calculator. Effortlessly estimate fees and profits.',
+        link: '/tools/calculators/ebay-profit-calculator',
+        icon: '🏷️',
+        color: 'bg-emerald-50 text-emerald-600'
+    },
+    {
+        id: 'walmart',
+        name: 'Walmart Seller Calculator',
+        description: 'Maximize your profits with the Walmart Seller Calculator. Easily calculate fees and pricing to scale.',
+        link: '/tools/calculators/walmart-seller-calculator',
+        icon: '🛒',
+        color: 'bg-indigo-50 text-indigo-600'
+    },
+    {
+        id: 'etsy',
+        name: 'Etsy Seller Calculator',
+        description: 'Boost your earnings with the Etsy Seller Calculator. Accurately estimate fees and profits to enhance success.',
+        link: '/tools/calculators/etsy-seller-calculator',
+        icon: '🎨',
+        color: 'bg-orange-50 text-orange-600'
+    },
+    {
         id: 'alibaba',
-        name: 'Alibaba Import Calculator',
-        description: 'Estimate landed costs for importing from Alibaba, including shipping, customs, and duties.',
+        name: 'Alibaba Seller Calculator',
+        description: 'Optimize your profits with the Alibaba Seller Calculator. Effortlessly calculate fees and margins.',
         link: '/tools/calculators/alibaba-profit-calculator',
         icon: '🌏',
-        color: 'bg-orange-50 text-orange-600'
+        color: 'bg-orange-100 text-orange-700'
     }
 ];
 

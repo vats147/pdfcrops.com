@@ -108,6 +108,100 @@ Successfully implemented a comprehensive suite of ecommerce profit calculators f
 
 ---
 
+### 6. **GST Calculator India**
+**URL:** `/tools/calculators/gst-calculator-india`
+
+**Features:**
+- Inclusive and Exclusive GST calculation
+- Standard GST slabs (5%, 12%, 18%, 28%)
+- Custom rate support
+- Detailed breakdown of net amount, GST amount, and total amount
+- Purple/indigo gradient theme
+
+**SEO Optimizations:**
+- Title: "GST Calculator India 2025 | Calculate GST Inclusive & Exclusive"
+- Educational content about GST rates
+- Formula explanations
+
+---
+
+### 7. **Volumetric Weight Calculator**
+**URL:** `/tools/calculators/volumetric-weight-calculator`
+
+**Features:**
+- Calculate dimensional weight
+- Support for cm and inches
+- Custom divisor selection (5000, 4000, 139)
+- Comparison with actual weight logic
+- Blue/cyan gradient theme
+
+**SEO Optimizations:**
+- Title: "Volumetric Weight Calculator | Calculate Dimensional Weight"
+- Explanation of volumetric weight formula
+- Courier-specific divisor information
+
+---
+
+### 8. **Finance Margin Calculator**
+**URL:** `/tools/calculators/finance-margin-calculator`
+
+**Features:**
+- Calculate Gross Margin and Markup
+- Find Selling Price based on desired margin
+- Profit analysis
+- Green/emerald gradient theme
+
+**SEO Optimizations:**
+- Title: "Finance Margin Calculator | Calculate Profit Margin & Markup"
+- Margin vs Markup explanation
+- Clear formula display
+
+---
+
+### 9. **JioMart Seller Calculator**
+**URL:** `/tools/calculators/jiomart-seller-calculator`
+
+**Features:**
+- Category-based commission rates
+- GST and fixed fee calculation
+- Net profit and margin estimation
+- Red/pink gradient theme
+
+**SEO Optimizations:**
+- Title: "JioMart Seller Calculator 2025 | Calculate Fees & Profit"
+- Targeted for Indian sellers
+
+---
+
+### 10. **Walmart Seller Calculator**
+**URL:** `/tools/calculators/walmart-seller-calculator`
+
+**Features:**
+- Referral fee calculation by category
+- Profit and margin analysis
+- Indigo/blue gradient theme
+
+**SEO Optimizations:**
+- Title: "Walmart Seller Calculator | Marketplace Fees & Profit"
+- Walmart marketplace specific keywords
+
+---
+
+### 11. **Etsy Seller Calculator**
+**URL:** `/tools/calculators/etsy-seller-calculator`
+
+**Features:**
+- Listing fees, transaction fees, payment processing fees
+- Advertising cost input
+- Comprehensive profit breakdown
+- Orange/amber gradient theme
+
+**SEO Optimizations:**
+- Title: "Etsy Seller Calculator | Fees & Profit Estimator"
+- Detailed fee structure breakdown
+
+---
+
 ## Navigation & Accessibility
 
 ### Header Navigation
