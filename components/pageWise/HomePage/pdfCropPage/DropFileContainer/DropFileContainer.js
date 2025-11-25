@@ -23,19 +23,19 @@ import Modal from "@mui/material/Modal";
 import { PDFDocument } from "pdf-lib";
 
 // Import Flipkart-specific cropping utility
-import { 
-  cropFlipkartLabel, 
+import {
+  cropFlipkartLabel,
   cropFlipkartLabelAdvanced,
   generateFlipkartFilename,
-  FLIPKART_THERMAL_CONFIG 
+  FLIPKART_THERMAL_CONFIG
 } from "../../../../../utils/flipkartPdfCropper";
 import { getFlipkartCropCoordinates } from "../../../../../utils/flipkartPdfCropper";
 
 // Import Meesho-specific cropping utility
-import { 
+import {
   cropMeeshoLabel,
   cropMeeshoLabelSimple,
-  generateMeeshoFilename 
+  generateMeeshoFilename
 } from "../../../../../utils/meeshoPdfCropper";
 
 import Image from "next/image";
@@ -135,12 +135,12 @@ function DropFileContainer({
         selectedSiteDetailsState.value === 1
           ? "Amazon"
           : selectedSiteDetailsState.value === 2
-          ? "Flipkart"
-          : selectedSiteDetailsState.value === 3
-          ? "Meesho"
-          : selectedSiteDetailsState.value === 4
-          ? "GlowRoad"
-          : "Unknown";
+            ? "Flipkart"
+            : selectedSiteDetailsState.value === 3
+              ? "Meesho"
+              : selectedSiteDetailsState.value === 4
+                ? "GlowRoad"
+                : "Unknown";
       let months = [
         "Jan",
         "Feb",
@@ -156,14 +156,13 @@ function DropFileContainer({
         "Dec",
       ];
 
-      const filename = `pdfcrops.app-${prefix}-${currentDate.getDate()}-${
-        months[currentDate.getMonth()]
-      }-${currentDate
-        .getFullYear()
-        .toString()
-        .slice(
-          -2
-        )}-${currentDate.getHours()}-${currentDate.getMinutes()}-${currentDate.getSeconds()}.pdf`;
+      const filename = `pdfcrops.app-${prefix}-${currentDate.getDate()}-${months[currentDate.getMonth()]
+        }-${currentDate
+          .getFullYear()
+          .toString()
+          .slice(
+            -2
+          )}-${currentDate.getHours()}-${currentDate.getMinutes()}-${currentDate.getSeconds()}.pdf`;
 
       const downloadLink = document.createElement("a");
       downloadLink.href = URL.createObjectURL(modifiedBlob);
@@ -422,18 +421,18 @@ function DropFileContainer({
           setHrefState(fileURL);
           setFileDownloadState(
             "PDFCROPS-" +
-              prefix +
-              "-" +
-              currentDate.getDate() +
-              "-" +
-              months[currentDate.getMonth()] +
-              "-" +
-              currentDate.getFullYear().toString().slice(-2) +
-              "-" +
-              currentDate.getHours() +
-              "-" +
-              currentDate.getMinutes() +
-              ".pdf"
+            prefix +
+            "-" +
+            currentDate.getDate() +
+            "-" +
+            months[currentDate.getMonth()] +
+            "-" +
+            currentDate.getFullYear().toString().slice(-2) +
+            "-" +
+            currentDate.getHours() +
+            "-" +
+            currentDate.getMinutes() +
+            ".pdf"
           );
 
           setIsDownloadPDFsfilesAvailable(true);
@@ -543,59 +542,59 @@ function DropFileContainer({
   return (
     <>
       <div className="w-full">
-  <Modal
-    disableEnforceFocus
-    open={open}
-    onClose={handleClose}
-    aria-labelledby="modal-modal-title"
-    aria-describedby="modal-modal-description"
-  >
-    <div className="w-11/12 md:w-3/4 lg:w-1/2 xl:w-2/5 mx-auto bg-white rounded-lg p-6">
-      <div className="flex justify-end">
-        <button onClick={handleClose} className="text-gray-500 hover:text-gray-700 focus:outline-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
+        <Modal
+          disableEnforceFocus
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <div className="w-11/12 md:w-3/4 lg:w-1/2 xl:w-2/5 mx-auto bg-white rounded-lg p-6">
+            <div className="flex justify-end">
+              <button onClick={handleClose} className="text-gray-500 hover:text-gray-700 focus:outline-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">
+              Consider To Donate 😊
+            </h1>
+
+            <div className="flex flex-col md:flex-row items-center justify-center">
+              <Image
+                draggable="false"
+                quality={100}
+                unoptimized
+                src={UPIImage}
+                alt="upi image "
+                className="w-64 md:w-96 h-auto mb-4 md:mb-0"
+              />
+
+              <div className="md:ml-8">
+                <Typography className="text-base md:text-lg">
+                  I'm a single developer, and keeping pdfcrops.app has a pretty high annual cost. I want to keep the website free and I've been doing it for years but if you use my website and want to help me in their development, a donation is the best way to do it. Most of all, your donation will make it possible to keep up the current development standards, and will bring new features and improvements to the website.
+                </Typography>
+              </div>
+            </div>
+          </div>
+        </Modal>
       </div>
 
-      <h1 className="text-2xl md:text-3xl font-bold text-center mb-4">
-        Consider To Donate 😊
-      </h1>
-
-      <div className="flex flex-col md:flex-row items-center justify-center">
-        <Image
-          draggable="false"
-          quality={100}
-          unoptimized
-          src={UPIImage}
-          alt="upi image "
-          className="w-64 md:w-96 h-auto mb-4 md:mb-0"
-        />
-
-        <div className="md:ml-8">
-          <Typography className="text-base md:text-lg">
-            I'm a single developer, and keeping pdfcrops.app has a pretty high annual cost. I want to keep the website free and I've been doing it for years but if you use my website and want to help me in their development, a donation is the best way to do it. Most of all, your donation will make it possible to keep up the current development standards, and will bring new features and improvements to the website.
-          </Typography>
-        </div>
-      </div>
-    </div>
-  </Modal>
-</div>
 
 
-     
 
       <div className="flex flex-col items-center justify-start space-y-3">
         {/* Check boxes */}
@@ -834,7 +833,7 @@ function DropFileContainer({
                   await cropFlipkartPdf();
                   uppy.cancelAll();
                   setAllPDFdata({});
-                  
+
                   const notify = () =>
                     toast.success("Files are ready for download!", {
                       position: "bottom-center",
@@ -852,12 +851,12 @@ function DropFileContainer({
                 // Meesho - Using basic crop for now (advanced options hidden for 1 week)
                 // TODO: Switch to cropMeeshoPdf() when advanced options are enabled
                 else if (selectedSiteDetailsState?.value === 3) {
-                  cropPdf(0, 490, 600, 600);
+                  await cropPdf(0, 490, 600, 600);
                   uppy.cancelAll();
                   setIsLoading(false);
                   setIsDownloadPDFsfilesAvailable(true);
                   setAllPDFdata({});
-                  
+
                   const notify = () =>
                     toast.success("Files are ready for download!", {
                       position: "bottom-center",
@@ -871,7 +870,7 @@ function DropFileContainer({
                     });
                   notify();
                 }
-                
+
                 // ALTERNATIVE (for when advanced options are enabled):
                 // else if (selectedSiteDetailsState?.value === 3) {
                 //   await cropMeeshoPdf();
@@ -894,12 +893,12 @@ function DropFileContainer({
 
                 // GlowRoad
                 else if (selectedSiteDetailsState?.value === 4) {
-                  cropPdf(25, 220, 545, 300);
+                  await cropPdf(25, 220, 545, 300);
                   uppy.cancelAll();
                   setIsLoading(false);
                   setIsDownloadPDFsfilesAvailable(true);
                   setAllPDFdata({});
-                  
+
                   const notify = () =>
                     toast.success("Files are ready for download!", {
                       position: "bottom-center",
@@ -920,11 +919,10 @@ function DropFileContainer({
                 uploadFileInfoToast();
               }
             }}
-            className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${
-              allPDFdata?.data
+            className={` px-8 py-3 my-4 rounded-md bg-brandPrimaryColor text-white text-sm font-medium ${allPDFdata?.data
                 ? "hover:cursor-pointer"
                 : "hover:cursor-not-allowed"
-            } hover:bg-[#156BA9] `}
+              } hover:bg-[#156BA9] `}
           >
             Upload
           </button>
